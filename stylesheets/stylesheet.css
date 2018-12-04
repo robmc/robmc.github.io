@@ -421,5 +421,14 @@ Small Device Styles
     max-width: 480px;
     font-size: 11px;
   }
+  
+/*******************************************************************************
+Styling for Accordion Example
+*******************************************************************************/
+  
+  #information {
+	width: 50%;
+	background-color: #CFCFCF; 
+  }
 
 }
