@@ -1,0 +1,8 @@
+body{
+  background-color: blue;
+}
+
+/* This adds 5px of spacing below each fieldset element */
+fieldset {
+  margin-bottom: 50px;
+}
