@@ -421,23 +421,5 @@ Small Device Styles
     max-width: 480px;
     font-size: 11px;
   }
-  
-/*******************************************************************************
-Styling for Accordion Example
-*******************************************************************************/
-  
-  #information {
-	width: 50%;
-	background-color: #CFCFCF; 
-  }
-
-/*******************************************************************************
-Styling for ARIA Checkbox Example
-*******************************************************************************/
-	
-	/* This adds 5px of spacing below each fieldset element */
-	fieldset {
-	  margin-bottom: 5px;
-	}
 
 }
