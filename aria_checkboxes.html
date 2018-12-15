@@ -27,14 +27,14 @@
 				<p>Checkboxes using ARIA and JavaScript:</p>
 				<!-- The "aria-labelledby" attribute is required because label elements can only be applied to form elements. -->
 				<!-- Span elements are being used instead of default HTML checkbox inputs so aria-labelledby is needed for association. -->
-				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelA" id="optionA" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
-					<img src="/images/unchecked.png" alt="" role="presentation" id="imageA">
-					<label id="labelA">Option A</label>
+				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelA" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
+					<img src="/images/unchecked.png" alt="" role="presentation">
+					<span id="labelA">Option A</span>
 				</span>
 				<br />
-				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelB" id="optionB" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
-					<img src="/images/unchecked.png" alt="" role="presentation" id="imageB">
-					<label id="labelB">Option B</label>
+				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelB" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
+					<img src="/images/unchecked.png" alt="" role="presentation">
+					<span id="labelB">Option B</span>
 				</span>
 				<br />
 				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelC" id="optionC" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
