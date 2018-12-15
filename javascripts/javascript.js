@@ -33,10 +33,10 @@ function toggleState(el) {
 
   if (getvalue == "false") {
     el.setAttribute("aria-checked", "true");
-    img.setAttribute("src", "checked.png");
+    img.setAttribute("src", "/images/checked.png");
   } else {
     el.setAttribute("aria-checked", "false");
-    img.setAttribute("src", "unchecked.png");
+    img.setAttribute("src", "/images/unchecked.png");
   }
 }
 
