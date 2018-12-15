@@ -25,29 +25,27 @@
 			<fieldset>
 				<legend>ARIA Checkboxes</legend>
 				<p>Checkboxes using ARIA and JavaScript:</p>
-				<div aria-labelledby="check_title">
 				<!-- The "aria-labelledby" attribute is required because label elements can only be applied to form elements. -->
 				<!-- Span elements are being used instead of default HTML checkbox inputs so aria-labelledby is needed for association. -->
-					<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelA" id="optionA" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
-						<img src="/images/unchecked.png" alt="" role="presentation" id="imageA">
-						<label id="labelA">Option A</label>
-					</span>
-					<br />
-					<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelB" id="optionB" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
-						<img src="/images/unchecked.png" alt="" role="presentation" id="imageB">
-						<label id="labelB">Option B</label>
-					</span>
-					<br />
-					<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelC" id="optionC" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
-						<img src="/images/unchecked.png" alt="" role="presentation" id="imageC">
-						<label id="labelC">Option C</label>
-					</span>
-					<br />
-					<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelD" id="optionD" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
-						<img src="/images/unchecked.png" alt="" role="presentation" id="imageD">
-						<label id="labelD">Option D</label>
-					</span>
-				</div>
+				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelA" id="optionA" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
+					<img src="/images/unchecked.png" alt="" role="presentation" id="imageA">
+					<label id="labelA">Option A</label>
+				</span>
+				<br />
+				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelB" id="optionB" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
+					<img src="/images/unchecked.png" alt="" role="presentation" id="imageB">
+					<label id="labelB">Option B</label>
+				</span>
+				<br />
+				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelC" id="optionC" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
+					<img src="/images/unchecked.png" alt="" role="presentation" id="imageC">
+					<label id="labelC">Option C</label>
+				</span>
+				<br />
+				<span role="checkbox"  tabindex="0" aria-checked="false" aria-labelledby="labelD" id="optionD" onclick="toggleState(this);" onkeyup="ARIA_Checkbox_Key(event);">
+					<img src="/images/unchecked.png" alt="" role="presentation" id="imageD">
+					<label id="labelD">Option D</label>
+				</span>
 			</fieldset>
 		</form>
 	</body>
