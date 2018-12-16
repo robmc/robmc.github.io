@@ -20,6 +20,7 @@
 			<li>Once the control rececives focus, it must still provide a role to ensure users can identify its intended function. The <a href="https://www.w3.org/TR/wai-aria-1.1/#checkbox">ARIA checkbox</a> role has been added to the <code>&lt;span&gt;</code> to convey the element's role.</li>
 			<li>Checkboxes can exist in both a checked and unchecked state. The <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-checked">aria-checked</a> state has been applied to the checkboxes to indicate their state. When interacting with the controls, their programmatic state is updated via this value.</li>
 			<li>In addition to the programmatic state, the visual state of the simulated controls is updated as well. These are rendered via images (often done to ensure the same visual presentation across browsers) and the source of the images are updated when activating the simulated checkboxes to reflect their state visually.</li>
+			<li>The JavaScript <code>onClick</code> event has been applied to the simulated checkboxes which supports mouse interaction. This event supports keyboard input via the Enter key on controls such as native HTML buttons and links however is not supported on simulated controls. For this reason, the JavaScript <code>onKeyUp</code> event has been applied to the simulated controls as well to support keyboard input. This listens for Event Code 32 as that is the code for a Space Bar press, which is the expected behavior of native HTML checkboxes.</li>
 		</ul>
 		<form>
 			<fieldset>
