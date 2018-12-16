@@ -2,3 +2,7 @@
 fieldset {
   margin-bottom: 5px;
 }
+
+code {
+  background-color: LightGray;
+}
