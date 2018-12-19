@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Accessible Tooltip Examples</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/tooltips_stylesheet.css">
+		<script src="/javascripts/tooltips_javascript.js"></script>
+	</head>
+	<body>
+		<h1>Accessible Tooltip Examples</h1>
+		<p>This page includes different tooltip examples. A tooltip is typically used to display more information about content on a screen and is generally displayed when placing the mouse cursor over an element such as an icon or a link.</p>
+		<p>Concepts included in this example include:</p>
+		<ul>
+			<li>The ARIA <a href="https://www.w3.org/TR/wai-aria-1.1/#tooltip">tooltip</a> role has been used for the elements containing tooltip information.</li>
+		</ul>
+		<hr>
+		<p>This sentence uses a <a href="#" aria-describedby="link_tooltip" onfocus="document.getElementById('link_tooltip').style.display='block';" onmouseover="document.getElementById('link_tooltip').style.display='block';" onblur="document.getElementById('link_tooltip').style.display='none';" onmouseout="document.getElementById('link_tooltip').style.display='none';">link</a> to display more information.</p>
+		<div role="tooltip" class="tooltip" id="link_tooltip">This is a sample link tooltip with more information about the link.</div>
+	</body>
+</html>
