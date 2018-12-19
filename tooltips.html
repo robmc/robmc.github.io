@@ -15,5 +15,7 @@
 		<hr>
 		<p>This sentence uses a <a href="#" aria-describedby="link_tooltip" onfocus="document.getElementById('link_tooltip').style.display='block';" onmouseover="document.getElementById('link_tooltip').style.display='block';" onblur="document.getElementById('link_tooltip').style.display='none';" onmouseout="document.getElementById('link_tooltip').style.display='none';">link</a> to display more information.</p>
 		<div role="tooltip" class="tooltip" id="link_tooltip">This is a sample link tooltip with more information about the link.</div>
+		<p>This example uses an icon image link after the sentence to toggle the tooltip information.<a href="#" aria-describedby="icon_cooltip" onfocus="document.getElementById('icon_tooltip').style.display='block';" onmouseover="document.getElementById('icon_tooltip').style.display='block';" onblur="document.getElementById('icon_tooltip').style.display='none';" onmouseout="document.getElementById('icon_tooltip').style.display='none';"><img src="tooltip_icon.png" style="width: 15px; height: 15px;" alt="Information Tooltip"></a></p>
+		<div role="tooltip" class="tooltip" id="icon_tooltip">This is a sample tooltip triggered by an icon with more information about the link.</div>
 	</body>
 </html>
