@@ -1,8 +1,0 @@
-/* Sets a rounded border around the CSS tooltips and adds padding making them easier to read. Display: none; is set to hide the tooltips by default. */
-	.tooltip {
-		border: 1px solid;
-		border-radius: 5px;
-		width: 300px;
-		padding: 3px;
-		display: none;
-	}
