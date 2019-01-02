@@ -11,6 +11,7 @@
 		<p>Concepts included in this example include:</p>
 		<ul>
 			<li>The ARIA <a href="https://www.w3.org/TR/wai-aria-1.1/#tooltip">tooltip</a> role has been used for the elements containing tooltip information.</li>
+			<li>The ARIA <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-describedby">aria-describedby</a> property is applied to the control spawning the tooltip and references the contents of the tooltip. This ensures that the tooltip is announced upon receiving focus.</li>
 		</ul>
 		<hr>
 		<p>This sentence uses a <a href="#" aria-describedby="link_tooltip" onfocus="document.getElementById('link_tooltip').style.display='block';" onmouseover="document.getElementById('link_tooltip').style.display='block';" onblur="document.getElementById('link_tooltip').style.display='none';" onmouseout="document.getElementById('link_tooltip').style.display='none';">link</a> to display more information.</p>
