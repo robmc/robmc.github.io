@@ -10,6 +10,13 @@
 				margin-left: auto;
 				margin-right: auto;
 			}
+			.row {
+				display: flex;
+			}
+			.column {
+				flex: 50%;
+				padding: 5px;
+			}
 		</style>
 	</head>
 	<body>
@@ -25,7 +32,14 @@
       <li>7-8 jalapeno peppers, thinly sliced</li>
       <li>1 thin carrot, give or take, thinly sliced</li>
 		</ul>
-		<img src="/images/pickled_jalapeno_ingredients.jpg" alt="Ingredients for pickled jalapenos organized and laid out on stovetop" height="350" class="center" />
+		<div class="row">
+			<div class="column">
+				<img src="/images/pickled_jalapeno_ingredients.jpg" alt="Ingredients for pickled jalapenos organized and laid out on stovetop" height="350" class="center" />
+			</div>
+			<div class="column">
+				<img src="/images/pickled_jalapeno_ingredients_prepared.jpg" alt="Cutting board showing prepared ingredients with sliced jalapenos and carrots and smashed garlic" height="350" class="center" />
+			</div>
+		</div>
     		<h2>Instructions</h2>
     		<ol>
       			<li>Combine the vinegar, water, garlic, sugar, and salt in a medium pot and bring to a boil.</li>
