@@ -3,6 +3,7 @@
 	<head>
 		<title>Accessible Map Example</title>
 		<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
 		<style>
 			html, body {
 				height: 100%;
@@ -74,6 +75,7 @@
 			</div>
 			<p>We have to crawl before we can walk and walk before we can run. The initial map I begin with is a basic map with a marker indicating a point on the map. To embed this on the page, I followed the <a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map">Adding a Google Map with a Marker to Your Website</a> tutorial on the Google Maps API. This example uses some basic markup to embed the map.</p>
 			<p>HTML:</p>
+			<pre class="prettyprint lang-html">&lt;div id="map"&gt;&lt;/div&gt;<br />&lt;script async defer src="https://maps.googleapis.com/maps/api/js?key=[YOUR KEY]&callback=initMap"&gt;&lt;/script&gt;</pre>
 			<code>
 			</code>
 			<div id="map"></div>
