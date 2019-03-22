@@ -75,12 +75,23 @@
 				<h2>First Things First</h2>
 			</div>
 			<p>We have to crawl before we can walk and walk before we can run. The initial example I begin with is a basic map with a marker indicating a point on the map. To embed this on the page, I followed the <a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map">Adding a Google Map with a Marker to Your Website</a> tutorial on the Google Maps API. This example uses some basic markup to embed the map.</p>
+			<p>At a high level, these are the steps to get a basic map with a marker working.</p>
+			<ol>
+				<li>Create a file with a small amount of HTML, CSS, and JavaScript. Save the file with a .html extension.</li>
+				<li>In the <a href="https://cloud.google.com/console/google/maps-apis/overview">Google Cloud Platform Console</a>, set up a project and enable the Maps JavaScript API in your project. Google typically gives about $300 in credits to start with and the cash value per page view count is nominal (fractions of a penny for requests in the thousands). More information can be found on the <a href="https://developers.google.com/maps/documentation/javascript/usage-and-billing">Maps JavaScript API Usage and Billing</a> page.</li>
+				<li>Once you have an account, you need to generate an API key. This allows your served requests to be tracked.</li>
+					<ul>
+						<li>Note: It is a Best Practice to <a href="https://developers.google.com/maps/api-key-best-practices#best_practice_list">Protect your API key</a>. This keeps your key from being used elsewhere maliciously.</li>
+					</ul>
+				</li>
+			</ol>
 			<span style="margin-left: 2%;">HTML:</span>
 			<pre class="prettyprint lang-html">&lt;div id="map"&gt;&lt;/div&gt;<br />&lt;script async defer src="https://maps.googleapis.com/maps/api/js?key=[YOUR KEY]&callback=initMap"&gt;&lt;/script&gt;</pre>
 			<span style="margin-left: 2%;">CSS:</span>
 			<pre class="prettyprint lang-css">#map {<br />    height: 400px;<br />    width: 100%;<br />}</pre>
 			<span style="margin-left: 2%;">JavaScript:</span>
 			<pre class="prettyprint lang-js">// Initialize and add the map<br />function initMap() {<br />  // The location of Uluru<br />  var uluru = {lat: -25.344, lng: 131.036};<br />  // The map, centered at Uluru<br />  var map = new google.maps.Map(<br />    document.getElementById('map'), {zoom: 4, center: uluru});<br />  // The marker, positioned at Uluru<br />  var marker = new google.maps.Marker({position: uluru, map: map});<br />}</pre>
+			<p>Most of the important information is documented in the tutorial in the Maps JavaScript API however there are a few important notes. First, the billing is listed as optional. When I set this up, I was only able to serve the map twice. After that, the map shows an error saying the map didn't load correctly. You can troubleshoot this and learn more about the error in the Developer Console in your browser as well as the Google Cloud Platform Console, linked in the tutorial. In order to serve the map, you must now have billing set up with an account. Once this has been set up, requests to the API will be served and your usage will be tracked in the Google Cloud dashboard for the Map API.</p>
 			<div id="map"></div>
 			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc6qMBFXVQ8WYL2tBRO6lme5dMF00i8Hc&callback=initMap"></script>
 			<div class="headingWrapper">
