@@ -48,6 +48,10 @@
 				font-size: 18px;
 			}
 			
+			ol {
+				font-size: 18px;
+			}
+			
 			#map {
 				height: 400px;
 				width: 100%;
@@ -105,7 +109,7 @@
 			<pre class="prettyprint lang-js">// Initialize and add the map<br />function initMap() {<br />  // The location of Uluru<br />  var uluru = {lat: -25.344, lng: 131.036};<br />  // The map, centered at Uluru<br />  var map = new google.maps.Map(<br />    document.getElementById('map'), {zoom: 4, center: uluru});<br />  // The marker, positioned at Uluru<br />  var marker = new google.maps.Marker({position: uluru, map: map});<br />}</pre>
 			<p>Most of the important information is documented in the tutorial in the Maps JavaScript API however there are a few important notes. First, the billing is listed as optional. When I set this up, I was only able to serve the map twice. After that, the map shows an error saying the map didn't load correctly. You can troubleshoot this and learn more about the error in the Developer Console in your browser as well as the Google Cloud Platform Console, linked in the tutorial. In order to serve the map, you must now have billing set up with an account. Once this has been set up, requests to the API will be served and your usage will be tracked in the Google Cloud dashboard for the Map API.</p>
 			<div class="center">
-				<img src="/images/map/google_maps_error.jpg" alt="Google Maps Request Error that reads 'Oops! Something went wrong. The page didn't load Google Maps correctly. See the JavaScript console for technical details.'" height="250" />
+				<img src="/images/map/google_maps_error.png" alt="Google Maps Request Error that reads 'Oops! Something went wrong. The page didn't load Google Maps correctly. See the JavaScript console for technical details.'" height="250" />
 				<br />
 				<span><i>Google Maps Request Error</i></span>
 			</div>
