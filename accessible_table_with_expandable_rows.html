@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Table With Expandable Rows</title>
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <style type="text/css">
+      .offscreen {
+        position: absolute;
+        left: -1000px;
+        top: 0px;
+        overflow:hidden;
+        width:0;
+      }
+
+      .parentRow {
+        text-align: center;
+      }
+
+      .subRow {
+        background-color: #CFCFCF; 
+      }
+    </style>
+		<script src="javascript.js">
+      function toggleRow(e) {
+        var subRow = e.parentNode.parentNode.nextElementSibling;
+        subRow.style.display = subRow.style.display === 'none' ? 'table-row' : 'none';
+
+        var img = e.getElementsByTagName('img')[0];
+        var value = e.getAttribute("aria-expanded");
+
+        if (value == "false") {
+          e.setAttribute("aria-expanded", "true");
+          img.setAttribute("src", "collapse.png");
+          img.setAttribute("alt", "Collapse child row");
+        } else {
+          e.setAttribute("aria-expanded", "false");
+          img.setAttribute("src", "expand.png");
+          img.setAttribute("alt", "Expand child row with more information");
+        }
+      }  
+    </script> 
+	</head>
+	<body>
+		<table style="width:50%">
+			<caption>Test Table</caption>
+			<thead>
+				<tr>
+					<th><span class="offscreen">State Icon</span></th>
+					<th>Column 2</th>				
+					<th>Column 3</th>				
+					<th>Column 4</th>				
+					<th>Column 5</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="parentRow">
+					<td><a href="#" onclick="toggleRow(this);" aria-expanded="false"><img alt="Expand child row with more information" height="20" src="expand.png"></a></td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+				</tr>
+				<tr style="display: none;" class="subRow">
+					<td colspan="5"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra tempor tincidunt. Proin sollicitudin molestie erat id faucibus. Nam sit amet maximus metus. Mauris vel tristique ex, non elementum libero. Pellentesque at nulla tortor. Suspendisse vulputate accumsan augue. Vestibulum a aliquam sapien. Vivamus vel turpis erat. Nunc tempus nisi nulla, sit amet eleifend purus maximus ut. Suspendisse sed tristique risus, sit amet feugiat diam. </p></td>
+				</tr>
+				<tr class="parentRow">
+					<td><a href="#" onclick="toggleRow(this)" aria-expanded="false"><img alt="Expand child row with more information" height="20" src="expand.png"></a></td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+				</tr>
+				<tr style="display: none;" class="subRow">
+					<td colspan="5"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra tempor tincidunt. Proin sollicitudin molestie erat id faucibus. Nam sit amet maximus metus. Mauris vel tristique ex, non elementum libero. Pellentesque at nulla tortor. Suspendisse vulputate accumsan augue. Vestibulum a aliquam sapien. Vivamus vel turpis erat. Nunc tempus nisi nulla, sit amet eleifend purus maximus ut. Suspendisse sed tristique risus, sit amet feugiat diam. </p></td>
+				</tr>
+				<tr class="parentRow">
+					<td><a href="#" onclick="toggleRow(this)" aria-expanded="false"><img alt="Expand child row with more information" height="20" src="expand.png"></a></td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+				</tr>
+				<tr style="display: none;" class="subRow">
+					<td colspan="5"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra tempor tincidunt. Proin sollicitudin molestie erat id faucibus. Nam sit amet maximus metus. Mauris vel tristique ex, non elementum libero. Pellentesque at nulla tortor. Suspendisse vulputate accumsan augue. Vestibulum a aliquam sapien. Vivamus vel turpis erat. Nunc tempus nisi nulla, sit amet eleifend purus maximus ut. Suspendisse sed tristique risus, sit amet feugiat diam. </p></td>
+				</tr>
+				<tr class="parentRow">
+					<td><a href="#" onclick="toggleRow(this)" aria-expanded="false"><img alt="Expand child row with more information" height="20" src="expand.png"></a></td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+					<td>test cell</td>
+				</tr>
+				<tr style="display: none;" class="subRow">
+					<td colspan="5"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque viverra tempor tincidunt. Proin sollicitudin molestie erat id faucibus. Nam sit amet maximus metus. Mauris vel tristique ex, non elementum libero. Pellentesque at nulla tortor. Suspendisse vulputate accumsan augue. Vestibulum a aliquam sapien. Vivamus vel turpis erat. Nunc tempus nisi nulla, sit amet eleifend purus maximus ut. Suspendisse sed tristique risus, sit amet feugiat diam. </p></td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
