@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Table Examples</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/tooltips_stylesheet.css">
+		<style>
+			.noBorder {
+				border: none !important;
+			}
+
+			wrapper {
+				margin: 0;
+				width: 80%;
+			}
+			table, th, td {
+				border: 1px solid black;
+				text-align:center;
+				padding: 2px;
+			}
+
+			table {
+				border-collapse: collapse;
+			}
+
+			tr:nth-child(even){
+				background-color: #afceff; 
+			}
+
+			#columnHeaders {
+				background-color: #ced3db;
+			}
+			.offScreen {
+				position: absolute!important;
+				clip: rect(1px 1px 1px 1px)!important;
+				clip: rect(1px, 1px, 1px, 1px)!important;
+				clip-path: inset(50%)!important;
+				padding: 0!important;
+				border: 0!important;
+				height: 1px!important; 
+				width: 1px!important; 
+				overflow: hidden!important;
+				white-space: nowrap!important;
+			}
+		</style>
+		<script src="/javascripts/tooltips_javascript.js"></script>
+	</head>
+	<body>
+		<h1>Table Examples</h1>
+		<div style="width: 100%; text-align: center;">
+			<h1>Tables</h1>
+		</div>
+		<div id="wrapper">
+			<h2>Basic Data Table</h2>
+			<p>This is a basic data table with both column headers and row headers.</p>
+			<table>
+				<thead>
+					<tr id="columnHeaders">
+						<th scope="col">Account ID</th>
+						<th scope="col">Information</th>
+						<th scope="col">Accunt Owner</th>
+						<th scope="col">Account Opening Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1234</th>
+						<td>Some inforation about this account</td>
+						<td>John Doe</td>
+						<td>April 1, 1980</td>
+					</tr>
+					<tr>
+						<th scope="row">2345</th>
+						<td>Information about this account</td>
+						<td>Jane Doe</td>
+						<td>Mar 17, 1985</td>
+					</tr>
+					<tr>
+						<th scope="row">3456</th>
+						<td>More account information</td>
+						<td>Jim Doe</td>
+						<td>Jul 04, 1987</td>
+					</tr>
+					<tr>
+						<th scope="row">4567</th>
+						<td>This is also informative</td>
+						<td>Jessica Doe</td>
+						<td>Feb 14, 1982</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>It's important not to leave table header cells blank. This does not provide context when navigating to columns with screen readers.It's also important to maintain the structure of the table. If a cell has no data, for example, the row must still have the same amount of cells as other rows to maintain the table structure. Otherwise, screen readers may not properly associate headers will the correct corresponding cell.</p>
+			<table>
+				<thead>
+					<tr id="columnHeaders">
+						<th scope="col" class="offScreen">Row Number</th>
+						<th scope="col">Information</th>
+						<th scope="col">Accunt Owner</th>
+						<th scope="col">Account Opening Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Some inforation about this account</td>
+						<td>John Doe</td>
+						<td>April 1, 1980</td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>Information about this account</td>
+						<td>Jane Doe</td>
+						<td>Mar 17, 1985</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>More account information</td>
+						<td>Jim Doe</td>
+						<td>Jul 04, 1987</td>
+					</tr>
+					<tr>
+						<th scope="row">4</th>
+						<td>This is also informative</td>
+						<td>Jessica Doe</td>
+						<td>Feb 14, 1982</td>
+					</tr>
+				</tbody>
+			</table>
+			<h2>Layout Table</h2>
+			<p>This is a table that is used for layout. The ARIA role="presentation" role is applied to the &lt;table&gt; element to ensure the table structure is not conveyed by assistive technology such as screen readers.</p>
+			<table role="presentation" class="noBorder">
+				<tbody>
+					<tr>
+						<td class="noBorder">This table</td>
+						<td class="noBorder">is used for layout only</td>
+						<td class="noBorder">and does not contain tabular information.</td>
+					</tr>
+					<tr style="background: #FFF;">
+						<td class="noBorder">For these, we don't</td>
+						<td class="noBorder">want to convey</td>
+						<td class="noBorder">the table structure to screen readers.</td>
+					</tr>
+					<tr>
+						<td class="noBorder">To ensure the table</td>
+						<td class="noBorder">markup is not conveyed,</td>
+						<td class="noBorder">we use role="presentation".</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
