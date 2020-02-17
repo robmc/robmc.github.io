@@ -1,0 +1,166 @@
+<html lang="en">
+	<head>
+		<title>ARIA Combobox Example</title>
+		<style>
+			/* Styles the size of level 1 heading elements */
+			h1 {
+				font-size: 14px;
+			}
+
+			/* Positions elements with a class name 'hidden' off-screen */
+			.hidden {
+				position: absolute;
+				top: -20em;
+				left: -200em;
+			}
+
+			/* Styles the list of items to appear similarly to options in an HTML select */
+			#options_list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				margin-left: 49px;
+				border: 1px solid black;
+				width: 168px;
+				height: 200px;
+				overflow: auto;
+			}
+
+			/* Changes the background and text color of list items on mouseover to match the default behavior of an HTML select */
+			#options_list li:focus{
+				background-color: #3399FF;
+				color: #FFFFFF 
+			}
+			#options_list li:hover {
+				background-color: #3399FF;
+				color: #FFFFFF 
+			}
+
+			/* Styles and positions the text input and button to appear visually similarly to a HTML select */
+			#options_input {
+				height: 25px;
+				width: 170px;
+			}
+			#options_button {
+				height: 25px;
+				width: 35px;
+				margin-top: -1;
+				margin-left: -38;
+			}
+			input:focus{
+				outline-style:dotted;
+				outline-width:thin;
+			}
+		</style>
+		<script type="text/javascript">
+			
+			// Toggle function that hides/shows content. If the style is not display: none;, it applies display; none;. Otherwise, it applies display: ''. 
+			function toggle(id) {
+				var e = document.getElementById(id);
+				e.style.display = (e.style.display != 'none' ? 'none' : '' );
+
+				if(document.getElementById('listCont').style.display != 'none'){
+					document.getElementById('opt1').focus();
+				}
+			}
+			function clickHandler(e){
+				var elem, evt = e ? e:event;
+				if (evt.srcElement)  elem = evt.srcElement; //This one is for IE
+				else if (evt.target) elem = evt.target; //This should work on all other browsers
+				
+				if(elem.id != 'options_list' && elem.id != 'options_input' && elem.id != 'options_button'){ // check if the id of the element you clicked on is not the in the list, if it's not...
+					
+					var myList = document.getElementById('listCont');
+					myList.style.display = 'none';
+				}
+			}
+			document.onclick=clickHandler;
+		</script>
+	</head>
+	<body>
+		<h1>Standard combobox using the HTML &lt;select&gt; tag</h1>
+		<label for="states">State:</label>
+		<select id="states">
+			<option value="AL">Alabama</option>
+			<option value="AK">Alaska</option>
+			<option value="AZ">Arizona</option>
+			<option value="AR">Arkansas</option>
+			<option value="CA">California</option>
+			<option value="CO">Colorado</option>
+			<option value="CT">Connecticut</option>
+			<option value="DE">Delaware</option>
+			<option value="DC">District Of Columbia</option>
+			<option value="FL">Florida</option>
+			<option value="GA">Georgia</option>
+			<option value="HI">Hawaii</option>
+			<option value="ID">Idaho</option>
+			<option value="IL">Illinois</option>
+			<option value="IN">Indiana</option>
+			<option value="IA">Iowa</option>
+			<option value="KS">Kansas</option>
+			<option value="KY">Kentucky</option>
+			<option value="LA">Louisiana</option>
+			<option value="ME">Maine</option>
+			<option value="MD">Maryland</option>
+			<option value="MA">Massachusetts</option>
+			<option value="MI">Michigan</option>
+			<option value="MN">Minnesota</option>
+			<option value="MS">Mississippi</option>
+			<option value="MO">Missouri</option>
+			<option value="MT">Montana</option>
+			<option value="NE">Nebraska</option>
+			<option value="NV">Nevada</option>
+			<option value="NH">New Hampshire</option>
+			<option value="NJ">New Jersey</option>
+			<option value="NM">New Mexico</option>
+			<option value="NY">New York</option>
+			<option value="NC">North Carolina</option>
+			<option value="ND">North Dakota</option>
+			<option value="OH">Ohio</option>
+			<option value="OK">Oklahoma</option>
+			<option value="OR">Oregon</option>
+			<option value="PA">Pennsylvania</option>
+			<option value="RI">Rhode Island</option>
+			<option value="SC">South Carolina</option>
+			<option value="SD">South Dakota</option>
+			<option value="TN">Tennessee</option>
+			<option value="TX">Texas</option>
+			<option value="UT">Utah</option>
+			<option value="VT">Vermont</option>
+			<option value="VA">Virginia</option>
+			<option value="WA">Washington</option>
+			<option value="WV">West Virginia</option>
+			<option value="WI">Wisconsin</option>
+			<option value="WY">Wyoming</option>
+		</select>
+		<h1>ARIA combobox</h1>	
+		<label id="options_label" for="options_input">Option:</label>
+		<input id="options_input" type="text" onclick="toggle('listCont');">
+		<button type="button" onclick="toggle('listCont');" id="options_button" aria-labelledby="button_label" tabindex="-1">&#9660</button>	
+		<div id="button_label" class="hidden">Open list of states</div>
+		<div id="listCont" style="display: none">
+		<ul id="options_list" >
+			<li id="opt1" role="option" class="option_item" role="listitem" tabindex="-1">1</li>
+			<li id="opt2" role="option" class="option_item" role="listitem" tabindex="-1">2</li>
+			<li id="opt3" role="option" class="option_item" role="listitem" tabindex="-1">3</li>
+			<li id="opt4" role="option" class="option_item" role="listitem" tabindex="-1">4</li>
+			<li id="opt5" role="option" class="option_item" role="listitem" tabindex="-1">5</li>
+			<li id="opt6" role="option" class="option_item" role="listitem" tabindex="-1">6</li>
+			<li id="opt7" role="option" class="option_item" role="listitem" tabindex="-1">7</li>
+			<li id="opt8" role="option" class="option_item" role="listitem" tabindex="-1">8</li>
+			<li id="opt9" role="option" class="option_item" role="listitem" tabindex="-1">9</li>
+			<li id="opt10" role="option" class="option_item" role="listitem" tabindex="-1">10</li>
+			<li id="opt11" role="option" class="option_item" role="listitem" tabindex="-1">11</li>
+			<li id="opt12" role="option" class="option_item" role="listitem" tabindex="-1">12</li>
+			<li id="opt13" role="option" class="option_item" role="listitem" tabindex="-1">13</li>
+			<li id="opt14" role="option" class="option_item" role="listitem" tabindex="-1">14</li>
+			<li id="opt15" role="option" class="option_item" role="listitem" tabindex="-1">15</li>
+			<li id="opt16" role="option" class="option_item" role="listitem" tabindex="-1">16</li>
+			<li id="opt17" role="option" class="option_item" role="listitem" tabindex="-1">17</li>
+			<li id="opt18" role="option" class="option_item" role="listitem" tabindex="-1">18</li>
+			<li id="opt19" role="option" class="option_item" role="listitem" tabindex="-1">19</li>
+			<li id="opt20" role="option" class="option_item" role="listitem" tabindex="-1">20</li>	
+		</ul> 
+		</div>
+	</body
+</html>
