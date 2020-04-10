@@ -86,6 +86,11 @@
 			    		// The marker, positioned at Washington DC
 			    		var marker = new google.maps.Marker({position: dc, map: map}
 			    	);
+					
+			    	// The map, centered at Washginton DC
+			    	var mapCluster = new google.maps.Map(
+			    		document.getElementById('mapCluster'), {zoom: 10, center: dc});
+			    	);
 				}
 		</script>
 	</head>
