@@ -6,6 +6,7 @@
 		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
 		<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 		<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc6qMBFXVQ8WYL2tBRO6lme5dMF00i8Hc&callback=initMap"></script>
 		<style>
 			html, body {
 				min-height: 100%;
@@ -91,7 +92,7 @@
 
       function initMapCluster() {
 
-        var map = new google.maps.Map(document.getElementById('map2'), {
+        var mapCluster = new google.maps.Map(document.getElementById('map2'), {
           zoom: 3,
           center: {lat: -28.024, lng: 140.887}
         });
@@ -111,7 +112,7 @@
         });
 
         // Add a marker clusterer to manage the markers.
-        var markerCluster = new MarkerClusterer(map, markers,
+        var markerCluster = new MarkerClusterer(mapCluster, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
       }
 	          var locations = [
@@ -180,7 +181,6 @@
 			<span class="spanStyle">JavaScript:</span>
 			<pre class="prettyprint lang-js">// Initialize and add the map<br />function initMap() {<br />  // The location of Washington, DC<br />  var dc = {lat: 38.893, lng: -77.036};<br />  // The map, centered at Washington DC<br />  var map = new google.maps.Map(<br />    document.getElementById('map'), {zoom: 10, center: dc});<br />  // The marker, positioned at Washington DC<br />  var marker = new google.maps.Marker({position: dc, map: map});<br />}</pre>
 			<div id="map"></div>
-			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc6qMBFXVQ8WYL2tBRO6lme5dMF00i8Hc&callback=initMap"></script>
 			<div class="headingWrapper">
 				<h2>Marker Clustering</h2>
 			</div>
