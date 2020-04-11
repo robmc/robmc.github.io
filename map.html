@@ -104,9 +104,9 @@
 					// Note: The code uses the JavaScript Array.prototype.map() method to
 					// create an array of markers based on a given "locations" array.
 					// The map() method here has nothing to do with the Google Maps API.
-					var markers = locations.map(function(location, i) {
+					var markers = locations.mapCluster(function(location, i) {
 					  return new google.maps.Marker({
-					    position: location,
+					    position: uluru,
 					    label: labels[i % labels.length]
 					  });
 					});
