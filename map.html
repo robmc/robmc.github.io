@@ -78,6 +78,7 @@
 
 			    	// The location of Washington DC
 			    	var dc = {lat: 38.893, lng: -77.036};
+				var uluru = {lat: -28.024, lng: 140.887};
 
 			    	// The map, centered at Washginton DC 
 			    	var map = new google.maps.Map(
@@ -89,10 +90,13 @@
 					
 			    	// The map, centered at Washginton DC
 			    	var mapCluster = new google.maps.Map(
-			    		document.getElementById('mapCluster'), {zoom: 10, center: dc});
+			    		document.getElementById('mapCluster'), {zoom: 4, center: uluru});
 					
 					// The marker, positioned at Washington DC
-			    		var marker2 = new google.maps.Marker({position: dc, map: mapCluster}
+			    		var marker2 = new google.maps.Marker({position: uluru, map: mapCluster}
+									   
+					// Create an array of alphabetical characters used to label the markers.
+        				var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 			    	);
 				}
 		</script>
