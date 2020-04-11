@@ -78,7 +78,12 @@
 
 			    	// The location of Washington DC
 			    	var dc = {lat: 38.893, lng: -77.036};
+					
+				// The location of Uluru	
 				var uluru = {lat: -28.024, lng: 140.887};
+					
+				// Create an array of alphabetical characters used to label the markers.
+        			var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 			    	// The map, centered at Washginton DC 
 			    	var map = new google.maps.Map(
@@ -94,9 +99,6 @@
 					
 					// The marker, positioned at Washington DC
 			    		var marker2 = new google.maps.Marker({position: uluru, map: mapCluster}
-									   
-					// Create an array of alphabetical characters used to label the markers.
-        				var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 			    	);
 				}
 		</script>
