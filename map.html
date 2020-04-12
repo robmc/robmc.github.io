@@ -146,9 +146,28 @@
 			<div class="headingWrapper">
 				<h1>Accessible Map Example</h1>
 			</div>
+			<div class="headingWrapper">
+				<h2>Table of Contents</h2>
+			</div>
+			<ul>
+				<li>
+					<a href="#first">First Things First - Setting up the Map to Render in a Browser</a>
+				</li>
+				<li>
+					<a href="#second">Drawing the Map with a Marker</a>
+				</li>
+				<li>
+					<a href="#third">Marker Clustering</a>
+				</li>
+				<li>
+					<a href="#fourth">Extending the Basic Map Attributes</a>
+				</li>
+			</ul>
 			<p>In this example, I extend the accessibility of the Google Map API. This example is inspired by the <a href="https://equalentry.com/">Equal Entry</a> blog post <a href="https://equalentry.com/accessible-maps-on-the-web/">Accessible Maps on the Web</a>.</p>
 			<div class="headingWrapper">
-				<h2>First Things First - Setting up the Map to Render in a Browser</h2>
+				<a href="#" id="first" tabindex="-1">
+					<h2>First Things First - Setting up the Map to Render in a Browser</h2>
+				</a>
 			</div>
 			<p>We have to crawl before we can walk and walk before we can run. The initial example I begin with is a basic map with a marker indicating a point on the map. To embed this on the page, I followed the <a href="https://developers.google.com/maps/documentation/javascript/adding-a-google-map">Adding a Google Map with a Marker to Your Website</a> tutorial on the Google Maps API. This example uses some basic markup to embed the map.</p>
 			<p>At a high level, the following steps must be taken to get a basic map with a marker working:</p>
@@ -169,7 +188,9 @@
 				<span><i>IMAGE: Google Maps Request Error</i></span>
 			</div>
 			<div class="headingWrapper">
-				<h2>Drawing the Map with a Marker</h2>
+				<a href="#" id="second" tabindex="-1">
+					<h2>Drawing the Map with a Marker</h2>
+				</a>
 			</div>
 			<p>The first thing we do in our HTML file is create a &lt;div&gt; element with the ID "map". This will be where the map is drawn. We then apply some CSS styling to determine the size of the map.</p>
 			<p>In our JavaScript, we create variables and set the parameters for the map to be drawn. In the example below, I've created a variable called "dc" in which I've passed the latitude and longitude of Washington, DC. I then set the default zoom level and set the center of the map to be the variable for DC. Last, I add the marker at the DC position.</p>
@@ -181,12 +202,16 @@
 			<pre class="prettyprint lang-js">// Initialize and add the map<br />function initMap() {<br />  // The location of Washington, DC<br />  var dc = {lat: 38.893, lng: -77.036};<br />  // The map, centered at Washington DC<br />  var map = new google.maps.Map(<br />    document.getElementById('map'), {zoom: 10, center: dc});<br />  // The marker, positioned at Washington DC<br />  var marker = new google.maps.Marker({position: dc, map: map});<br />}</pre>
 			<div id="map"></div>
 			<div class="headingWrapper">
-				<h2>Marker Clustering</h2>
+				<a href="#" id="third" tabindex="-1">
+					<h2>Marker Clustering</h2>
+				</a>
 			</div>
 			<p>In this example, we place clusters to indicate groups of local markers.</p>
 			<div id="mapCluster"></div>
 			<div class="headingWrapper">
-				<h2>Extending the Basic Map Attributes</h2>
+				<a href="#" id="fourth" tabindex="-1">
+					<h2>Extending the Basic Map Attributes</h2>
+				</a>
 			</div>
 			<p>**Uploading this now to save it and will update further later.**</p>
 			<footer>
