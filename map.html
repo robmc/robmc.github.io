@@ -211,6 +211,12 @@
 				<a href="#toc">back to top</a>
 			</div>
 			<p>In this example, we place clusters to indicate groups of local markers.</p>
+			<span class="spanStyle">HTML:</span>
+			<pre class="prettyprint lang-html">&lt;div id="mapCluster"&gt;&lt;/div&gt;<br />&lt;script async defer src="https://maps.googleapis.com/maps/api/js?key=[YOUR KEY]&callback=initMap"&gt;&lt;/script&gt;<br />&lt;script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"&gt;&lt;/script&gt;<br />&lt;script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"&gt;&lt;/script&gt;</pre>
+			<span class="spanStyle">CSS:</span>
+			<pre class="prettyprint lang-css">#mapCluster {<br />    height: 400px;<br />    width: 100%;<br />}</pre>
+			<span class="spanStyle">JavaScript:</span>
+			<pre class="prettyprint lang-js">// Initialize and add the map<br />function initMap() {<br />  // The location of Washington, DC<br />  var dc = {lat: 38.893, lng: -77.036};<br />  // The map, centered at Washington DC<br />  var map = new google.maps.Map(<br />    document.getElementById('map'), {zoom: 10, center: dc});<br />  // The marker, positioned at Washington DC<br />  var marker = new google.maps.Marker({position: dc, map: map});<br />}</pre>
 			<div id="mapCluster"></div>
 			<div class="headingWrapper">
 				<div id="fourth" tabindex="-1">
