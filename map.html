@@ -189,6 +189,9 @@
  					infowindow.open(map, marker);
 				});
 
+				marker.onLoad(function() {
+ 					marker.setAttribute("aria-tabindex", "0");
+				});
 // -------------------------------- The Close the Function ---------------------------------------------------
 
 				}
