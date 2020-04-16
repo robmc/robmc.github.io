@@ -84,6 +84,8 @@
 		<script>
 			    	// Initialize and add the map
 			    	function initMap() {
+					
+// -------------------------------- Variables ---------------------------------------------------
 
 			    	// The location of Washington DC
 			    	var dc = {lat: 38.893, lng: -77.036};
@@ -119,9 +121,7 @@
 					{lat: -42.735258, lng: 147.438000},
 					{lat: -43.999792, lng: 170.463352}
 			        ]
-					
-				// Create an array of alphabetical characters used to label the markers.
-        			var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+// -------------------------------- The First Map ---------------------------------------------------				
 
 			    	// The first map, centered at Washginton DC 
 			    	var map = new google.maps.Map(
@@ -130,6 +130,9 @@
 			    		// The marker, positioned at Washington DC
 			    		var marker = new google.maps.Marker({position: dc, map: map}
 			    	);
+					
+				// Create an array of alphabetical characters used to label the markers.
+        			var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';					
 					
 			    	// The second map, centered at Uluru
 			    	var mapCluster = new google.maps.Map(
