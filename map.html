@@ -65,6 +65,11 @@
 				width: 100%;
 			}
 			
+			#accessibleMarker {
+				height: 400px;
+				width: 100%;
+			}
+			
 			.center {
 				display: block;
 				margin-left: auto;
@@ -82,6 +87,9 @@
 
 			    	// The location of Washington DC
 			    	var dc = {lat: 38.893, lng: -77.036};
+					
+				// The location of the White House
+			    	var whitehouse = {lat: 38.8977, lng: -77.0365};
 					
 				// The location of Uluru	
 				var uluru = {lat: -28.024, lng: 140.887};
@@ -115,7 +123,7 @@
 				// Create an array of alphabetical characters used to label the markers.
         			var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-			    	// The map, centered at Washginton DC 
+			    	// The first map, centered at Washginton DC 
 			    	var map = new google.maps.Map(
 			    		document.getElementById('map'), {zoom: 10, center: dc});
 
@@ -123,7 +131,7 @@
 			    		var marker = new google.maps.Marker({position: dc, map: map}
 			    	);
 					
-			    	// The map, centered at Uluru
+			    	// The second map, centered at Uluru
 			    	var mapCluster = new google.maps.Map(
 			    		document.getElementById('mapCluster'), {zoom: 3, center: uluru});
 					
@@ -142,6 +150,15 @@
 					//Add a marker clusterer to manage the markers.
 					var markerCluster = new MarkerClusterer(mapCluster, markers,
 					    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+			    	
+				// The third map, centered at the White House
+			    	var map = new google.maps.Map(
+			    		document.getElementById('accessibleMarker'), {zoom: 12, center: whitehouse});
+
+			    		// The marker, positioned at Washington DC
+			    		var marker = new google.maps.Marker({position: whitehouse, map: map}
+			    	);
+					
 				}
 		</script>
 	</head>
@@ -231,6 +248,7 @@
 				<a href="#toc">back to top</a>
 			</div>
 			<p>**Uploading this now to save it and will update further later.**</p>
+			<div id="accessibleMarker"></div>
 			<footer>
 				<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
 			</footer>
