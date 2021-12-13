@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<style>
+			#wrapper {
+				margin-left: auto;
+				margin-right: auto;
+				width: 50%;
+			}
+			
+			.center {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+			}
+		</style>
+		<script language="javascript">
+    function passwordChanged() {
+        var strength = document.getElementById('strength');
+        var strongRegex = new RegExp("^(?=.{14,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$");
+        var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$");
+        var enoughRegex = new RegExp("(?=.{8,}).*");
+        var pwd = document.getElementById("password");
+        if (pwd.value.length == 0) {
+            strength.innerHTML = 'Please enter a password';
+        } else if (false == enoughRegex.test(pwd.value)) {
+            strength.innerHTML = 'More Characters';
+        } else if (strongRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:green">The password you entered is strong!</span>';
+        } else if (mediumRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:#EA760F">The password you entered is Medium!</span>';
+        } else {
+            strength.innerHTML = '<span style="color:red">The password you entered is Weak!</span>';
+        }
+    }
+</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="center">
+				<h1>ARIA Live Testing</h1>
+			</div>
+			<p>Test of ARIA Live support. To test, navigate to the Password field and enter text.</p>
+			<p>To generate a confirmation of a weak password:
+				<ul>
+					<li>More characters – If the length is under 8 characters.</li>
+					<li>Weak – If the length is less than 10 characters and doesn’t contain a combination of symbols, caps, text.</li>
+					<li>Medium – If the length is 10 characters or more and has a combination of symbols, caps, text.</li>
+					<li>Strong – If the length is 14 characters or more and has a combination of symbols, caps, text.</li>
+				</ul>
+			</p>
+			<p>To test:
+				<ul>
+					<li>Start the screen reader of your choice</li>
+					<li>Enter text into the Password field</li>
+					<li>Stop typing as the strength text changes and the screen reader should announce the change due to ARIA live</li>
+				</ul>
+			</p>
+			<label for="password">Password:</label>
+			<input name="password" id="password" type="text" size="15" maxlength="100" onkeyup="return passwordChanged();" /><br />
+			<span id="strength" aria-live="polite">Type Password</span>
+		</div>
+	</body>
+</html>
