@@ -41,6 +41,14 @@
 				overflow: hidden!important;
 				white-space: nowrap!important;
 			}
+			.grid-container {
+				display: grid;
+				grid-column-gap: 15px;
+				grid-row-gap: 15px;
+			}
+			.grid-row-odd {
+				background-color: #afceff;
+			}
 		</style>
 		<script src="/javascripts/tooltips_javascript.js"></script>
 	</head>
@@ -145,6 +153,25 @@
 					</tr>
 				</tbody>
 			</table>
+			<h2>ARIA Table</h2>
+			<p>This table uses CSS to style the columns and rows, not HTML &lt;table&gt; markup.</p>
+			<div class="grid-container">
+				<div class="grid-row-odd">
+					<div class="grid-item">1</div>
+					<div class="grid-item">2</div>
+					<div class="grid-item">3</div>
+				</div>
+				<div class="grid-row-even">
+					<div class="grid-item">4</div>
+					<div class="grid-item">5</div>
+					<div class="grid-item">6</div>
+				</div>
+				<div class="grid-row-odd">
+					<div class="grid-item">7</div>
+					<div class="grid-item">8</div>
+					<div class="grid-item">9</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
