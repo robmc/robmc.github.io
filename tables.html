@@ -41,17 +41,19 @@
 				overflow: hidden!important;
 				white-space: nowrap!important;
 			}
-			.grid-container {
-				display: grid;
-				grid-template-columns: auto auto auto;
-				grid-column-gap: 15px;
-				grid-row-gap: 15px;
+			.table {
+				display: table;
 			}
-			.grid-item {
-				text-align: center;
+			.table-row {
+				display: table-row;
 			}
-			.grid-row-odd {
-				background-color: #afceff;
+			.table-cell {
+				display: table-cell;
+				padding: 10px;
+				border: 1px solid black;
+			}
+			.table-row:nth-child(even) {
+				background: lightblue;
 			}
 		</style>
 		<script src="/javascripts/tooltips_javascript.js"></script>
@@ -158,22 +160,33 @@
 				</tbody>
 			</table>
 			<h2>ARIA Table</h2>
-			<p>This table uses CSS to style the columns and rows, not HTML &lt;table&gt; markup.</p>
-			<div class="grid-container">
-				<div class="grid-row-odd">
-					<div class="grid-item">1</div>
-					<div class="grid-item">2</div>
-					<div class="grid-item">3</div>
+			<p>This table uses &lt;div&gt; elements to create cells and CSS to style the columns and rows. HTML &lt;table&gt; markup was not used. To create the necessary roles, ARIA markup is used. The following roles are used:</p>
+			<ul>
+				<li>The <a href="https://www.w3.org/TR/wai-aria-1.2/#table">Table</a> role</li>
+				<li>The <a href="https://www.w3.org/TR/wai-aria-1.2/#row">Row</a> role</li>
+				<li>The <a href="https://www.w3.org/TR/wai-aria-1.2/#cell">Cell</a> role</li>
+				<li>The <a href="https://www.w3.org/TR/wai-aria-1.2/#columnheader">Columnheader</a> role</li>
+			</ul>
+			<div class="table" role="table">
+				<div class="table-row" role="row">
+					<div class="table-cell" role="columnheader">Header 1</div>
+					<div class="table-cell" role="columnheader">Header 2</div>
+					<div class="table-cell" role="columnheader">Header 3</div>
 				</div>
-				<div class="grid-row-even">
-					<div class="grid-item">4</div>
-					<div class="grid-item">5</div>
-					<div class="grid-item">6</div>
+				<div class="table-row" role="row">
+					<div class="table-cell" role="cell">1</div>
+					<div class="table-cell" role="cell">2</div>
+					<div class="table-cell" role="cell">3</div>
 				</div>
-				<div class="grid-row-odd">
-					<div class="grid-item">7</div>
-					<div class="grid-item">8</div>
-					<div class="grid-item">9</div>
+				<div class="table-row" role="row">
+					<div class="table-cell" role="cell">4</div>
+					<div class="table-cell" role="cell">5</div>
+					<div class="table-cell" role="cell">6</div>
+				</div>
+				<div class="table-row" role="row">
+					<div class="table-cell" role="cell">7</div>
+					<div class="table-cell" role="cell">8</div>
+					<div class="table-cell" role="cell">9</div>
 				</div>
 			</div>
 		</div>
