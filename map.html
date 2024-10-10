@@ -308,7 +308,12 @@
 				</div>
 				<a href="#toc">back to top</a>
 			</div>
-			<p>**Uploading this now to save it and will update further later.**</p>
+			<p>We need to add various attributes to the map marker to ensure screen readers can identify the control's name and expected behavior</p>
+			<span class="spanStyle">JavaScript:</span>
+			<pre class="prettyprint lang-js">function makeKeyboardAccessible(element) {<br /><br />    element.setAttribute("tabindex","0");<br />    element.setAttribute("role","button");<br />    element.setAttribute("aria-label",element.title);</pre>
+			<p>This listens for a click event to open the marker. The click event also provides keyboard support.</p>
+			<span class="spanStyle">JavaScript:</span>
+			<pre class="prettyprint lang-js">marker.addListener('click', function() {<br />infowindow.open(map, marker);<br />});</pre>
 			<div id="accessibleMarker"></div>
 			<footer>
 				<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
