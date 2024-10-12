@@ -316,6 +316,18 @@
 			<span class="spanStyle">JavaScript:</span>
 			<pre class="prettyprint lang-js">marker.addListener('click', function() {<br />infowindow.open(map, marker);<br />});</pre>
 			<div id="accessibleMarker"></div>
+			<h3>To Test</h3>
+			<p>To test this using the keyboard:</p>
+			<ul>
+				<li>Press <kbd>Tab</kbd> and <kbd>Shift</kbd> + <kbd>Tab</kbd> to navigate forwards and backwards between the actionable elements.</li>
+				<li>Navigate to the marker and press Enter to activate the dialog. Dialog best practices are followed: </li>
+					<ul>
+						<li>Focus is moved to the dialog as a whole when opened.</li>
+						<li>Keyboard focus is <strong>not</strong> contained within the dialog because it is a non-modal dialog opposed to a modal dialog.</li>
+						<li>The keyboard can be used to close the dialog. Either the "X" button can be activated or the <kbd>ESC</kbd> key can be used.</li>
+						<li>When closing the dialog, focus properly returns to the element that spawned it (the marker).</li>
+					</ul>
+			</ul>
 			<footer>
 				<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
 			</footer>
