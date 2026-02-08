@@ -241,6 +241,11 @@
 			<li><strike>Bootstrap &#10004;</strike></li>
 			<li><strike>Add Disclosure widgets for sections &#10004;</strike></li>
 			<li>Add functionality for adding and removing table rows</li>
+				<ul>
+					<li>The Delete function is working but the Add function is not working as expected</li>
+					<li>When the delete function is called, programmatic focus needs to be managed. Recommend setting focus to the next sibling Delete Row button or the beginning cell of the next table row.</li>
+					<li>Adding a row should add it in-line. For example, if I want to add more than one SC 1.1.1 Non-text Content issue, I should be able to activate the Add Row button and the page should add a numbered row in-line with the data for the SC I activated. Recommend NOT moving focus after activating the button and potentially adding a JS alert saying "row added" so users with screen readers or screen magnifiers are informed the change took place but aren't disrupted with a focus shift.</li>
+				</ul>
 			<li>Add a WYSIWYG editor for text areas</li>
 			<li>Add ability to upload screenshots</li>
 			<li>Add markdown support for formatting notes</li>
@@ -269,4 +274,5 @@
 		</script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
+
 </html>
