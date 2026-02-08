@@ -245,6 +245,7 @@
 					<li>The Delete function is working but the Add function is not working as expected</li>
 					<li>When the delete function is called, programmatic focus needs to be managed. Recommend setting focus to the next sibling Delete Row button or the beginning cell of the next table row.</li>
 					<li>Adding a row should add it in-line. For example, if I want to add more than one SC 1.1.1 Non-text Content issue, I should be able to activate the Add Row button and the page should add a numbered row in-line with the data for the SC I activated. Recommend NOT moving focus after activating the button and potentially adding a JS alert saying "row added" so users with screen readers or screen magnifiers are informed the change took place but aren't disrupted with a focus shift.</li>
+					<li>Create an array for IDs to ensure ARIA relationships are preserved when new rows are added. The values of aria-labeledby should be updated appropriately so that fields are uniquely labeled.</li>
 				</ul>
 			<li>Add a WYSIWYG editor for text areas</li>
 				<ul>
@@ -279,4 +280,5 @@
 	</body>
 
 </html>
+
 
