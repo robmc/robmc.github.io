@@ -129,7 +129,7 @@
 						</td>
 						<td></td>
 						<td>
-							<button type="button" class="btn btn-success" onclick="insRow()">Add Child Row</button>
+							<button type="button" class="btn btn-success add">Add Child Row</button>
 						</td>
 					</tr>
 
@@ -161,8 +161,8 @@
 						</td>
 						<td></td>
 						<td>
-							<button type="button" class="btn btn-success" onclick="insRow()">Add Child Row</button>
-							<button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete This Row</button>
+							<button type="button" class="btn btn-success add">Add Child Row</button>
+							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -194,8 +194,8 @@
 						</td>
 						<td></td>
 						<td>
-							<button type="button" class="btn btn-success" onclick="insRow()">Add Child Row</button>
-							<button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete This Row</button>
+							<button type="button" class="btn btn-success add">Add Child Row</button>
+							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -227,8 +227,8 @@
 						</td>
 						<td></td>
 						<td>
-							<button type="button" class="btn btn-success" onclick="insRow()">Add Child Row</button>
-							<button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete This Row</button>
+							<button type="button" class="btn btn-success add">Add Child Row</button>
+							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 				</tbody>
@@ -241,44 +241,35 @@
 			<li><strike>Bootstrap &#10004;</strike></li>
 			<li><strike>Add Disclosure widgets for sections &#10004;</strike></li>
 			<li>Add functionality for adding and removing table rows</li>
-				<ul>
-					<li>The Delete function is working but the Add function is not working as expected</li>
-					<li>When the delete function is called, programmatic focus needs to be managed. Recommend setting focus to the next sibling Delete Row button or the beginning cell of the next table row.</li>
-					<li>Adding a row should add it in-line. For example, if I want to add more than one SC 1.1.1 Non-text Content issue, I should be able to activate the Add Row button and the page should add a numbered row in-line with the data for the SC I activated. Recommend NOT moving focus after activating the button and potentially adding a JS alert saying "row added" so users with screen readers or screen magnifiers are informed the change took place but aren't disrupted with a focus shift.</li>
-					<li>Create an array for IDs to ensure ARIA relationships are preserved when new rows are added. The values of aria-labeledby should be updated appropriately so that fields are uniquely labeled.</li>
-				</ul>
 			<li>Add a WYSIWYG editor for text areas</li>
-				<ul>
-					<li>I tried an evaluation license with <a href="https://ckeditor.com/ckeditor-4/download/#ckeditor-4">CK Editor</a> and was not impressed. You have to pay for additional features and I could not use the keyboard with the demo version for evaluation purposes.</li>
-				</ul>
 			<li>Add ability to upload screenshots</li>
 			<li>Add markdown support for formatting notes</li>
 		</ul>
 
 		<script>
-			function insRow()
-			{
-			    var x=document.getElementById('myTable');
+				const table = document.getElementById('myTable');
+				const renum = () => {
+					table.querySelectorAll('tbody tr').forEach((tr, i) => {
+						tr.cells[0].textContent = String(i + 1).padStart(2, '0');
+					});
+				};
 
-			       // deep clone the targeted row
-			    var new_row = x.rows[2].cloneNode(true);
-			       // get the total number of rows
-			    var len = x.rows.length;
-			       // set the innerHTML of the first row 
-			    new_row.cells[0].innerHTML = len;
-
-			       // append the new row to the table
-			    x.appendChild( new_row );
-			}
-
-			function deleteRow(r) {
-			  var i = r.parentNode.parentNode.rowIndex;
-			  document.getElementById("myTable").deleteRow(i);
-			}
+				const clickButton = (e) => {
+  				const button = e.target.closest('button.btn');
+  				if (!button) return;
+  				const parentRow = button.closest('tr');
+  				if (button.matches(".delete")) {
+    				parentRow.remove();
+  				} else if (button.matches(".add")) {
+    			// deep clone the targeted row
+    			let new_row = parentRow.cloneNode(true);
+    			// append the new row to the table after the clicked row
+    			parentRow.after(new_row);
+  			}
+  			renum();
+				};
+				table.addEventListener('click',clickButton);
 		</script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
-
 </html>
-
-
