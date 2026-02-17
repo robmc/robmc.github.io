@@ -140,14 +140,14 @@
 			<table id="myTable">
 				<thead>
 					<tr>
-						<th id="col1header">Issue Number</th>
-						<th id="col2header">Test Name</th>
+						<th id="col1header" style="width: 4%;">Issue Number</th>
+						<th id="col2header" style="width: 10%;">Test Name</th>
 						<th id="col3header">Test ID</th>
-						<th id="col4header">Test Result</th>
-						<th id="col5header">Browser Used</th>
+						<th id="col4header" style="width: 15%;">Test Condition</th>
+						<th id="col5header" style="width: 10%;">Test Result</th>
 						<th id="col6header">Tester Comments</th>
 						<th id="col7header">Location/Screen</th>
-						<th id="col8header">Global Issue</th>
+						<th id="col8header" style="width: 5%;">Global Issue</th>
 						<th id="col9header">Screenshot</th>
 						<th id="col10header">Actions</th>
 					</tr>
@@ -157,19 +157,13 @@
 						<th scope="row" id="rownum1">01</th>
 						<td>Alt-version-conformant</td>
 						<td>1.A</td>
+						<td>The identified version passes all applicable Test Conditions in this test process.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum1">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum1">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum1">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
-							</select>
+							</select>							
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum1"></textarea></td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col7header rownum1"></textarea></td>
@@ -189,18 +183,12 @@
 						<th scope="row" id="rownum2">02</th>
 						<td>Alt-version-equivalent</td>
 						<td>1.B</td>
+						<td>The identified version is up-to-date with the same information and functionality.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum2">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum2">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum2">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum2"></textarea></td>
@@ -222,18 +210,12 @@
 						<th scope="row" id="rownum3">03</th>
 						<td>Alt-version-access</td>
 						<td>1.C</td>
+						<td>The mechanism to reach the accessible equivalent version from the non-conforming page is accessible.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum3">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum3">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum3">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum3"></textarea></td>
@@ -255,18 +237,12 @@
 						<th scope="row" id="rownum4">04</th>
 						<td>Non-interference</td>
 						<td>1.D</td>
+						<td>Content in the non-conforming version(s) meets <strong><a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/conformance.html#uc-conformance-requirements-head">Conformance Requirement 5</a></strong>.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum4">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum4">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum4">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum4"></textarea></td>
@@ -288,18 +264,12 @@
 						<th scope="row" id="rownum5">05</th>
 						<td>1.4.2-Audio-control</td>
 						<td>2.A</td>
+						<td>The user can pause, stop, or control the volume of audio content that plays automatically.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum5">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum5">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum5">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum5"></textarea></td>
@@ -321,18 +291,12 @@
 						<th scope="row" id="rownum6">06</th>
 						<td>2.2.2-Blinking-moving-scrolling</td>
 						<td>2.B</td>
+						<td>The user can pause, stop, or hide moving, blinking, or scrolling content.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum6">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum6">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum6">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum6"></textarea></td>
@@ -354,18 +318,12 @@
 						<th scope="row" id="rownum7">07</th>
 						<td>2.2.2-Auto-updating</td>
 						<td>2.C</td>
+						<td>The user can pause, stop, hide, or control the frequency of automatically updating content.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum7">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum7">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum7">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum7"></textarea></td>
@@ -387,18 +345,12 @@
 						<th scope="row" id="rownum8">08</th>
 						<td>4.1.2-change-notify-auto</td>
 						<td>2.D</td>
+						<td>The page provides notification of each automatic update/change in content.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum8">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum8">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum8">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum8"></textarea></td>
@@ -420,18 +372,12 @@
 						<th scope="row" id="rownum9">09</th>
 						<td>2.3.1-flashing</td>
 						<td>3.A</td>
+						<td>Web pages do not contain content that flashes more than three times in a one second period.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum9">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum9">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum9">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum9"></textarea></td>
@@ -453,18 +399,12 @@
 						<th scope="row" id="rownum10">10</th>
 						<td>2.1.1-keyboard-access</td>
 						<td>4.A</td>
+						<td>All functionality can be accessed and executed using only the keyboard.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum10">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum10">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum10">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum10"></textarea></td>
@@ -486,18 +426,12 @@
 						<th scope="row" id="rownum11">11</th>
 						<td>2.1.1-no-keystroke-timing</td>
 						<td>4.B</td>
+						<td>Individual keystrokes do not require specific timings for activation of functionality.s</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum11">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum11">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum11">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum11"></textarea></td>
@@ -519,18 +453,12 @@
 						<th scope="row" id="rownum12">12</th>
 						<td>2.1.2-no-keyboard-trap</td>
 						<td>4.C</td>
+						<td>There is no keyboard trap.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum12">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum12">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum12">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum12"></textarea></td>
@@ -552,18 +480,12 @@
 						<th scope="row" id="rownum13">13</th>
 						<td>2.4.7-focus-visible</td>
 						<td>4.D</td>
+						<td>A visible indication of focus is provided when focus is on the interface component.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum13">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum13">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum13">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum13"></textarea></td>
@@ -585,18 +507,12 @@
 						<th scope="row" id="rownum14">14</th>
 						<td>3.2.1-on-focus</td>
 						<td>4.E</td>
+						<td>When an interface component receives focus, it does not initiate an unexpected change of context.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum14">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum14">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum14">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum14"></textarea></td>
@@ -618,18 +534,12 @@
 						<th scope="row" id="rownum15">15</th>
 						<td>2.4.3-focus-order-meaning</td>
 						<td>4.F</td>
+						<td>The focus order preserves the meaning and operability of the web page.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum15">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum15">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum15">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum15"></textarea></td>
@@ -651,18 +561,12 @@
 						<th scope="row" id="rownum16">16</th>
 						<td>3.3.2-label-provided</td>
 						<td>5.A</td>
+						<td>Visual labels or instructions are provided for form elements.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum16">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum16">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum16">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum16"></textarea></td>
@@ -683,19 +587,13 @@
 					<tr>
 						<th scope="row" id="rownum17">17</th>
 						<td>2.4.6-label-descriptive</td>
-						<td>5.C</td>
+						<td>5.B</td>
+						<td>Each visual form label is sufficiently descriptive.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum17">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum17">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum17">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum17"></textarea></td>
@@ -717,18 +615,12 @@
 						<th scope="row" id="rownum18">18</th>
 						<td>1.3.1-programmatic-label</td>
 						<td>5.C</td>
+						<td>The combination of the accessible name, accessible description, and other programmatic associations (e.g., table column and/or row associations) describes each input field and includes all relevant instructions and cues (textual and graphical)</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum18">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum18">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum18">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum18"></textarea></td>
@@ -750,18 +642,12 @@
 						<th scope="row" id="rownum19">19</th>
 						<td>3.2.2-on-input</td>
 						<td>5.D</td>
+						<td>Changing field values/selections (e.g., entering data in a text field, changing a radio button section) does NOT initiate and unexpected change of context.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum19">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum19">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum19">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum19"></textarea></td>
@@ -783,18 +669,12 @@
 						<th scope="row" id="rownum20">20</th>
 						<td>3.3.1-error-identification</td>
 						<td>5.F</td>
+						<td>The item in error is identified in text and sufficiently described to the user in text.</td>
 						<td>
-							<select class="form-select border border-dark" aria-labeledby="col4header rownum20">
+							<select class="form-select border border-dark" aria-labeledby="col5header rownum20">
 								<option>Pass</option>
 								<option>Fail</option>
 								<option>Does Not Apply</option>
-							</select>
-						</td>
-						<td>
-							<select class="form-select border border-dark" aria-labeledby="col5header rownum20">
-								<option>Chrome</option>
-								<option>Edge</option>
-								<option>Firefox</option>
 							</select>
 						</td>
 						<td><textarea class="form-control border border-dark" aria-labeledby="col6header rownum20"></textarea></td>
