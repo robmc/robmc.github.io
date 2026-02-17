@@ -110,7 +110,7 @@
 						<fieldset>
 							<legend>Browser(s) Used: <span class="req">*</span></legend>
 							<div class="flexContainer">
-								<label for="firefox">Firefox</label>
+								<label for="firefox" id="firefoxLabel">Firefox</label>
 								<input type="checkbox" class="form-check-input" id="firefox" />
 							</div>
 							<div class="flexContainer">
@@ -131,8 +131,11 @@
 							</div>
 							<div class="flexContainer">
 								<label for="other">Other</label>
-								<input type="checkbox" class="form-check-input" id="other" />
+								<input type="checkbox" class="form-check-input" id="other" onclick="displayOther()" />
 							</div>
+							<span id="otherBrowserField" style="display: none;">
+								<input type="text" style="" id="otherText" aria-label="Other Browser information" />
+							</span>
 						</fieldset>
 					</div>
 				</form>
@@ -746,7 +749,21 @@
 				};
 				table.addEventListener('click',clickButton);
 		</script>
+		<script>
+			function displayOther() {
+			  // Get the checkbox
+			  var checkBox = document.getElementById("other");
+			  // Get the output text
+			  var text = document.getElementById("otherBrowserField");
+
+			  // If the checkbox is checked, display the text field
+			  if (checkBox.checked == true){
+			    text.style.display = "block";
+			  } else {
+			    text.style.display = "none";
+			  }
+			}
+		</script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
 </html>
-
