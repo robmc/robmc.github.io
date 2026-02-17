@@ -51,98 +51,102 @@
 	<body>
 		<h1>ACR Editor Demo</h1>
 		<p>The purpose of this document is to create a sample table that can be used to create and edit ACRs. This is based on the <a href="https://section508coordinators.github.io/SCRT/">Section 508 Compliance Reporting Tool (SCRT)</a>.</p>
-		<div id="productSection">
-			<h2>
-				<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#disclosure" aria-expanded="true" aria-controls="disclosure">Product Information <span aria-hidden="true">+/-</span></button>
-			</h2>
-			<div class="show" id="disclosure">
-				<p>"<span class="req">*</span>" indicates a required field.</p>
-				<form style="width: 30%; border: 1px solid #E8E8E8; border-radius: 5px; padding: 10px; margin-left: 10px;">
-					<div class="form-group">
-						<label for="productName">Product Name: <span class="req">*</span></label>
-						<input type="text" id="productName" class="form-control" aria-required="true">
-					</div>
-					<div class="form-group">
-						<label for="productVersion">Product Version: <span class="req">*</span></label>
-						<input type="text" id="productVersion" class="form-control" aria-required="true">
-					</div>
-					<div class="form-group">
-						<label for="productOwner">Product Owner/Vendor: <span class="req">*</span></label>
-						<input type="text" id="productOwner" class="form-control" aria-required="true">
-					</div>
-					<div class="form-group">
-						<label for="productType">Product Type: <span class="req">*</span></label>
-						<select id="productType" class="form-select" aria-required="true">
-							<option>Custom developed web page</option>
-							<option>COTS</option>
-							<option>Customization of COTS product</option>
-							<option>GOTS Application</option>
-							<option>Software</option>
-							<option>Other</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="productLocation">Location/URL: <span class="req">*</span></label>
-						<input type="text" id="productLocation" class="form-control" aria-required="true">
-					</div>
-					<div class="form-group">
-						<label for="productDescription">Product Description: <span class="req">*</span></label>
-						<input type="text" id="producDescription" class="form-control" aria-required="true">
-					</div>
-					<div class="form-group">
-						<label for="productNotes">Notes: </label>
-						<input type="text" id="productNotes" class="form-control">
-					</div>
-				</form>
-			</div>
-		</div>
+		<div style="display: flex;">
 
-		<div id="testingInfoSection">
-			<h2>
-				<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#disclosure2" aria-expanded="true" aria-controls="disclosure">Testing Information <span aria-hidden="true">+/-</span></button>
-			</h2>
-			<div class="show" id="disclosure2">
-				<p>"<span class="req">*</span>" indicates a required field.</p>
-				<form style="width: 30%; border: 1px solid #E8E8E8; border-radius: 5px; padding: 10px; margin-left: 10px;">
-					<div class="form-group">
-						<label for="testedby">Tested By: <span class="req">*</span></label>
-						<input type="text" id="testedby" class="form-control" aria-required="true">
-					</div>
-					<div class="form-group">
-						<fieldset>
-							<legend>Browser(s) Used: <span class="req">*</span></legend>
-							<div class="flexContainer">
-								<label for="firefox" id="firefoxLabel">Firefox</label>
-								<input type="checkbox" class="form-check-input" id="firefox" />
-							</div>
-							<div class="flexContainer">
-								<label for="chrome">Chrome</label>
-								<input type="checkbox" class="form-check-input" id="chrome" />
-							</div>
-							<div class="flexContainer">
-								<label for="edge">Edge</label>
-								<input type="checkbox" class="form-check-input" id="edge" />
-							</div>
-							<div class="flexContainer">
-								<label for="ie">Internet Explorer</label>
-								<input type="checkbox" class="form-check-input" id="ie" />
-							</div>
-							<div class="flexContainer">
-								<label for="safari">Safari</label>
-								<input type="checkbox" class="form-check-input" id="safari" />
-							</div>
-							<div class="flexContainer">
-								<label for="other">Other</label>
-								<input type="checkbox" class="form-check-input" id="other" onclick="displayOther()" />
-							</div>
-							<span id="otherBrowserField" style="display: none;">
-								<i class="bi bi-arrow-return-right"></i>
-								<input type="text" id="otherText" aria-label="Other Browser information" />
-							</span>
-						</fieldset>
-					</div>
-				</form>
+			<div id="productSection" style="width: 50%">
+				<h2>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#disclosure" aria-expanded="true" aria-controls="disclosure">Product Information <span aria-hidden="true">+/-</span></button>
+				</h2>
+				<div class="show" id="disclosure">
+					<p>"<span class="req">*</span>" indicates a required field.</p>
+					<form style="width: 70%; border: 1px solid #E8E8E8; border-radius: 5px; padding: 10px; margin-left: 10px;">
+						<div class="form-group">
+							<label for="productName">Product Name: <span class="req">*</span></label>
+							<input type="text" id="productName" class="form-control" aria-required="true">
+						</div>
+						<div class="form-group">
+							<label for="productVersion">Product Version: <span class="req">*</span></label>
+							<input type="text" id="productVersion" class="form-control" aria-required="true">
+						</div>
+						<div class="form-group">
+							<label for="productOwner">Product Owner/Vendor: <span class="req">*</span></label>
+							<input type="text" id="productOwner" class="form-control" aria-required="true">
+						</div>
+						<div class="form-group">
+							<label for="productType">Product Type: <span class="req">*</span></label>
+							<select id="productType" class="form-select" aria-required="true">
+								<option>Custom developed web page</option>
+								<option>COTS</option>
+								<option>Customization of COTS product</option>
+								<option>GOTS Application</option>
+								<option>Software</option>
+								<option>Other</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="productLocation">Location/URL: <span class="req">*</span></label>
+							<input type="text" id="productLocation" class="form-control" aria-required="true">
+						</div>
+						<div class="form-group">
+							<label for="productDescription">Product Description: <span class="req">*</span></label>
+							<input type="text" id="producDescription" class="form-control" aria-required="true">
+						</div>
+						<div class="form-group">
+							<label for="productNotes">Notes: </label>
+							<input type="text" id="productNotes" class="form-control">
+						</div>
+					</form>
+				</div>
 			</div>
+
+			<div id="testingInfoSection" style="width: 50%;">
+				<h2>
+					<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#disclosure2" aria-expanded="true" aria-controls="disclosure">Testing Information <span aria-hidden="true">+/-</span></button>
+				</h2>
+				<div class="show" id="disclosure2">
+					<p>"<span class="req">*</span>" indicates a required field.</p>
+					<form style="width: 70%; border: 1px solid #E8E8E8; border-radius: 5px; padding: 10px; margin-left: 10px;">
+						<div class="form-group">
+							<label for="testedby">Tested By: <span class="req">*</span></label>
+							<input type="text" id="testedby" class="form-control" aria-required="true">
+						</div>
+						<div class="form-group">
+							<fieldset>
+								<legend>Browser(s) Used: <span class="req">*</span></legend>
+								<div class="flexContainer">
+									<label for="firefox" id="firefoxLabel">Firefox</label>
+									<input type="checkbox" class="form-check-input" id="firefox" />
+								</div>
+								<div class="flexContainer">
+									<label for="chrome">Chrome</label>
+									<input type="checkbox" class="form-check-input" id="chrome" />
+								</div>
+								<div class="flexContainer">
+									<label for="edge">Edge</label>
+									<input type="checkbox" class="form-check-input" id="edge" />
+								</div>
+								<div class="flexContainer">
+									<label for="ie">Internet Explorer</label>
+									<input type="checkbox" class="form-check-input" id="ie" />
+								</div>
+								<div class="flexContainer">
+									<label for="safari">Safari</label>
+									<input type="checkbox" class="form-check-input" id="safari" />
+								</div>
+								<div class="flexContainer">
+									<label for="other">Other</label>
+									<input type="checkbox" class="form-check-input" id="other" onclick="displayOther()" />
+								</div>
+								<span id="otherBrowserField" style="display: none;">
+									<i class="bi bi-arrow-return-right"></i>
+									<input type="text" id="otherText" aria-label="Other Browser information" />
+								</span>
+							</fieldset>
+						</div>
+					</form>
+				</div>
+			</div>
+
 		</div>
 
 		<div style="overflow-x:auto;">
