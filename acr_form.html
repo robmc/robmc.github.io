@@ -801,6 +801,22 @@
 			<li>Add some sort of versioning so that, once delivered, the report is read-only but recipients can add revision notes.</li>
 		</ul>
 
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">Screenshot</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <div id="modal-image">
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 		<script>
 				const table = document.getElementById('myTable');
 				const renum = () => {
@@ -844,9 +860,21 @@
 			var loadFile = function(event) {
 			var btn = event.target;
 			var screenshot = btn.nextElementSibling;
+			var modalbtn = document.createElement("button");
+			var parentElement = screenshot.parentNode;
+
+			modalbtn.setAttribute("class", "btn");
+			modalbtn.setAttribute("data-bs-toggle", "modal");
+			modalbtn.setAttribute("data-bs-target", "#exampleModal");
+
 	    screenshot.src = URL.createObjectURL(event.target.files[0]);
 	    screenshot.alt = 'issue screenshot';
 	    screenshot.style = 'border: 1px solid black; width: 40px;'
+
+	    // set the wrapper as child (instead of the element)
+	    parentElement.replaceChild(modalbtn, screenshot);
+	    // set element as child of wrapper
+	    modalbtn.appendChild(screenshot);
 
 /*	    screenshot.onload = function() {
 	      URL.revokeObjectURL(screenshot.src) // free memory
@@ -856,7 +884,3 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
 </html>
-
-
-
-
