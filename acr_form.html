@@ -876,7 +876,15 @@
 	    // set element as child of wrapper
 	    modalbtn.appendChild(screenshot);
 
-/*	    screenshot.onload = function() {
+	    var modalimg = document.getElementById('modal-image');
+	    var modalscreenshot = document.createElement("img");
+	    modalscreenshot.setAttribute("src", screenshot.src)
+	    modalscreenshot.setAttribute("alt", "screenshot")
+	    modalscreenshot.setAttribute("style", "position: relative; width: 100%;")
+
+	    modalimg.appendChild(modalscreenshot);
+
+			/*screenshot.onload = function() {
 	      URL.revokeObjectURL(screenshot.src) // free memory
 	    }*/
 	  };
