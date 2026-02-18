@@ -838,10 +838,12 @@
 		</script>
 		<script>
 			var loadFile = function(event) {
-	    var screenshot = document.querySelector('.screenshot');
+			var btn = event.target;
+			var screenshot = btn.nextElementSibling;
 	    screenshot.src = URL.createObjectURL(event.target.files[0]);
 	    screenshot.alt = 'issue screenshot';
 	    screenshot.style = 'border: 1px solid black; width: 40px;'
+
 /*	    screenshot.onload = function() {
 	      URL.revokeObjectURL(screenshot.src) // free memory
 	    }*/
