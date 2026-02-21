@@ -762,9 +762,9 @@
 		<ul>
 			<li><strike>Bootstrap</strike> &#10004;</li>
 			<li><strike>Add Disclosure widgets for sections</strike> &#10004;</li>
-			<li>Add functionality for adding and removing table rows
+			<li><strike>Add functionality for adding and removing table rows</strike> &#10004;
 				<ul>
-					<li>Add/Remove now works. Need to update so that the default presented rows are static and only newly added rows can be deleted.</li>
+					<li><strike>Add/Remove now works. Need to update so that the default presented rows are static and only newly added rows can be deleted.</strike> &#10004;</li>
 				</ul>
 			</li>	
 			<li>
@@ -817,7 +817,7 @@
     			let new_row = parentRow.cloneNode(true);
     			// append the new row to the table after the clicked row
     			parentRow.after(new_row);
-    			// get the button and append a new sibling
+    			// creates the delete button and adds it to the last cell in the new row
     			const new_btn = document.createElement("button");
     			new_btn.setAttribute('type', 'button');
     			new_btn.setAttribute('class', 'btn btn-danger delete');
