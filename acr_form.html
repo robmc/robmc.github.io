@@ -229,7 +229,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -259,7 +258,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -289,7 +287,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -319,7 +316,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -349,7 +345,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -379,7 +374,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -409,7 +403,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -439,7 +432,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -469,7 +461,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -499,7 +490,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -529,7 +519,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -559,7 +548,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -589,7 +577,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -619,7 +606,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -649,7 +635,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -679,7 +664,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -709,7 +693,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -739,7 +722,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 
@@ -769,7 +751,6 @@
 						</td>
 						<td>
 							<button type="button" class="btn btn-success add">Add Child Row</button>
-							<button type="button" class="btn btn-danger delete">Delete This Row</button>
 						</td>
 					</tr>
 				</tbody>
@@ -836,6 +817,12 @@
     			let new_row = parentRow.cloneNode(true);
     			// append the new row to the table after the clicked row
     			parentRow.after(new_row);
+    			// get the button and append a new sibling
+    			const new_btn = document.createElement("button");
+    			new_btn.setAttribute('type', 'button');
+    			new_btn.setAttribute('class', 'btn btn-danger delete');
+    			new_btn.innerHTML = 'Delete This Row';
+    			new_row.cells[new_row.cells.length - 1].appendChild(new_btn);
   			}
   			renum();
 				};
