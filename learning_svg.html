@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Learning SVGs</title>
+</head>
+<body>
+   <h1 style="text-align: center;">Learning SVG Playground</h1>
+   <p>Placeholder as I'm refreshing my memory of how to draw SVGs.</p>
+   <h2>Space Ship</h2>
+
+<svg width="200" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="space ship with green tractor beams and a small alien showing in the dome">
+
+   <!-- The spaceship -->
+   <path d="M 60 75 C 70,20, 140,35, 140,75" stroke="black" fill="transparent" stroke-width="2" /><!-- the dome -->
+   <ellipse cx="100" cy="75" rx="40" ry="10" stroke="black" fill="transparent" stroke-width="4" /><!-- the body of the spaceship -->
+   <!-- The 'cx' property is the x-axis center of the ellipse. Default is 0. -->
+   <!-- The 'cy' property is the y-axis center of the ellipse. Default is 0. -->
+   <!-- The 'rx' property is required. This is the x radius of the ellipse. -->
+   <!-- The 'ry' property is required. This is the y radius of the ellipse. -->
+   <circle cx="75" cy="75" r="5" stroke="black" stroke-width="1" fill="red" /><!-- the lights of the ship - left light -->
+   <!-- For circles, 'r' is the radius, 'cx' is the x axis center of the circle, and 'cy' is the y axis of the circle. -->
+   <circle cx="100" cy="75" r="5" stroke="black" stroke-width="1" fill="red" /><!-- the lights of the ship - center light -->
+   <circle cx="125" cy="75" r="5" stroke="black" stroke-width="1" fill="red" /><!-- the lights of the ship - right light -->
+
+   <!-- the alien -->
+   <circle cx="100" cy="60" r="5" stroke="black" stroke-width="1" fill="#38F527" /><!-- alien head -->
+   <line x1="103" y1="55" x2="110" y2="50" stroke="#38F527" stroke-width="1" /><!-- right antenna -->
+   <line x1="97" y1="55" x2="90" y2="50" stroke="#38F527" stroke-width="1" /><!-- left antenna -->
+
+   <!-- ray beams -->
+   <polyline points="130,85 135,100 140,95 145,110 150,105 155,120 160,115 165,130 170,125" stroke="#38F527" fill="transparent" stroke-width="5"/><!-- right outer beam -->
+   <!-- The 'points' property is required. This property identifies the list of points of the polyline. Each point must contain an x coordinate and a y coordinate. -->
+   <polyline points="115,87 120,112 125,102 135,125" stroke="#38F527" fill="transparent" stroke-width="3"/><!-- left inner beam -->
+   <polyline points="70,85 65,100 60,95 55,110 50,105 45,120 40,115 35,130 30,125" stroke="#38F527" fill="transparent" stroke-width="5"/><!-- left outer beam -->
+   <polyline points="85,87 80,112 75,102 67,125" stroke="#38F527" fill="transparent" stroke-width="3"/><!-- left inner beam -->
+   <line x1="100" y1="87" x2="100" y2="120" stroke="#38F527" stroke-width="2" /><!-- center beam -->
+</svg>
+</body>
+</html>
