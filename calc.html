@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Calculator</title>
+	</head>
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+
+		form {
+			margin: auto;
+			width: 40%;
+		}
+
+        .row-container {
+        	display: flex;
+        	flex-direction: row; 
+        	justify-content: space-between;
+        	margin: 5px;
+        }
+
+        .form-group {
+        	display: flex;
+        	margin: 5px;
+        	width: 50%;
+        	justify-content: space-between;
+        }
+	</style>
+	<body>
+		<h1>Calculator</h1>
+		<form>
+			<div class="row-container">
+				<div class="form-group">
+					<label for="jan">January</label>
+					<input type="text" id="jan" />
+				</div>
+				<div class="form-group">
+					<label for="feb">February</label>
+					<input type="text" id="feb" />
+				</div>
+			</div>
+			<div class="row-container">
+				<div class="form-group">
+					<label for="mar">March</label>
+					<input type="text" id="mar" />
+				</div>
+				<div class="form-group">
+					<label for="apr">April</label>
+					<input type="text" id="apr" />
+				</div>
+			</div>
+			<div class="row-container">
+				<div class="form-group">
+					<label for="may">May</label>
+					<input type="text" id="may" />
+				</div>
+				<div class="form-group">
+					<label for="jun">June</label>
+					<input type="text" id="jun" />
+				</div>
+			</div>
+			<div class="row-container">
+				<div class="form-group">
+					<label for="jul">July</label>
+					<input type="text" id="jul" />
+				</div>
+				<div class="form-group">
+					<label for="aug">August</label>
+					<input type="text" id="aug" />
+				</div>
+			</div>
+			<div class="row-container">
+				<div class="form-group">
+					<label for="sep">September</label>
+					<input type="text" id="sep" />
+				</div>
+				<div class="form-group">
+					<label for="oct">October</label>
+					<input type="text" id="oct" />
+				</div>
+			</div>
+			<div class="row-container">
+				<div class="form-group">
+					<label for="nov">November</label>
+					<input type="text" id="nov" />
+				</div>
+				<div class="form-group">
+					<label for="dec">December</label>
+					<input type="text" id="dec" />
+				</div>
+			</div>
+			<div style="text-align: center;">
+				<label for="total"><strong>Total Yearly Amount:</strong></label>
+				<input type="text" id="total" disabled />
+			</div>
+			<p>Purpose is to play with JavaScript and test ARIA Live announcements.</p>
+		</form>
+	</body>
+</html>
