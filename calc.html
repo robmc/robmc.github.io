@@ -26,6 +26,18 @@
         	width: 50%;
         	justify-content: space-between;
         }
+
+        /* Chrome, Safari, Edge, Opera */
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		  -webkit-appearance: none; /*removes the default arrows from elements*/
+		  margin: 0;
+		}
+
+		/* Firefox */
+		input[type=number] {
+		  -moz-appearance: textfield; /*handles the removal of arrows on inputs with type "number" */
+		}
 	</style>
 	<body>
 		<h1>Calculator</h1>
@@ -33,61 +45,61 @@
 			<div class="row-container">
 				<div class="form-group">
 					<label for="jan">January</label>
-					<input type="text" id="jan" />
+					<input type="number" id="jan" />
 				</div>
 				<div class="form-group">
 					<label for="feb">February</label>
-					<input type="text" id="feb" />
+					<input type="number" id="feb" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="mar">March</label>
-					<input type="text" id="mar" />
+					<input type="number" id="mar" />
 				</div>
 				<div class="form-group">
 					<label for="apr">April</label>
-					<input type="text" id="apr" />
+					<input type="number" id="apr" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="may">May</label>
-					<input type="text" id="may" />
+					<input type="number" id="may" />
 				</div>
 				<div class="form-group">
 					<label for="jun">June</label>
-					<input type="text" id="jun" />
+					<input type="number" id="jun" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="jul">July</label>
-					<input type="text" id="jul" />
+					<input type="number" id="jul" />
 				</div>
 				<div class="form-group">
 					<label for="aug">August</label>
-					<input type="text" id="aug" />
+					<input type="number" id="aug" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="sep">September</label>
-					<input type="text" id="sep" />
+					<input type="number" id="sep" />
 				</div>
 				<div class="form-group">
 					<label for="oct">October</label>
-					<input type="text" id="oct" />
+					<input type="number" id="oct" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="nov">November</label>
-					<input type="text" id="nov" />
+					<input type="number" id="nov" />
 				</div>
 				<div class="form-group">
 					<label for="dec">December</label>
-					<input type="text" id="dec" />
+					<input type="number" id="dec" />
 				</div>
 			</div>
 			<div style="text-align: center;">
