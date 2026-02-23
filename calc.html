@@ -42,64 +42,65 @@
 	<body>
 		<h1>Calculator</h1>
 		<form>
+			<p>Inputs only accept numerical values.</p>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="jan">January</label>
-					<input type="number" id="jan" />
+					<input type="number" id="jan" name="qty" onblur="findTotal()" />
 				</div>
 				<div class="form-group">
 					<label for="feb">February</label>
-					<input type="number" id="feb" />
+					<input type="number" id="feb" name="qty" onblur="findTotal()" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="mar">March</label>
-					<input type="number" id="mar" />
+					<input type="number" id="mar" name="qty" onblur="findTotal()" />
 				</div>
 				<div class="form-group">
 					<label for="apr">April</label>
-					<input type="number" id="apr" />
+					<input type="number" id="apr" name="qty" onblur="findTotal()" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="may">May</label>
-					<input type="number" id="may" />
+					<input type="number" id="may" name="qty" onblur="findTotal()" />
 				</div>
 				<div class="form-group">
 					<label for="jun">June</label>
-					<input type="number" id="jun" />
+					<input type="number" id="jun" name="qty" onblur="findTotal()" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="jul">July</label>
-					<input type="number" id="jul" />
+					<input type="number" id="jul" name="qty" onblur="findTotal()" />
 				</div>
 				<div class="form-group">
 					<label for="aug">August</label>
-					<input type="number" id="aug" />
+					<input type="number" id="aug" name="qty" onblur="findTotal()" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="sep">September</label>
-					<input type="number" id="sep" />
+					<input type="number" id="sep" name="qty" onblur="findTotal()" />
 				</div>
 				<div class="form-group">
 					<label for="oct">October</label>
-					<input type="number" id="oct" />
+					<input type="number" id="oct" name="qty" onblur="findTotal()" />
 				</div>
 			</div>
 			<div class="row-container">
 				<div class="form-group">
 					<label for="nov">November</label>
-					<input type="number" id="nov" />
+					<input type="number" id="nov" name="qty" onblur="findTotal()" />
 				</div>
 				<div class="form-group">
 					<label for="dec">December</label>
-					<input type="number" id="dec" />
+					<input type="number" id="dec" name="qty" onblur="findTotal()" />
 				</div>
 			</div>
 			<div style="text-align: center;">
@@ -108,5 +109,18 @@
 			</div>
 			<p>Purpose is to play with JavaScript and test ARIA Live announcements.</p>
 		</form>
+	<script>
+		function findTotal() {
+		  var arr = document.getElementsByName('qty');
+		  var tot = 0;
+
+		  for (var i = 0; i < arr.length; i++) {
+		    if (parseInt(arr[i].value))
+		      tot += parseInt(arr[i].value);
+		  }
+
+		  document.getElementById('total').value = tot;
+		}
+	</script>
 	</body>
 </html>
