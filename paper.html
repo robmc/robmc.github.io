@@ -2,40 +2,148 @@
 <html lang="en">
 	<head>
 		<title>Paper</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 		<style>
-			body {
-				margin:0;
-				padding:0;s
+			* {
+			  margin: 0;
+			  padding: 0;
+			}
+			html, body {
+				height:100%;
+			}
+			:root {
+			  --x-offset: 8rem;
 			}
 
-			.verticalLine {
-				border-left: solid red;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				margin-left: 10%;
+			body {
+			  font-family: sans-serif;
+			}
+
+			form {
+			  /* full width/height for margin line */
+			  min-height: 100%;
+			  position: relative; 
+			  inset: 0;
+			  
+			  /* background trick for adding red line */
+			  background: linear-gradient(red, red);
+			  background-size: 3px 100%;
+			  background-position: 6em 0;
+			  background-repeat: no-repeat;
+			  
+			  /* space content off of left side */
+			  padding-left: var(--x-offset);
+			}
+
+			h1 {
+			  margin: 0.25em 0;
+			  font-family: 'Bradley Hand', cursive;
+			  font-size: 2.5em;
+			}
+
+			ul {
+			  counter-reset: list;
+			}
+
+			li {
+			  padding: 1em 0;
+			  margin-left: calc(-1 * var(--x-offset)); /* pull border towards left side */
+			  padding-left: calc(var(--x-offset)); /* pad back off of left side */
+			  list-style: none;
+			  display: flex;
+			  flex-wrap: wrap;
+			  column-gap: 1em;
+			  align-items: center;
+			  border-bottom: 2px solid rgba(0, 0, 255, 0.25);
+			}
+
+			li:first-child {
+			  border-top: 2px solid rgba(0, 0, 255, 0.25);
+			}
+
+			li:last-child .delete {
+			  display: none;
+			}
+
+			/* Add Input # inside label using CSS Counter */
+			label::before {
+			  counter-increment: list;
+			  content: "Input " counter(list);
+			}
+
+			label {
+			  display: flex;
+			  align-items: center;
+			  column-gap: 0.5em;
+			  flex-wrap: wrap;
+			}
+
+			input, button {
+			  height: 2.25em;
+			  padding: 0 0.5em;
+			  display: block;
+			  box-sizing: border-box;
+			  border: none;
+			  font-size: 1em;
+			  border-radius: 0.25em;
+			}
+
+			input {
+			  border: 1px solid #ddd;
+			}
+
+			button {
+			  background: rgb(11, 94, 215);
+			  color: #fff;
+			}
+
+			button.delete {
+			  background: red;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="verticalLine">
-			<h1 style="margin-left: 20px; font-family: 'Bradley Hand', cursive;">To-Do List:</h1>
-		</div>
-		<hr style="color: blue; margin-top: 70px;">
-		<div style="margin-left: 12%; position: relative;">
-			<label for="input1">Input 1</label>
-			<input type="text" id="input1" />
-		</div>
-		<hr style="color: blue;">
-		<div style="margin-left: 12%; position: relative;">
-			<label for="input2">Input 2</label>
-			<input type="text" id="input2" />
-		</div>
-		<hr style="color: blue;">
-		<div style="margin-left: 12%; position: relative;">
-			<label for="input3">Input 3</label>
-			<input type="text" id="input3" />
-		</div>
-		<hr style="color: blue;">
+		<form>
+		  <h1>
+		    To-Do List:
+		  </h1>
+		  
+		  <ul>
+		    <li>
+		      <label>
+		        <input type="text" />
+		      </label>
+		      <button type="button" id="add">Add Item</button>
+		    </li>
+		  </ul>
+		</form>
+		<script>
+			const btn = document.getElementById("add")
+			const ul = document.querySelector('ul')
+
+			const createDeleteButton = (el) => {
+			  const btn = document.createElement("button")
+			  btn.classList.add('delete')
+			  btn.textContent = "Delete"
+			  btn.addEventListener('click', () => el.remove())
+			  return btn
+			}
+
+			ul.firstElementChild.appendChild(createDeleteButton(ul.firstElementChild))
+
+			btn.addEventListener("click", e => {
+			  const input = document.createElement('input')
+			  const li = document.createElement('li')
+			  const label = document.createElement('label')
+			  
+			  label.appendChild(input)
+			  li.appendChild(label)
+			  li.appendChild(btn) // move button to last list item
+			  
+			  ul.appendChild(li);
+			  li.appendChild(createDeleteButton(li))
+			})
+		</script>
 	</body>
 </html>
