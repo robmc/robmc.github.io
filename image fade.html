@@ -37,17 +37,30 @@
 		  overflow: hidden;
 		  z-index: 1000;
 		  background-color: white;
+		  transform: translate(-50%, -50%);
+		}
+
+		.pause {
+		  position: absolute;
+		  top: 0;
+		  overflow: hidden;
+		}
+
+		.pause:focus {
+		  position: absolute;
+		  top: 0;
+		  z-index: 1000;
 		}
 	</style>
 </head>
 <body>
+	<button class="pause">Pause the Animation</button>
 	<div id="wrapper">
-	<img class="active" src="/images/dusk.jpg" alt="" />
-	<img src="/images/night.jpg" alt="" />
+	<img class="active" src="dusk.jpg" alt="" />
+	<img src="night.jpg" alt="" />
 	</div>
 	<div class="center">
 		<p>Testing the ability to pause/stop animations. Press <code>Tab</code> to bring up the Pause button. The background image has an update animation every 7 seconds.</p>
-		<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
 	</div>
 	<script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
 	<script>
@@ -69,4 +82,3 @@
 </body>
 
 </html>
-
