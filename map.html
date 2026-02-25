@@ -246,6 +246,9 @@
 				<li>
 					<a href="#fourth">Extending the Basic Map Attributes</a>
 				</li>
+				<li>
+					<a href="#fifth">To Test</a>
+				</li>
 			</ul>
 			<p>In this example, I extend the accessibility of the Google Map API. This example is inspired by the <a href="https://equalentry.com/">Equal Entry</a> blog post <a href="https://equalentry.com/accessible-maps-on-the-web/">Accessible Maps on the Web</a>.</p>
 			<div class="headingWrapper">
@@ -316,7 +319,9 @@
 			<span class="spanStyle">JavaScript:</span>
 			<pre class="prettyprint lang-js">marker.addListener('click', function() {<br />infowindow.open(map, marker);<br />});</pre>
 			<div id="accessibleMarker"></div>
-			<h3>To Test</h3>
+			<div id="fifth" tabindex="-1">
+				<h2>To Test</h2>
+			</div>
 			<p>To test this using the keyboard:</p>
 			<ul>
 				<li>Press <kbd>Tab</kbd> and <kbd>Shift</kbd> + <kbd>Tab</kbd> to navigate forwards and backwards between the actionable elements.</li>
