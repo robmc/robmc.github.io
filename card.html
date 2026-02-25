@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Card</title>
+		<link href='https://fonts.googleapis.com/css?family=Anuphan' rel='stylesheet'>
+		<style type="text/css">
+			body {
+			    font-family: 'Anuphan';font-size: 22px;
+			}
+
+			h1 {
+				text-align: center;
+			}
+
+			.center {
+			  margin: auto;
+			  top: 50%;
+			  left: 50%;
+			  border-radius: 25px;
+			  border: 2px solid #DEDEDE;
+			  height: 300px;
+			  width: 200px;
+			  overflow: hidden;
+			}
+
+			.center:hover {
+				box-shadow: 0px 1px 6px rgba(0,0,0, 0.4);
+			}
+
+			#card-title {
+				font-weight: 800;
+				font-size: 23px;
+				text-align: center;
+			}
+
+			#card-image {
+				margin-top: 10px;
+				margin-left: auto;
+				margin-right: auto;
+				width: 170px;
+			}
+
+			#card-image img {
+				width: 170px;
+			}
+
+			#card-text {
+				font-size: 16px;
+				display: block;
+				width: 180px;
+				text-align: center;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+		<script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+	</head>
+	<body>
+		<h1>Card</h1>
+		<div id="card" class="center">
+			<div id="card-front" tabindex="0" role="button" class="front" aria-labelledby="card-front front-text">
+				<div id="card-image">
+					<img src="https://github.com/robmc/robmc.github.io/blob/master/images/robert_mccaffery.PNG?raw=true" alt="Robert McCaffery" />
+				</div>
+				<div id="card-title">
+					<div>Sample Title</div>
+				</div>
+				<div id="card-text">
+					<div>This is some sample text for the purpose of testing layout.</div>
+				</div>
+			</div>
+			<div id="card-back" tabindex="0" role="button" class="back" aria-labelledby="card-back back-text" style="display: none;">
+				<p>This is some more text for testing.<p>
+			</div>
+		</div>
+		<div id="front-text" style="display: none;">Front of Card</div>
+		<div id="back-text" style="display: none;">Back of Card</div>
+		<script>
+/*			$( ".front" ).on( "click", function() {
+			  $( "#card-front" ).slideToggle( "slow" );
+			  $( "#card-back" ).slideToggle( "slow" );
+			});
+
+			$( ".back" ).on( "click", function() {
+			  $( "#card-front" ).slideToggle( "slow" );
+			  $( "#card-back" ).slideToggle( "slow" );
+			});*/
+
+			var callback = function() {
+			  $( "#card-front" ).slideToggle( "slow" );
+			  $( "#card-back" ).slideToggle( "slow" );
+			};
+
+			$("#card").keypress(function() {
+			    if (event.which == 13 || 32) callback();
+			});
+
+			$('#card').click(callback);
+		</script>
+	</body>
+</html>
