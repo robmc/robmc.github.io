@@ -24,12 +24,29 @@
 		#wrapper img.active{
 			z-index:3;
 		}
+
+		.center {
+			position: absolute;
+		  margin: auto;
+		  top: 50%;
+		  left: 50%;
+		  border-radius: 25px;
+		  border: 2px solid #DEDEDE;
+		  height: 300px;
+		  width: 200px;
+		  overflow: hidden;
+		  z-index: 1000;
+		  background-color: white;
+		}
 	</style>
 </head>
 <body>
 	<div id="wrapper">
 	<img class="active" src="/images/dusk.jpg" alt="" />
 	<img src="/images/night.jpg" alt="" />
+	</div>
+	<div class="center">
+		<p>Testing the ability to pause/stop animations. Press <code>Tab</code> to bring up the Pause button. The background image has an update animation every 7 seconds.</p>
 	</div>
 	<script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
 	<script>
@@ -51,4 +68,3 @@
 </body>
 
 </html>
-
