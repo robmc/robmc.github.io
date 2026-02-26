@@ -7,14 +7,12 @@
 		  margin: 0;
 		  height: 100%;
 		}
-		body {
-			background-color: #9EEBFF;
-		}
 		.center {
 		  display: flex;
 		  justify-content: center;
 		  align-items: center;
 		  height: 100vh;
+		  background-color: #9EEBFF;
 		}
 		#wrapper {
 		  background-color: white;
@@ -70,7 +68,18 @@
 		    top: -50%;
 		    left:35%;
 		}
+		form {
+		 	position:relative;
+			width: 250px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#signInBtn {
+			margin-top: 10px;
+			text-align: center;
+		}
 		</style>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	</head>
 	<body>
 		<div class="cloud"></div>
@@ -79,12 +88,25 @@
 		  <div id="wrapper">
 		  	<h1>Login Form</h1>
 		  	<p>I learned how to draw clouds with CSS for this...</p>
+		  	<form>
+			  	<div class="form-floating mb-3">
+				  <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
+				  <label for="floatingEmail">Email address</label>
+				</div>
+				<div class="form-floating">
+				  <input type="password" class="form-control" id="floatingPassword" placeholder="password">
+				  <label for="floatingPassword">Password</label>
+				</div>
+				<div id="signInBtn">
+				 <button type="button" class="btn btn-primary">Sign In</button>
+				</div>
+			</form>
 		  	<footer>
 				<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
 			</footer>
 		  </div>
 		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</body>
 </html>
-
 
