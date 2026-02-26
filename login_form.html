@@ -2,24 +2,27 @@
 <html lang="en">
 	<head>
 		<title>Login Form</title>
-		<style>
+		<style type="text/css">
 		body, html {
 		  margin: 0;
 		  height: 100%;
 		}
+
 		.center {
 		  display: flex;
 		  justify-content: center;
 		  align-items: center;
-		  height: 100vh;
 		  background-color: #9EEBFF;
+		  height: 100%;
 		}
+
 		#wrapper {
 		  background-color: white;
 		  border-radius: 20px;
 		  width: 600px;
 		  height: 350px;
 		  border: 2px solid gray; 
+		  z-index: 1;
 		}
 		h1 {
 			text-align: center;
@@ -28,20 +31,30 @@
 			display: flex;
 			position: fixed;
 			top: 10%;
+			right: 0;
    			width:350px;
    			height:120px;
    			background:#ECEFF1;
    			box-shadow: 10px 10px rgba(0,0,0,0.2);
    			border-radius:100px;
+   			transform: translate(100%);
+		}
+
+		@keyframes move {
+		  to {
+		    right: 100%;
+		    transform: translate(0);
+		  }
 		}
 
 		.cloud {
-			top: 10%;			
+			top: 10%;
+			animation: move 10s linear infinite;			
 		}
 
 		.cloud2 { 
-			top: 60%;
-			left: 75%;
+			top: 70%;
+			animation: move 20s linear infinite;
 		}
 
 		.cloud:after, .cloud:before, .cloud2:after, .cloud2:before {
@@ -90,7 +103,7 @@
 		<div class="center">
 		  <div id="wrapper">
 		  	<h1>Login Form</h1>
-		  	<p>I learned how to draw clouds with CSS for this...</p>
+		  	<p>I learned how to draw and animate clouds with CSS for this...</p>
 		  	<form>
 			  	<div class="form-floating mb-3">
 				  <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com">
