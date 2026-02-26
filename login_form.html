@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Login Form</title>
+		<style>
+		body, html {
+		  margin: 0;
+		  height: 100%;
+		}
+		body {
+			background-color: #9EEBFF;
+		}
+		.center {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  height: 100vh;
+		}
+		#wrapper {
+		  background-color: white;
+		  border-radius: 20px;
+		  width: 600px;
+		  height: 350px;
+		  border: 2px solid gray; 
+		}
+		h1 {
+			text-align: center;
+		}
+		.cloud, .cloud2 { 
+			display: flex;
+			position: fixed;
+			top: 10%;
+   			width:350px;
+   			height:120px;
+   			background:#ECEFF1;
+   			box-shadow: 10px 10px rgba(0,0,0,0.2);
+   			border-radius:100px;
+		}
+
+		.cloud2 { 
+			display: flex;
+			position: fixed;
+			top: 60%;
+			left: 75%;
+   			width:350px;
+   			height:120px;
+   			background:#ECEFF1;
+   			box-shadow: 10px 10px rgba(0,0,0,0.2);
+   			border-radius:100px;
+		}
+
+		.cloud:after, .cloud:before, .cloud2:after, .cloud2:before {
+		    content:"";
+		    position:relative;
+		    display:inline-block;
+		    background:inherit;
+		    border-radius:inherit;
+		}
+
+		.cloud::after, .cloud2::after {
+		    width:100px;
+		    height:100px;
+		    top:-25%;
+		    left:-35%;
+		}
+
+		.cloud::before, .cloud2::before {
+		    width:180px;
+		    height:180px;
+		    top: -50%;
+		    left:35%;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="cloud"></div>
+		<div class="cloud2"></div>
+		<div class="center">
+		  <div id="wrapper">
+		  	<h1>Login Form</h1>
+		  	<p>I learned how to draw clouds with CSS for this...</p>
+		  	<footer>
+				<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
+			</footer>
+		  </div>
+		</div>
+	</body>
+</html>
+
+
