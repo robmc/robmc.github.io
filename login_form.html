@@ -78,6 +78,101 @@
 		    top: -50%;
 		    left:35%;
 		}
+
+		.neck {
+		  position: fixed;
+		  margin-top: 80px;
+		  margin-left: 800px;
+		  height: 150px;
+		  width: 50px;
+		  background-color: #555;
+		  border-radius: 25px 25px 0px 25px;
+		}
+
+		.body {
+		  position: fixed;
+		  margin-top: 180px;
+		  margin-left: 800px;
+		  height: 50px;
+		  width: 150px;
+		  background-color: #555;
+		  border-radius: 0px 25px 0px 25px; /* first value applies to top-left corner, second value applies to top-right corner, third value applies to bottom-right corner, and fourth value applies to bottom-left corner */
+		}
+
+		#toucan {
+			position: absolute;
+		}
+
+		.eye {
+		  position: fixed;
+		  margin-top: 85px;
+		  margin-left: 810px;
+		  height: 30px;
+		  width: 30px;
+		  background-color: #FFF;
+		  border-radius: 25px 25px 25px 25px;
+		}
+
+		.iris {
+		  position: fixed;
+		  margin-top: 90px;
+		  margin-left: 814px;
+		  height: 20px;
+		  width: 20px;
+		  background-color: #0093DB;
+		  border-radius: 25px 25px 25px 25px;
+		}
+
+		.pupil {
+		  position: fixed;
+		  margin-top: 93px;
+		  margin-left: 817px;
+		  height: 15px;
+		  width: 15px;
+		  background-color: #000;
+		  border-radius: 25px 25px 25px 25px;
+		}
+
+		.wing-outer {
+		  position: fixed;
+		  margin-top: 160px;
+		  margin-left: 840px;
+		  height: 40px;
+		  width: 90px;
+		  background-color: #34AD3D;
+		  border-radius: 0px 0px 50px 50px;
+		}
+
+		.wing-inner {
+		  position: fixed;
+		  margin-top: 160px;
+		  margin-left: 855px;
+		  height: 30px;
+		  width: 60px;
+		  background-color: #D9D445;
+		  border-radius: 0px 0px 50px 50px;
+		}
+
+		.beak {
+		  position: fixed;
+		  margin-top: 100px;
+		  margin-left: 730px;
+		  height: 30px;
+		  width: 80px;
+		  background-color: #F2F527;
+		  border-radius: 50px 0px 0px 0px;
+		}
+
+		.beak2 {
+		  position: fixed;
+		  margin-top: 100px;
+		  margin-left: 730px;
+		  height: 30px;
+		  width: 40px;
+		  background-color: #F58E27;
+		  border-radius: 50px 0px 0px 0px;
+		}
+
 		form {
 		 	position:relative;
 			width: 250px;
@@ -100,6 +195,17 @@
 	<body>
 		<div class="cloud"></div>
 		<div class="cloud2"></div>
+		<div id="toucan">
+			<div class="beak"></div>
+			<div class="beak2"></div>
+			<div class="neck"></div>
+			<div class="body"></div>
+			<div class="eye"></div>
+			<div class="iris"></div>
+			<div class="pupil"></div>
+			<div class="wing-outer"></div>
+			<div class="wing-inner"></div>
+		</div>
 		<div class="center">
 		  <div id="wrapper">
 		  	<h1>Login Form</h1>
