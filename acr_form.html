@@ -2023,141 +2023,113 @@
 		</div>
 
 		<script>
-				const table = document.getElementById('myTable');
-				
-                const renum = () => {
-					table.querySelectorAll('tbody tr').forEach((tr, i) => {
-						tr.cells[0].textContent = String(i + 1).padStart(2, '0');
-					});
-				};
+			const table = document.getElementById('myTable');
+			
+			const renum = () => {
+				table.querySelectorAll('tbody tr').forEach((tr, i) => {
+					tr.cells[0].textContent = String(i + 1).padStart(2, '0');
+				});
+			};
 
-				const clickButton = (e) => {
-				    const button = e.target.closest('button.btn');
-				    if (!button) return;
-				    const parentRow = button.closest('tr');
+			const clickButton = (e) => {
+				const button = e.target.closest('button.btn');
+				if (!button) return;
+				const parentRow = button.closest('tr');
 
-				    if (button.matches(".delete")) {
-				        parentRow.remove();
-				    } else if (button.matches(".add")) {
-				        // 1. Deep clone the targeted row
-				        let new_row = parentRow.cloneNode(true);
+				if (button.matches(".delete")) {
+					parentRow.remove();
+				} else if (button.matches(".add")) {
+					let new_row = parentRow.cloneNode(true);
 
-				        // 2. RESET THE CLONED ROW
-				        const screenshotCell = new_row.cells[new_row.cells.length - 2];
+					// Clean up the cloned row's screenshot cell
+					const screenshotCell = new_row.cells[new_row.cells.length - 2];
+					screenshotCell.querySelectorAll('.modal-trigger-btn, .btn-remove-screenshot').forEach(el => el.remove());
+					const img = screenshotCell.querySelector('.screenshot');
+					if (img) {
+						img.src = '';
+						img.classList.add('d-none');
+						img.className = 'screenshot d-none';
+						screenshotCell.appendChild(img);
+					}
+					const fileInput = screenshotCell.querySelector('input[type="file"]');
+					if (fileInput) fileInput.value = '';
 
-				        // Remove accessibility buttons and trash icons
-				        screenshotCell.querySelectorAll('.modal-trigger-btn, .btn-remove-screenshot').forEach(btn => btn.remove());
+					// Reset inputs and textareas
+					new_row.querySelectorAll('textarea, input[type="text"]').forEach(input => input.value = '');
+					new_row.querySelectorAll('select').forEach(sel => sel.selectedIndex = 0);
 
-				        // Reset the image
-				        const img = screenshotCell.querySelector('.screenshot');
-				        if (img) {
-				            img.src = '';
-				            img.classList.add('d-none');
-				            img.className = 'screenshot d-none'; 
-				            screenshotCell.appendChild(img); 
-				        }
+					// Setup side-by-side buttons in the action cell
+					const actionCell = new_row.cells[new_row.cells.length - 1];
+					actionCell.innerHTML = `
+						<div class="d-flex justify-content-center gap-1">
+							<button type="button" class="btn btn-success btn-sm add">Add</button>
+							<button type="button" class="btn btn-danger btn-sm delete">Delete</button>
+						</div>`;
 
-				        // Reset inputs
-				        const fileInput = screenshotCell.querySelector('input[type="file"]');
-				        if (fileInput) fileInput.value = '';
-				        new_row.querySelectorAll('textarea').forEach(txt => txt.value = '');
-				        new_row.querySelectorAll('select').forEach(sel => sel.selectedIndex = 0);
+					parentRow.after(new_row);
+				}
+				renum();
+			};
 
-				        // 3. Append the new row
-				        parentRow.after(new_row);
+			table.addEventListener('click', clickButton);
 
-				        // 4. Update Actions Cell
-				        const actionCell = new_row.cells[new_row.cells.length - 1];
-				        // Clear it first so we don't have multiple Add buttons
-				        actionCell.innerHTML = ''; 
-				        
-				        // Create "Add" button so child rows can also be cloned
-				        const add_btn = document.createElement("button");
-				        add_btn.className = "btn btn-success add me-2";
-				        add_btn.textContent = "Add Child Row";
-				        
-				        // Create "Delete" button
-				        const del_btn = document.createElement("button");
-				        del_btn.className = "btn btn-danger delete";
-				        del_btn.textContent = "Delete Row";
-				        
-				        actionCell.appendChild(add_btn);
-				        actionCell.appendChild(del_btn);
-				    }
-				    renum();
-				};
-
-                // FIX: Actually attach the listener to the table!
-                table.addEventListener('click', clickButton);
-		</script>
-		<script>
 			function displayOther() {
-			  // Get the checkbox
-			  var checkBox = document.getElementById("other");
-			  // Get the output text
-			  var text = document.getElementById("otherBrowserField");
-
-			  // If the checkbox is checked, display the text field
-			  if (checkBox.checked == true){
-			    text.style.display = "block";
-			  } else {
-			    text.style.display = "none";
-			  }
+				const checkBox = document.getElementById("other");
+				document.getElementById("otherBrowserField").style.display = checkBox.checked ? "block" : "none";
 			}
+
+			const loadFile = function(event) {
+				const file = event.target.files[0];
+				if (!file) return;
+
+				const parentElement = event.target.parentElement;
+				const fileInput = event.target;
+				let screenshotImg = parentElement.querySelector('.screenshot');
+				const objectUrl = URL.createObjectURL(file);
+				
+				screenshotImg.src = objectUrl;
+				screenshotImg.classList.remove('d-none');
+				screenshotImg.className = 'screenshot-thumb screenshot';
+
+				let modalBtn = parentElement.querySelector('.modal-trigger-btn');
+				if (!modalBtn) {
+					modalBtn = document.createElement('button');
+					modalBtn.type = 'button';
+					modalBtn.className = 'btn p-0 border-0 modal-trigger-btn';
+					modalBtn.setAttribute('data-bs-toggle', 'modal');
+					modalBtn.setAttribute('data-bs-target', '#exampleModal');
+					screenshotImg.parentNode.insertBefore(modalBtn, screenshotImg);
+					modalBtn.appendChild(screenshotImg);
+				}
+
+				let removeBtn = parentElement.querySelector('.btn-remove-screenshot');
+				if (!removeBtn) {
+					removeBtn = document.createElement('button');
+					removeBtn.type = 'button';
+					removeBtn.className = 'btn btn-remove-screenshot';
+					removeBtn.innerHTML = '<i class="bi bi-trash"></i>';
+					modalBtn.after(removeBtn);
+
+					removeBtn.onclick = function() {
+						fileInput.value = '';
+						screenshotImg.classList.add('d-none');
+						screenshotImg.src = '';
+						URL.revokeObjectURL(objectUrl);
+						modalBtn.remove();
+						removeBtn.remove();
+						parentElement.appendChild(screenshotImg);
+					};
+				}
+
+				modalBtn.onclick = function() {
+					document.getElementById('modal-image').innerHTML = `<img src="${objectUrl}" class="img-fluid">`;
+				};
+			};
 		</script>
-        <script>
-            // Rest of your displayOther and loadFile scripts go here...
-            const loadFile = function(event) {
-                const file = event.target.files[0];
-                if (!file) return;
-
-                const parentElement = event.target.parentElement;
-                const fileInput = event.target;
-                let screenshotImg = parentElement.querySelector('.screenshot');
-                const objectUrl = URL.createObjectURL(file);
-                
-                screenshotImg.src = objectUrl;
-                screenshotImg.classList.remove('d-none');
-                screenshotImg.className = 'screenshot-thumb screenshot';
-
-                let modalBtn = parentElement.querySelector('.modal-trigger-btn');
-                if (!modalBtn) {
-                    modalBtn = document.createElement('button');
-                    modalBtn.type = 'button';
-                    modalBtn.className = 'btn p-0 border-0 modal-trigger-btn';
-                    modalBtn.setAttribute('data-bs-toggle', 'modal');
-                    modalBtn.setAttribute('data-bs-target', '#exampleModal');
-                    screenshotImg.parentNode.insertBefore(modalBtn, screenshotImg);
-                    modalBtn.appendChild(screenshotImg);
-                }
-
-                let removeBtn = parentElement.querySelector('.btn-remove-screenshot');
-                if (!removeBtn) {
-                    removeBtn = document.createElement('button');
-                    removeBtn.type = 'button';
-                    removeBtn.className = 'btn btn-remove-screenshot';
-                    removeBtn.innerHTML = '<i class="bi bi-trash"></i>';
-                    modalBtn.after(removeBtn);
-
-                    removeBtn.onclick = function() {
-                        fileInput.value = '';
-                        screenshotImg.classList.add('d-none');
-                        screenshotImg.src = '';
-                        URL.revokeObjectURL(objectUrl);
-                        modalBtn.remove();
-                        removeBtn.remove();
-                        parentElement.appendChild(screenshotImg);
-                    };
-                }
-
-                modalBtn.onclick = function() {
-                    document.getElementById('modal-image').innerHTML = `<img src="${objectUrl}" class="img-fluid" alt="Full size">`;
-                };
-            };
-        </script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
 </html>
+
 
 
 
