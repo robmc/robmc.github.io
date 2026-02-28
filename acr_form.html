@@ -65,6 +65,19 @@
 			    border: 1px solid #000;
 			    width: 40px;
 			}
+
+			/* Styling for the trash button */
+			.btn-remove-screenshot {
+			    color: #dc3545; /* Bootstrap danger color */
+			    padding: 2px 5px;
+			    vertical-align: middle;
+			    margin-left: 5px;
+			}
+
+			.btn-remove-screenshot:hover {
+			    color: #a71d2a;
+			    background-color: #f8d7da;
+			}
 		</style>
 	</head>
 	<body>
@@ -2055,41 +2068,73 @@
 			}
 		</script>
 		<script>
-			var loadFile = function(event) {
-			var btn = event.target;
-			var screenshot = btn.nextElementSibling;
-			var modalbtn = document.createElement("button");
-			var parentElement = screenshot.parentNode;
+			const loadFile = function(event) {
+			    const file = event.target.files[0];
+			    if (!file) return;
 
-			modalbtn.setAttribute("class", "btn");
-			modalbtn.setAttribute("data-bs-toggle", "modal");
-			modalbtn.setAttribute("data-bs-target", "#exampleModal");
+			    const parentElement = event.target.parentElement;
+			    const fileInput = event.target;
+			    let screenshotImg = parentElement.querySelector('.screenshot');
+			    const objectUrl = URL.createObjectURL(file);
+			    
+			    // 1. Setup the image
+			    screenshotImg.src = objectUrl;
+			    screenshotImg.alt = "View full-sized screenshot";
+			    screenshotImg.className = 'screenshot-thumb';
+			    screenshotImg.classList.remove('d-none');
 
-	    screenshot.src = URL.createObjectURL(event.target.files[0]);
-	    screenshot.alt = 'issue screenshot';
-	    screenshot.style = 'border: 1px solid black; width: 40px;'
+			    // 2. Accessibility Wrap (Button)
+			    let modalBtn = parentElement.querySelector('.modal-trigger-btn');
+			    if (!modalBtn) {
+			        modalBtn = document.createElement('button');
+			        modalBtn.type = 'button';
+			        modalBtn.className = 'btn p-0 border-0 modal-trigger-btn';
+			        modalBtn.setAttribute('data-bs-toggle', 'modal');
+			        modalBtn.setAttribute('data-bs-target', '#exampleModal');
+			        modalBtn.setAttribute('aria-label', 'View larger screenshot');
+			        screenshotImg.parentNode.insertBefore(modalBtn, screenshotImg);
+			        modalBtn.appendChild(screenshotImg);
+			    }
 
-	    // set the wrapper as child (instead of the element)
-	    parentElement.replaceChild(modalbtn, screenshot);
-	    // set element as child of wrapper
-	    modalbtn.appendChild(screenshot);
+			    // 3. Create/Show the Trash Button
+			    let removeBtn = parentElement.querySelector('.btn-remove-screenshot');
+			    if (!removeBtn) {
+			        removeBtn = document.createElement('button');
+			        removeBtn.type = 'button';
+			        removeBtn.className = 'btn btn-outline-danger btn-sm btn-remove-screenshot';
+			        removeBtn.setAttribute('aria-label', 'remove screenshot');
+			        removeBtn.innerHTML = '<i class="bi bi-trash"></i>';
+			        
+			        // Append it after the modal button
+			        modalBtn.after(removeBtn);
 
-	    var modalimg = document.getElementById('modal-image');
-	    var modalscreenshot = document.createElement("img");
-	    modalscreenshot.setAttribute("src", screenshot.src)
-	    modalscreenshot.setAttribute("alt", "screenshot")
-	    modalscreenshot.setAttribute("style", "position: relative; width: 100%;")
+			        removeBtn.onclick = function() {
+			            // Clear the file input
+			            fileInput.value = '';
+			            // Hide the image and revoke URL to save memory
+			            screenshotImg.classList.add('d-none');
+			            screenshotImg.src = '';
+			            URL.revokeObjectURL(objectUrl);
+			            // Remove the trash button and the modal button wrapper
+			            modalBtn.remove();
+			            removeBtn.remove();
+			            
+			            // Re-insert the hidden img back into the cell for future use
+			            parentElement.appendChild(screenshotImg);
+			        };
+			    }
 
-	    modalimg.appendChild(modalscreenshot);
-
-			/*screenshot.onload = function() {
-	      URL.revokeObjectURL(screenshot.src) // free memory
-	    }*/
-	  };
+			    // 4. Update Modal content
+			    modalBtn.onclick = function() {
+			        const modalBody = document.getElementById('modal-image');
+			        modalBody.innerHTML = `<img src="${objectUrl}" class="img-fluid" alt="Full size screenshot">`;
+			    };
+			};
 		</script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
 </html>
+
 
 
 
