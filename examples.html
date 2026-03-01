@@ -1,29 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>Examples Lab</title>
+        <style type="text/css">
+            body {
+              background: #000;
+              filter: invert(1);
+            }
 
-<head>
-    <title>Accessible Examples</title>
-</head>
+            .file-tree ul {
+              font-family: courier;
+              margin: 0;
+              padding-left: 3rem;
+              list-style: none;
+              line-height: 1.25;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .file-tree li:not(:last-child) > ul::before {
+              content: '\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020\2502\0020';
+              position: absolute;
+              left: 0;
+              top: 0;
+              bottom: 0;
+              width: 1em;
+            }
+
+            .file-tree > ul {
+              margin: 0;
+              padding: 0;
+            }
+
+            .file-tree li {
+              background: #fff;
+              position: relative;
+            }
+
+            .file-tree li::before {
+              content: '\251C\2500\2500\0020';
+            }
+
+            .file-tree li:last-child::before {
+              content: '\2514\2500\2500\0020';
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            footer {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
     <body>
-        <h1>Accessible Examples</h1>
-        <ul>
-            <li><a href="acr_form.html">ACR Form</a></li>
-            <li><a href="aria_checkboxes.html">ARIA Checkboxes</a></li>
-            <li><a href="aria_live_test.html">ARIA Live</a></li>
-            <li><a href="beach.html">Beach Login</a></li>
-            <li><a href="calc.html">Calculator</a></li>
-            <li><a href="disclosure.html">Expand/Collapse Control (Disclosure Widget)</a></li>
-            <li><a href="card.html">Flip Card</a></li>
-            <li><a href="image fade.html">Image Fade</a></li>
-            <li><a href="learning_svg.html">Learning SVG</a></li>
-            <li><a href="map.html">Maps</a></li>
-            <li><a href="neon.html">Neon Sign</a></li>
-            <li><a href="login_form.html">Sky Login Form</a></li>
-            <li><a href="accessible_table_with_expandable_rows.html">Table with Expandable Rows</a></li>
-            <li><a href="tables.html">Tables</a></li>
-            <li><a href="paper.html">To-Do List</a></li>
-            <li><a href="tooltips.html">Tooltips</a></li>
-        </ul>
-        <a href="http://robertjmccaffery.com/">Back to Portfolio</a>
+        <h1>Examples Lab</h1>
+        <div class="file-tree">
+          <ul>
+            <li>Accessibility
+              <ul>
+                <li><a href="acr_form.html">ACR Form</a>
+                    <ul>
+                        <li><a href="https://github.com/robmc/robmc.github.io/blob/master/acr_form.html">Github Source</a></li>
+                    </ul>
+                <li><a href="aria_checkboxes.html">ARIA Checkboxes</a></li>
+                <li><a href="aria_live_test.html">ARIA Live Test</a></li>
+                <li><a href="calc.html">Calculator</a></li>
+                <li><a href="disclosure.html">Expand/Collapse Control (Disclosure Widget)</a></li>
+                <li><a href="image fade.html">Image Fade (Testing Pause/Stop/Hide)</a></li>
+                <li><a href="learning_svg.html">Learning SVG</a></li>
+                <li><a href="map.html">Maps</a></li>
+                <li><a href="accessible_table_with_expandable_rows.html">Table with Expandable Rows</a></li>
+                <li><a href="tables.html">Tables</a></li>
+                <li><a href="paper.html">To-Do List</a>
+                    <ul>
+                        <li>This is testing a method that should not be used for accessibility.</li>
+                    </ul>
+                <li><a href="tooltips.html">Tooltips</a></li>
+              </ul>
+            </li>
+            <li>Design
+              <ul>
+                <li><a href="beach.html">Beach Login</a></li>
+                <li><a href="card.html">Flip Card</a></li>
+                <li><a href="neon.html">Neon Sign</a></li>
+                <li><a href="login_form.html">Sky Login Form</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <footer>
+            <a href="http://robertjmccaffery.com/">Back to Portfolio</a> | <a href="https://freefrontend.com/code/pure-css-ascii-file-tree-2026-01-19/">Source of this page's styling</a>
+        </footer>
     </body>
 </html>
