@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider Tap</title>
+    <style>
+        :root {
+            --primary: #04AA6D;
+            --bg: #ddd;
+            --dial-size: 200px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f4f4f4;
+            font-family: sans-serif;
+            margin: 0;
+        }
+
+        .dial-wrapper {
+            position: relative;
+            width: var(--dial-size);
+            height: var(--dial-size);
+            user-select: none;
+        }
+
+        /* The Numbers positioned around the dial */
+        .label {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+            font-size: 14px;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* Let clicks pass through to the dial */
+        }
+
+        /* The Rotating Knob */
+        #knob {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15), inset 0 2px 5px white;
+            cursor: pointer;
+            z-index: 2;
+            transition: outline 0.1s ease;
+        }
+
+        /* Accessibility Focus Style */
+        #knob:focus {
+            outline: 3px solid var(--primary);
+            outline-offset: 5px;
+        }
+
+        /* The Pointer Dot */
+        #pointer {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        h1 { margin-bottom: 40px; }
+        #status { margin-top: 40px; font-size: 1.5rem; color: var(--primary); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>This slider goes to 11...</h1>
+
+    <div class="dial-wrapper" id="container">
+        <div id="knob" 
+             tabindex="0" 
+             role="slider" 
+             aria-label="Volume" 
+             aria-valuemin="0" 
+             aria-valuemax="11" 
+             aria-valuenow="0">
+            <div id="pointer"></div>
+        </div>
+    </div>
+
+    <div id="status">Volume: 0</div>
+
+    <script>
+        const container = document.getElementById('container');
+        const knob = document.getElementById('knob');
+        const status = document.getElementById('status');
+        
+        const totalValues = 12; // 0 through 11
+        const step = 360 / totalValues;
+        const radius = 90; // Distance of labels from center
+        let currentVal = 0;
+
+        // 1. GENERATE LABELS
+        for (let i = 0; i < totalValues; i++) {
+            const label = document.createElement('div');
+            label.className = 'label';
+            label.innerText = i;
+            
+            // Calculate position: (i / 12) * 360 degrees, adjusted by -90 so 0 is at top
+            const angle = (i * step - 90) * (Math.PI / 180);
+            const x = 100 + radius * Math.cos(angle);
+            const y = 100 + radius * Math.sin(angle);
+            
+            label.style.left = `${x}px`;
+            label.style.top = `${y}px`;
+            container.appendChild(label);
+        }
+
+        // 2. CORE UPDATE LOGIC
+        function setVolume(val) {
+            if (val < 0) val = 0;
+            if (val > 11) val = 11;
+            
+            currentVal = val;
+            
+            // Apply rotation and update text
+            knob.style.transform = `rotate(${val * step}deg)`;
+            status.innerText = `Volume: ${val}`;
+            
+            // Update ARIA for accessibility
+            knob.setAttribute('aria-valuenow', val);
+        }
+
+        // 3. KEYBOARD INTERACTION
+        knob.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                setVolume(currentVal + 1);
+            } else if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                setVolume(currentVal - 1);
+            } else if (e.key === 'Home') {
+                setVolume(0);
+            } else if (e.key === 'End') {
+                setVolume(11);
+            }
+        });
+
+        // 4. MOUSE & TOUCH INTERACTION
+        let isDragging = false;
+
+        const updateFromPointer = (e) => {
+            if (!isDragging) return;
+
+            const rect = container.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            const mouseX = clientX - centerX;
+            const mouseY = clientY - centerY;
+            
+            // atan2 gives angle in radians, convert to degrees and adjust offset
+            let deg = Math.atan2(mouseY, mouseX) * (180 / Math.PI) + 90;
+            if (deg < 0) deg += 360;
+
+            const val = Math.round(deg / step) % totalValues;
+            setVolume(val);
+        };
+
+        // Event Bindings
+        knob.addEventListener('mousedown', () => isDragging = true);
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', updateFromPointer);
+        
+        knob.addEventListener('touchstart', (e) => { e.preventDefault(); isDragging = true; });
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', updateFromPointer);
+
+    </script>
+</body>
+</html>
