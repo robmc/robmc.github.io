@@ -3,65 +3,134 @@
 <head>
 	<style type="text/css">
 		body, html {
-			margin: 0;
-			height: 100%;
+		    margin: 0;
+		    height: 100%;
+		    font-family: sans-serif;
 		}
 
-		#wrapper {
-			position:relative;
-			height: 100%;
-			width: 100%;
-		}
+		#image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1; /* Lower than the UI */
+        }
 
-		#wrapper img{
-			position:absolute;
-			z-index:1;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
+		#image-wrapper img {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-		#wrapper img.active{
+		#image-wrapper img.active{
 			z-index:3;
 		}
 
+		/* Positioning the Pause Button at the top */
+        .pause-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000; /* Ensure it is above everything */
+            background: white;
+            opacity: 0.8;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
 		.center {
-		  position: absolute;
-		  margin: auto;
-		  top: 50%;
-		  left: 50%;
-		  border-radius: 25px;
-		  border: 2px solid #DEDEDE;
-		  height: 300px;
-		  width: 500px;
-		  overflow: hidden;
-		  z-index: 1000;
-		  background-color: white;
-		  transform: translate(-50%, -50%);
-		}
-
-		.pause {
-		  position: absolute;
-		  top: 0;
-		  overflow: hidden;
-		}
-
-		.pause:focus {
-		  position: absolute;
-		  top: 0;
-		  z-index: 1000;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 25px;
+            border: 2px solid #DEDEDE;
+            height: 320px;
+            width: 500px;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            z-index: 1000;
+            background-color: white;
+            text-align: center;
 		}
 
 		h1 {
 			text-align: center;
 		}
+
+		/* Switch Styling */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+		.slider {
+		    border-radius: 34px;
+		    position: absolute;
+		    cursor: pointer;
+		    top: 0; left: 0; right: 0; bottom: 0;
+		    /* Contrast Enhancement: Darkened the gray from #ccc to #595959 */
+		    background-color: #595959; 
+		    transition: .4s;
+		    border: 1px solid #000; /* Added border for shape definition */
+		}
+
+		.slider:before {
+		    border-radius: 50%;
+		    position: absolute;
+		    content: "";
+		    height: 26px;
+		    width: 26px;
+		    left: 4px;
+		    bottom: 3px;
+		    background-color: white;
+		    transition: .4s;
+		    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+		}
+
+        input:checked + .slider {
+            background-color: #0056b3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+		/* --- KEYBOARD FOCUS INDICATION --- */
+		/* This adds a thick blue ring around the slider when tabbing */
+		input:focus-visible + .slider {
+		    outline: 3px solid #FFD700; /* Gold outline for high visibility */
+		    outline-offset: 3px;
+		    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2);
+		}
 	</style>
 </head>
 <body>
-	<button class="pause">Pause the Animation</button>
-	<div id="wrapper">
-	<img class="active" src="/images/dusk.jpg" alt="" />
-	<img src="/images/night.jpg" alt="" />
+	<div class="pause-container">
+        <label for="pause-input">Pause Animation</label>
+        <label class="switch">
+            <input type="checkbox" id="pause-input">
+            <span class="slider"></span>
+        </label>
+    </div>
+	<div id="image-wrapper">
+		<img class="active" src="https://raw.githubusercontent.com/robmc/robmc.github.io/refs/heads/master/images/dusk.jpg" alt="" />
+		<img src="https://raw.githubusercontent.com/robmc/robmc.github.io/refs/heads/master/images/night.jpg" alt="" />
 	</div>
 	<div class="center">
 		<h1>Pause/Stop/Hide</h1>
@@ -72,22 +141,50 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
 	<script>
-		function cycleImages(){
-		      var $active = $('#wrapper .active');
-		      var $next = ($active.next().length > 0) ? $active.next() : $('#wrapper img:first');
-		      $next.css('z-index',2);//move the next image up the pile
-		      $active.fadeOut(1500,function(){//fade out the top image
-			  $active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
-		          $next.css('z-index',3).addClass('active');//make the next image the top one
-		      });
+		$(document).ready(function() {
+		    let imageTimer;
+
+		    function cycleImages() {
+		        // If the pause input is checked, do nothing and don't schedule the next run
+		        if ($('#pause-input').is(':checked')) {
+		            return;
+		        }
+
+		        var $active = $('#image-wrapper .active');
+		        var $next = ($active.next().length > 0) ? $active.next() : $('#image-wrapper img:first');
+
+		        $next.css('z-index', 2);
+		        $active.fadeOut(1500, function() {
+		            $active.css('z-index', 1).show().removeClass('active');
+		            $next.css('z-index', 3).addClass('active');
+		        });
 		    }
 
-		$(document).ready(function(){
-		// run every 7s
-		setInterval('cycleImages()', 7000);
-		})
+		    // Function to start the interval
+		    function startAnimation() {
+		        if (!imageTimer) {
+		            imageTimer = setInterval(cycleImages, 7000);
+		        }
+		    }
+
+		    // Function to stop the interval
+		    function stopAnimation() {
+		        clearInterval(imageTimer);
+		        imageTimer = null;
+		    }
+
+		    // Listen for toggle changes
+		    $('#pause-input').on('change', function() {
+		        if ($(this).is(':checked')) {
+		            stopAnimation();
+		        } else {
+		            startAnimation();
+		        }
+		    });
+
+		    // On by default: start the animation immediately
+		    startAnimation();
+		});
 	</script>
 </body>
-
 </html>
-
