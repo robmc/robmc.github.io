@@ -210,7 +210,8 @@
 			<progress id="progressBar" max="100" value="70"></progress>
 			<span class="percentage">70%</span>
 		</div>
-		<p>This uses <code>flex</code> positioning to align the progress bar with its label and its value. The CSS:</p>
+		<p><strong>Note:</strong> the JAWS screen reader announces the progress bar role and the "70" as the value. The &lt;span&gt; with the percentage is not necessary for screen reader users but I added it for cognitive benefits. There are users who may not easily identify the percentage represented as changing colors so a textual representation is always good.</p>
+		<p>The CSS:</p>
 		<pre class="prettyprint">
 			/*Progress Bar Styles*/
 			progress {
@@ -227,7 +228,7 @@
 			progress::-webkit-progress-value {
 			  background-color: #1DBA1A; /*Sets the color of the progress section*/
 			  border-radius: 7px; /*More curved corners*/
-			  box-shadow: 1px 0px 5px 3px #1DBA1A; /*Sets the shadow/hue around the progress bar which gives it a more 3D feel*/
+			  box-shadow: 1px 0px 3px 1px #1DBA1A; /* Sets the shadow/hue around the progress bar */
 			}
 			progress::-moz-progress-bar {
 			  /* style rules */
@@ -252,7 +253,6 @@
 				&lt;span class="percentage">70%&lt;/span&gt;
 			&lt;/div&gt;
 		</pre>
-		<p><strong>Note:</strong> the JAWS screen reader announces the progress bar role and the "70" as the value. The &lt;span&gt; with the percentage is not necessary for screen reader users but I added it for cognitive benefits. There are users who may not easily identify the percentage represented as changing colors so a textual representation is always good.</p>
 		<footer>
 			<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
 		</footer>
@@ -260,5 +260,6 @@
 	</body>
 
 </html>
+
 
 
