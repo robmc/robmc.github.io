@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Progress</title>
+		<style type="text/css">
+			/*Progress Indicator Styles*/
+			.wrapper {
+				width: 100%;
+			}
+
+			.steps {
+				list-style:none; /*Removes the bullets*/
+				align-items: flex-start; /* Align to the top of the line */
+				display: flex; /*Creates the positioning rule for a flexbox*/
+				flex-direction: row; /*Positions the list items in a row*/
+				padding: 0;
+			}
+
+			.step-container {
+			    display: flex;
+			    flex-direction: column; /* Stacks circle and text */
+			    align-items: center;    /* Centers them horizontally */
+			    width: 100px;           /* Give it enough room for text */
+			}
+
+
+			.step-circle {
+			    height: 40px;
+			    width: 40px;
+			    background-color: #3C66FA;
+			    color: #FFF;
+			    border-radius: 50%;
+			    text-align: center;
+			    line-height: 40px;
+			    flex-shrink: 0;
+			}
+
+			.step-label {
+			    margin-top: 8px;
+			    font-size: 14px;
+			    text-align: center;
+			    color: #333;
+			}
+
+			.separator {
+			    margin-top: 20px; /* Half the height of the circle to center the line */
+			    border-top: 2px solid #3C66FA;
+			    flex-grow: 1;
+			}
+
+			.active {
+				background-color: #FFF;
+				border: 1px solid;
+				border-color: #3C66FA;
+				color: #3C66FA;
+			}
+
+			/*Progress Bar Styles*/
+			progress {
+			  border-radius: 7px; 
+			  width: 200px;
+			  height: 20px;
+			  box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+			}
+			progress::-webkit-progress-bar {
+			  background-color: #E6E6E6; /*The background color of the non-active section*/
+			  border: 1px solid; /*For increased contrast*/
+			  border-radius: 7px; /*Curve those corners*/
+			}
+			progress::-webkit-progress-value {
+			  background-color: #1DBA1A; /*Sets the color of the progress section*/
+			  border-radius: 7px; /*More curved corners*/
+			  box-shadow: 1px 0px 5px 3px #1DBA1A; /*Sets the shadow/hue around the progress bar which gives it a more 3D feel*/
+			}
+			progress::-moz-progress-bar {
+			  /* style rules */
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Progress Components</h1>
+		<h2>Progress Indicator</h2>
+			<div class="wrapper">
+				<ul class="steps">
+					<li class="step-container">
+					    <div class="step-circle">1</div>
+					    <p class="step-label">Some text</p>
+					</li>
+					<span class="separator"></span>
+					<li class="step-container" aria-current="step">
+					    <div class="step-circle active">2</div>
+					    <p class="step-label">Some text</p>
+					</li>
+					<span class="separator"></span>
+					<li class="step-container">
+					    <div class="step-circle">3</div>
+					    <p class="step-label">Some text</p>
+					</li>
+				</ul>
+			</div>
+		<h2>Progress Bar</h2>
+			<label for="progressBar">File progress:</label>
+			<progress id="progressBar" max="100" value="70">70%</progress>
+	</body>
+</html>
