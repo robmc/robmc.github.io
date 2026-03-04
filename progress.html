@@ -81,6 +81,17 @@
 			  /* style rules */
 			}
 
+			.progress-wrapper {
+			    display: flex;
+			    align-items: center; /* Vertically centers the items */
+			    gap: 10px;           /* Adds space between the label, bar, and text */
+			}
+
+			.percentage {
+			    font-weight: bold;
+			    color: #333;
+			}
+
 			footer {
 				margin-top: 50px;
 			}
@@ -109,15 +120,19 @@
 				</ul>
 			</div>
 		<h2>Progress Bar</h2>
-			<p>Styles the HTML5 <code>&lt;progress&gt;</code> element.</p>
+		<p>Styles the HTML5 <code>&lt;progress&gt;</code> element.</p>
+		<div class="progress-wrapper">
 			<label for="progressBar">File progress:</label>
-			<progress id="progressBar" max="100" value="70">70%</progress>
+			<progress id="progressBar" max="100" value="70"></progress>
+			<span class="percentage">70%</span>
+		</div>
 		<footer>
 			<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
 		</footer>
 	</body>
 
 </html>
+
 
 
 
