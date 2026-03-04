@@ -95,10 +95,13 @@
 			footer {
 				margin-top: 50px;
 			}
+			pre {
+				width: 50%;
+			}
 		</style>
 	</head>
 	<body>
-		<h1>Progress Components</h1>
+		<h1 style="text-align: center;">Progress Components</h1>
 		<h2>Progress Indicator</h2>
 			<p>Makes use of the <code>aria-current="step"</code> state (<a href="https://www.w3.org/TR/wai-aria-1.2/#aria-current">Docs</a>) to programmatically indicate the current step instead of relying on color/styling.</p>
 			<div class="wrapper">
@@ -119,6 +122,87 @@
 					</li>
 				</ul>
 			</div>
+			<p>The CSS:</p>
+			<pre class="prettyprint">
+			/*Progress Indicator Styles*/
+			.wrapper {
+				width: 100%; /* Sets the width of the component */
+			}
+
+			.steps {
+				list-style:none; /*Removes the bullets*/
+				align-items: flex-start; /* Aligns to the top of the line */
+				display: flex; /*Creates the positioning rule for a flexbox*/
+				flex-direction: row; /*Positions the list items in a row*/
+				padding: 0;
+			}
+
+			.step-container {
+			    display: flex;          /* Allows for flex positioning of the number and label text */
+			    flex-direction: column; /* Stacks circle and text */
+			    align-items: center;    /* Centers them horizontally */
+			    width: 100px;           /* Give it enough room for text */
+			}
+
+
+			.step-circle { /* Draws the circles around the step number*/
+			    height: 40px;
+			    width: 40px;
+			    background-color: #3C66FA;
+			    color: #FFF;
+			    border-radius: 50%;
+			    text-align: center;
+			    line-height: 40px;
+			    flex-shrink: 0; /* Keeps the circles from squishing into ovals when resizing */
+			}
+
+			.step-label { /* The label text beneath the step count */
+			    margin-top: 8px;
+			    font-size: 14px;
+			    text-align: center;
+			    color: #333;
+			}
+
+			.separator { /* The lines between the steps */
+			    margin-top: 20px; /* Half the height of the circle to center the line */
+			    border-top: 2px solid #3C66FA;
+			    flex-grow: 1;
+			}
+
+			.active { /* Stling for the active step number */
+				background-color: #FFF;
+				border: 1px solid;
+				border-color: #3C66FA;
+				color: #3C66FA;
+			}
+			.unvisited { /* Styling for the unvisited step circles */
+				background-color: #E8E8E8;
+				border: 1px solid;
+				border-color: #3C66FA;
+				color: #000;
+			}
+			</pre>
+			<p>The HTML:</p>
+			<pre class="prettyprint">
+				&lt;div class="wrapper"&gt;
+					&lt;ul class="steps"&gt;
+						&lt;li class="step-container"&gt;
+						    &lt;div class="step-circle"&gt;1&lt;/div&gt;
+						    &lt;p class="step-label"&gt;Completed step&lt;/p&gt;
+						&lt;/li>
+						&lt;span class="separator"&gt;&lt;/span&gt;
+						&lt;li class="step-container" aria-current="step"&gt;
+						    &lt;div class="step-circle active"&gt;2&lt;/div&gt;
+						    &lt;p class="step-label"&gt;Active Step&lt;/p&gt;
+						&lt;/li>
+						&lt;span class="separator"&gt;&lt;/span&gt;
+						&lt;li class="step-container"&gt;
+						    &lt;div class="step-circle unvisited"&gt;3&lt;/div&gt;
+						    &lt;p class="step-label"&gt;Unvisited Step&lt;/p&gt;
+						&lt;/li&gt;
+					&lt;/ul&gt;
+				&lt;/div&gt;
+			</pre>
 		<h2>Progress Bar</h2>
 		<p>Styles the HTML5 <code>&lt;progress&gt;</code> element.</p>
 		<div class="progress-wrapper">
@@ -126,14 +210,53 @@
 			<progress id="progressBar" max="100" value="70"></progress>
 			<span class="percentage">70%</span>
 		</div>
+		<p>This uses <code>flex</code> positioning to align the progress bar with its label and its value. The CSS:</p>
+		<pre class="prettyprint">
+			/*Progress Bar Styles*/
+			progress {
+			  border-radius: 7px; 
+			  width: 200px;
+			  height: 20px;
+			  box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+			}
+			progress::-webkit-progress-bar {
+			  background-color: #E6E6E6; /*The background color of the non-active section*/
+			  border: 1px solid; /*For increased contrast*/
+			  border-radius: 7px; /*Curve those corners*/
+			}
+			progress::-webkit-progress-value {
+			  background-color: #1DBA1A; /*Sets the color of the progress section*/
+			  border-radius: 7px; /*More curved corners*/
+			  box-shadow: 1px 0px 5px 3px #1DBA1A; /*Sets the shadow/hue around the progress bar which gives it a more 3D feel*/
+			}
+			progress::-moz-progress-bar {
+			  /* style rules */
+			}
+
+			.progress-wrapper {
+			    display: flex;
+			    align-items: center; /* Vertically centers the items */
+			    gap: 10px;           /* Adds space between the label, bar, and text */
+			}
+
+			.percentage {
+			    font-weight: bold;
+			    color: #333;
+			}
+		</pre>
+		<p>The HTML:</p>
+		<pre class="prettyprint">
+			&lt;div class="progress-wrapper"&gt;
+				&lt;label for="progressBar">File progress:&lt;/label&gt;
+				&lt;progress id="progressBar" max="100" value="70"&gt;&lt;/progress&gt;
+				&lt;span class="percentage">70%&lt;/span&gt;
+			&lt;/div&gt;
+		</pre>
+		<p><strong>Note:</strong> the JAWS screen reader announces the progress bar role and the "70" as the value. The &lt;span&gt; with the percentage is not necessary for screen reader users but I added it for cognitive benefits. There are users who may not easily identify the percentage represented as changing colors so a textual representation is always good.</p>
 		<footer>
 			<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
 		</footer>
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
 	</body>
 
 </html>
-
-
-
-
-
