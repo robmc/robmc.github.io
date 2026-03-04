@@ -80,6 +80,7 @@
 	<body>
 		<h1>Progress Components</h1>
 		<h2>Progress Indicator</h2>
+			<p>Makes use of the <code>aria-current="step"</code> state (<a href="https://www.w3.org/TR/wai-aria-1.2/#aria-current">Docs</a>) to programmatically indicate the current step instead of relying on color/styling.</p>
 			<div class="wrapper">
 				<ul class="steps">
 					<li class="step-container">
@@ -99,7 +100,9 @@
 				</ul>
 			</div>
 		<h2>Progress Bar</h2>
+			<p>Styles the HTML5 <code>&lt;progress&gt;</code> element.</p>
 			<label for="progressBar">File progress:</label>
 			<progress id="progressBar" max="100" value="70">70%</progress>
 	</body>
+
 </html>
