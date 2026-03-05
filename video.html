@@ -3,48 +3,114 @@
 	<head>
 		<title>Video Accessibility</title>
 		<style type="text/css">
+			body, html {
+				margin: 0;
+				top: 0;
+			}
+
 			h1 {
+				text-align: center;
+				margin-top: 0; /* Removes the push from the top */
+			}
+
+			h2 {
+				text-align: center;
+			}
+
+			body {
+				background-color: #CFCFCF;
+			}
+
+			.wrapper {
+				width: 50%;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: #FFF;
+			}
+
+			.video-wrapper {
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
 				text-align: center;
 			}
 		</style>
 	</head>
 	<body>
-		<h1>Video Accessibility</h1>
-		<h2>Players</h2>
-		<p>The following video players were built with the intent of being accessible video playback controls:</p>
-		<ul>
-			<li><a href="https://ableplayer.github.io/ableplayer/ ">Able Player</a></li>
-			<li><a href="https://www.accessibilityoz.com/ozplayer/ ">OzPlayer</a></li>
-			<li><a href="https://github.com/sampotts/plyr ">Plyr</a></li>
-		</ul>
-		<p>When considering any commercial video player, clients must ask platform vendors for a statement of conformance with applicable WCAG and/or Section 508 standards. This will help better understand the risks involved with potential use.</p>
-		<h2>Terms</h2>
-		<h3>Captions</h3>
-		<p>Captions are intended for individuals who are deaf or hard of hearing however they have applications that benefit everyone. Captions can either be open or closed.</p>
-		<ul>
-			<li>Closed captions can have their visibility toggled by users. This is typically done via a [CC] button within player controls.</li>
-			<li>Open captions are always visible and can't be disabled. They are part of the video.</li>
-		</ul>
-		<h3>Subtitles</h3>
-		<p>Subtitles are a translation of the audio into another language. As with Captions, these can also be Open or Closed. These are not an accessibility feature as they are intended to translate rather than interpret.</p>
-		<h3>Audio Description</h3>
-		<p>Audio Description is an audible narration that describes significant visual aspects of the content. The audio description never interrupts dialog and instead spoken within gaps of dialog. The following video is an excellent example of audio description:</p>
-		<iframe width="1071" height="602" src="https://www.youtube.com/embed/peDy2st2XpQ" title="Self-Driving Car Test: Steve Mahan (Audio Described)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-		<h3>Self-described Videos</h3>
-		<p>Self-described videos are those where the information is all conveyed or explained through both the audio and video. This can either be done by narration or it can be part of the dialog.</p>
-		<ul>
-			<li>Narration example: The end of an advertisement video visually displays a website address. The audio track includes a narrator announcing "Go to the address www . some address . com for more information".</li>
-			<li>Dialog example: A tutorial video where the instructor verbally describes each step as they are performing them.</li>
-		</ul>
-		<h3>Transcript</h3>
-		<p>A transcript is a textual alternative to the multimedia content. Transcripts include the spoken dialog as well as descriptions of non-speech information such as sound effects or laughter. Not only is the dialog displayed but it also identifies the speaker each time the speaker changes to ensure users can identify who is speaking.</p>
-		<ul>
-			<li><a href="https://www.npr.org/transcripts/121986560">Example Transcript - NPR Interview with Tracy Morgan</a></li>
-		</ul>
-		<footer>
-			<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
-		</footer>
+		<div class="wrapper">
+			<h1>Video Accessibility</h1>
+			<h2>Players</h2>
+			<p>The following video players were built with the intent of being accessible video playback controls:</p>
+			<ul>
+				<li><a href="https://ableplayer.github.io/ableplayer/ ">Able Player</a></li>
+				<li><a href="https://www.accessibilityoz.com/ozplayer/ ">OzPlayer</a></li>
+				<li><a href="https://github.com/sampotts/plyr ">Plyr</a></li>
+			</ul>
+			<p>When considering any commercial video player, clients must ask platform vendors for a statement of conformance with applicable WCAG and/or Section 508 standards. This will help better understand the risks involved with potential use.</p>
+			<h2>Terms</h2>
+			<h3>Captions</h3>
+			<p>Captions are intended for individuals who are deaf or hard of hearing however they have applications that benefit everyone. The example I like to give with clients is that televisions in loud areas like bars or airports typically have captions on to allow people to get information despite the noisy environment. Captions can either be open or closed.</p>
+			<ul>
+				<li>Closed captions can have their visibility toggled by users. This is typically done via a [CC] button within player controls.</li>
+				<li>Open captions are always visible and can't be disabled. They are part of the video.</li>
+			</ul>
+			<h3>Subtitles</h3>
+			<p>Subtitles are a translation of the audio into another language. As with Captions, these can also be Open or Closed. These are not an accessibility feature as they are intended to translate rather than interpret.</p>
+			<h3>Audio Description</h3>
+			<p>Audio Description is an audible narration that describes significant visual aspects of the content. The audio description never interrupts dialog and instead spoken within gaps of dialog. The following video is an excellent example of audio description:</p>
+			<div class="video-wrapper">
+				<iframe width="80%" src="https://www.youtube.com/embed/peDy2st2XpQ" title="Self-Driving Car Test: Steve Mahan (Audio Described)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			</div>
+			<h3>Self-described Videos</h3>
+			<p>Self-described videos are those where the information is all conveyed or explained through both the audio and video. This can either be done by narration or it can be part of the dialog.</p>
+			<ul>
+				<li>Narration example: The end of an advertisement video visually displays a website address. The audio track includes a narrator announcing "Go to the address www . some address . com for more information".</li>
+				<li>Dialog example: A tutorial video where the instructor verbally describes each step as they are performing them.</li>
+			</ul>
+			<h3>Transcript</h3>
+			<p>A transcript is a textual alternative to the multimedia content. Transcripts include the spoken dialog as well as descriptions of non-speech information such as sound effects or laughter. Not only is the dialog displayed but it also identifies the speaker each time the speaker changes to ensure users can identify who is speaking.</p>
+			<ul>
+				<li><a href="https://www.npr.org/transcripts/121986560">Example Transcript - NPR Interview with Tracy Morgan</a></li>
+			</ul>
+			<h2>Applicable Standards</h2>
+			<h3>WCAG 2.2</h3>
+			<ul>
+				<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded.html">SC 1.2.1 Audio-only and Video-only (Prerecorded)(Level A)</a></li>
+					<ul>
+						<li>For prerecorded audio-<strong>only</strong> or video-<strong>only</strong> content</li>
+						<ul>
+							<li><strong>Audio-only</strong> content must provide an equivalent to auditory information. An audio-only podcast, for example, could include a text transcript of the dialog.</li>
+							<li><strong>Video-only</strong> content must provide an alternative that presents an equivalent of the visual information. A short tutorial video with no dialog, for example, must provide a separate audio track or a textual description of the video content.</li>
+						</ul>
+					</ul>
+				<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html">SC 1.2.2 Captions (Prerecorded)(Level A)</a></li>
+					<ul>
+						<li>All prerecorded audio must provide captions for users who are deaf or hard of hearing.</li>
+					</ul>
+				<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded.html">SC 1.2.3 Audio Description or Media Alternative (Prerecorded)(Level A)</a></li>
+					<ul>
+						<li>An audio description track <strong>OR</strong> a media alternative must be provided for multimedia. If a video is self-described, an audio description is not necessary.</li>
+					</ul>
+				<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-live.html">SC 1.2.4 Captions (Live)(Level AA)</a></li>
+					<ul>
+						<li>All live audio content in synchronized media must provide captions.</li>
+					</ul>
+				<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-description-prerecorded.html">SC 1.2.5 Audio Description (Prerecorded)(Level AA)</a></li>
+					<ul>
+						<li>A synchronized spoken description of visual content must be provided with videos. <strong>Note:</strong> This is not necessary if the video is self-described wherein the information conveyed visually is also conveyed in the dialog or other audio.<li>
+					</ul>
+				<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-control.html">SC 1.4.2 Audio Control (Level A)</a></li>
+					<ul>
+						<li>Any audio that plays automatically for more than 3 seconds must provide a metho to pause or stop the audio or a method to control the audio volume separate from the system volume. Basically, you must give the user an option to disable the audio. <strong>Note:</strong> It's never a good idea to auto-play audio. It can be disruptive and distracting and may interfere with assistive technology. For example, a user navigating with a screen reader may not be able to hear how to stop or pause the audio because the audio track may be conflicting with their screen reader output.</li>
+					</ul>
+				<li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html">SC 2.2.2 Pause, Stop, Hide (Level A)</a></li>
+					<ul>
+						<li>Blinking, scrolling, or auto-updating content that (1) starts automatically, (2) lasts more than 5 seconds, and (3) is presented with other content must provide a method for the user to pause, stop, or hide the information. Continuous movement can be distracting to those with cognitive disabilities and attention deficits.</li>
+					</ul>
+			</ul>
+			<footer>
+				<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
+			</footer>
+		</div>
 	</body>
-
 </html>
-
