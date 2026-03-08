@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Fieldset Styling</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+		<style type="text/css">
+			body {
+			  margin: 3em auto;
+			  font-family: Cabin, serif;
+			}
+			h1 {
+				text-align: center;
+			}
+
+			.wrapper {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				justify-content: space-around;
+			}
+
+			fieldset {
+				width: 25%;
+				border: 2px solid #000;
+				border-radius: 25px;
+				padding: 2em;
+			}
+
+			legend {
+				color: #FFF;
+				background-color: #000;
+				border-radius: 25px;
+				padding: 0.25em 1em;
+				float: none;     /* Overrides Bootstrap's float: left */
+    			width: auto;     /* Overrides Bootstrap's width: 100% */
+    			margin: 0;		 /* Removes default spacing */
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Fieldset/Legend Styling</h1>
+		<p>Just some styling I like when using Fieldsets and Legends.</p>
+		<div class="wrapper">
+			<fieldset>
+				<legend>Billing</legend>
+				<label for="billing-address1" class="form-label">Address <span aria-hidden="true">*</span></label>
+				<input type="text" class="form-control" id="billing-address1" aria-required="true">
+				<label for="billing-address2" class="form-label">Address Line 2 (optional)</label>
+				<input type="text" class="form-control" id="billing-address2">
+				<label for="billing-city" class="form-label">City</label>
+				<input type="text" class="form-control" id="billing-city">
+				<label for="billing-state" class="form-label">State</label>
+				<select name="state" class="form-select" id="billing-state">
+				  <option value="" selected="selected">Select a State</option>
+				  <option value="AL">Alabama</option>
+				  <option value="AK">Alaska</option>
+				  <option value="AZ">Arizona</option>
+				  <option value="AR">Arkansas</option>
+				  <option value="CA">California</option>
+				  <option value="CO">Colorado</option>
+				  <option value="CT">Connecticut</option>
+				  <option value="DE">Delaware</option>
+				  <option value="DC">District Of Columbia</option>
+				  <option value="FL">Florida</option>
+				  <option value="GA">Georgia</option>
+				  <option value="HI">Hawaii</option>
+				  <option value="ID">Idaho</option>
+				  <option value="IL">Illinois</option>
+				  <option value="IN">Indiana</option>
+				  <option value="IA">Iowa</option>
+				  <option value="KS">Kansas</option>
+				  <option value="KY">Kentucky</option>
+				  <option value="LA">Louisiana</option>
+				  <option value="ME">Maine</option>
+				  <option value="MD">Maryland</option>
+				  <option value="MA">Massachusetts</option>
+				  <option value="MI">Michigan</option>
+				  <option value="MN">Minnesota</option>
+				  <option value="MS">Mississippi</option>
+				  <option value="MO">Missouri</option>
+				  <option value="MT">Montana</option>
+				  <option value="NE">Nebraska</option>
+				  <option value="NV">Nevada</option>
+				  <option value="NH">New Hampshire</option>
+				  <option value="NJ">New Jersey</option>
+				  <option value="NM">New Mexico</option>
+				  <option value="NY">New York</option>
+				  <option value="NC">North Carolina</option>
+				  <option value="ND">North Dakota</option>
+				  <option value="OH">Ohio</option>
+				  <option value="OK">Oklahoma</option>
+				  <option value="OR">Oregon</option>
+				  <option value="PA">Pennsylvania</option>
+				  <option value="RI">Rhode Island</option>
+				  <option value="SC">South Carolina</option>
+				  <option value="SD">South Dakota</option>
+				  <option value="TN">Tennessee</option>
+				  <option value="TX">Texas</option>
+				  <option value="UT">Utah</option>
+				  <option value="VT">Vermont</option>
+				  <option value="VA">Virginia</option>
+				  <option value="WA">Washington</option>
+				  <option value="WV">West Virginia</option>
+				  <option value="WI">Wisconsin</option>
+				  <option value="WY">Wyoming</option>
+				</select>
+				<label for="billing-zip" class="form-label">Zip</label>
+				<input type="text" class="form-control" id="billing-zip">
+			</fieldset>
+			<fieldset>
+				<legend>Shipping</legend>
+				<label for="shipping-address1" class="form-label">Address <span aria-hidden="true">*</span></label>
+				<input type="text" class="form-control" id="shipping-address1" aria-required="true">
+				<label for="shipping-address2" class="form-label">Address Line 2 (optional)</label>
+				<input type="text" class="form-control" id="shipping-address2">
+				<label for="shipping-city" class="form-label">City</label>
+				<input type="text" class="form-control" id="shipping-city">
+				<label for="shipping-state" class="form-label">State</label>
+				<select name="state" class="form-select" id="shipping-state">
+				  <option value="" selected="selected">Select a State</option>
+				  <option value="AL">Alabama</option>
+				  <option value="AK">Alaska</option>
+				  <option value="AZ">Arizona</option>
+				  <option value="AR">Arkansas</option>
+				  <option value="CA">California</option>
+				  <option value="CO">Colorado</option>
+				  <option value="CT">Connecticut</option>
+				  <option value="DE">Delaware</option>
+				  <option value="DC">District Of Columbia</option>
+				  <option value="FL">Florida</option>
+				  <option value="GA">Georgia</option>
+				  <option value="HI">Hawaii</option>
+				  <option value="ID">Idaho</option>
+				  <option value="IL">Illinois</option>
+				  <option value="IN">Indiana</option>
+				  <option value="IA">Iowa</option>
+				  <option value="KS">Kansas</option>
+				  <option value="KY">Kentucky</option>
+				  <option value="LA">Louisiana</option>
+				  <option value="ME">Maine</option>
+				  <option value="MD">Maryland</option>
+				  <option value="MA">Massachusetts</option>
+				  <option value="MI">Michigan</option>
+				  <option value="MN">Minnesota</option>
+				  <option value="MS">Mississippi</option>
+				  <option value="MO">Missouri</option>
+				  <option value="MT">Montana</option>
+				  <option value="NE">Nebraska</option>
+				  <option value="NV">Nevada</option>
+				  <option value="NH">New Hampshire</option>
+				  <option value="NJ">New Jersey</option>
+				  <option value="NM">New Mexico</option>
+				  <option value="NY">New York</option>
+				  <option value="NC">North Carolina</option>
+				  <option value="ND">North Dakota</option>
+				  <option value="OH">Ohio</option>
+				  <option value="OK">Oklahoma</option>
+				  <option value="OR">Oregon</option>
+				  <option value="PA">Pennsylvania</option>
+				  <option value="RI">Rhode Island</option>
+				  <option value="SC">South Carolina</option>
+				  <option value="SD">South Dakota</option>
+				  <option value="TN">Tennessee</option>
+				  <option value="TX">Texas</option>
+				  <option value="UT">Utah</option>
+				  <option value="VT">Vermont</option>
+				  <option value="VA">Virginia</option>
+				  <option value="WA">Washington</option>
+				  <option value="WV">West Virginia</option>
+				  <option value="WI">Wisconsin</option>
+				  <option value="WY">Wyoming</option>
+				</select>
+				<label for="shipping-zip" class="form-label">Zip</label>
+				<input type="text" class="form-control" id="shipping-zip">
+			</fieldset>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+	</body>
+</html>
