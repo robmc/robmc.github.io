@@ -50,10 +50,10 @@
 				<input type="text" class="form-control" id="billing-address1" aria-required="true">
 				<label for="billing-address2" class="form-label">Address Line 2 (optional)</label>
 				<input type="text" class="form-control" id="billing-address2">
-				<label for="billing-city" class="form-label">City</label>
-				<input type="text" class="form-control" id="billing-city">
-				<label for="billing-state" class="form-label">State</label>
-				<select name="state" class="form-select" id="billing-state">
+				<label for="billing-city" class="form-label">City <span aria-hidden="true">*</span></label>
+				<input type="text" class="form-control" id="billing-city" aria-required="true">
+				<label for="billing-state" class="form-label">State <span aria-hidden="true">*</span></label>
+				<select name="state" class="form-select" id="billing-state" aria-required="true">
 				  <option value="" selected="selected">Select a State</option>
 				  <option value="AL">Alabama</option>
 				  <option value="AK">Alaska</option>
@@ -106,9 +106,9 @@
 				  <option value="WV">West Virginia</option>
 				  <option value="WI">Wisconsin</option>
 				  <option value="WY">Wyoming</option>
-				</select>
-				<label for="billing-zip" class="form-label">Zip</label>
-				<input type="text" class="form-control" id="billing-zip">
+				 </select>
+				<label for="billing-zip" class="form-label">Zip <span aria-hidden="true">*</span></label>
+				<input type="text" class="form-control" id="billing-zip" aria-required="true">
 			</fieldset>
 			<fieldset>
 				<legend>Shipping</legend>
@@ -116,10 +116,10 @@
 				<input type="text" class="form-control" id="shipping-address1" aria-required="true">
 				<label for="shipping-address2" class="form-label">Address Line 2 (optional)</label>
 				<input type="text" class="form-control" id="shipping-address2">
-				<label for="shipping-city" class="form-label">City</label>
-				<input type="text" class="form-control" id="shipping-city">
-				<label for="shipping-state" class="form-label">State</label>
-				<select name="state" class="form-select" id="shipping-state">
+				<label for="shipping-city" class="form-label">City <span aria-hidden="true">*</span></label>
+				<input type="text" class="form-control" id="shipping-city" aria-required="true">
+				<label for="shipping-state" class="form-label">State <span aria-hidden="true">*</span></label>
+				<select name="state" class="form-select" id="shipping-state" aria-required="true">
 				  <option value="" selected="selected">Select a State</option>
 				  <option value="AL">Alabama</option>
 				  <option value="AK">Alaska</option>
@@ -173,10 +173,11 @@
 				  <option value="WI">Wisconsin</option>
 				  <option value="WY">Wyoming</option>
 				</select>
-				<label for="shipping-zip" class="form-label">Zip</label>
-				<input type="text" class="form-control" id="shipping-zip">
+				<label for="shipping-zip" class="form-label">Zip <span aria-hidden="true">*</span></label>
+				<input type="text" class="form-control" id="shipping-zip" aria-required="true">
 			</fieldset>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
 </html>
+
