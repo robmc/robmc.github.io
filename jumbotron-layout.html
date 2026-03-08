@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Nav Layout</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+			body, html {
+				margin: 0;
+				height: 100%;
+				background-color: #212529 !important;
+			}
+
+			.wrapper {
+				height: 100%;
+				position: relative;
+			}
+
+			header {
+				height: 50px;
+				width: 100%;
+				position: sticky;
+				margin-top: 0;
+				color: #FFF;
+				background-color: #8F00B3;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			footer {
+				height: 150px;
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				background-color: #2B3035;
+				color: #FFF;
+				display: flex;
+				justify-content: space-evenly;
+			}
+			.item {
+			  flex-basis: auto; /* default auto */
+			}
+			.jumbotron {
+				margin-top: 50px;
+				text-align: center;
+			    color: #000;
+			    padding: 2rem;
+			    background-color: #E9ECEF;
+			}
+			
+			.avatar {
+				background-color: #FFF;
+				border-radius: 25px;
+				color: #000;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				margin-right: 25px;
+			}
+
+			.searchContent {
+				display: flex;
+			}
+
+			.skipLink {
+			  position: absolute;
+			  display: inline-block;
+			  padding: .375rem .75rem;
+			  line-height: 1;
+			  font-size: 1.25rem;
+			  background-color: black;
+			  color: white;
+			  /* Ensure the Y position is set to zero and any movement on the transform property */
+			  transform: translateY(0);
+			  transition: transform 250ms ease-in;
+			  z-index: 1000;
+			}
+
+			.skipLink:not(:focus) {
+			  transform: translateY(-2rem);
+			}
+		</style>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	</head>
+	<body>
+		<a href="#main" class="skipLink">Skip to main content</a>
+		<header>
+			<div class="searchContent">
+				<input style="width: 150px; height: 40px; margin-left: 20px; margin-right: 5px;" class="form-control" type="search" placeholder="Search" aria-label="Search">
+	      		<button style="height: 40px;" type="button" class="btn btn-light" type="Submit">Search</button>
+      		</div>
+      		<div class="avatar">RM</div>
+		</header>
+		<div id="main" class="jumbotron p-5 rounded-4" tabindex="-1">
+		  <h1 class="display-4">Hello, world!</h1>
+		  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		  <hr class="my-4">
+		  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+		  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a><br />
+		  <a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
+		</div>
+		<footer>
+			  <div class="item"><h2>Robert<br />McCaffery</h2></div>
+			  <div class="item"><h3>About Us</h3>
+			  	<ul>
+			  		<li>Some Link 1</li>
+			  		<li>Some Link 2</li>
+			  		<li>Some Link 3</li>
+			  	</ul>
+			  </div>
+			  <div class="item">Resources
+			  	<ul>
+			  		<li>Some Link 1</li>
+			  		<li>Some Link 2</li>
+			  		<li>Some Link 3</li>
+			  	</ul>
+			  </div>  
+			  <div class="item">Contact Us
+			  	<ul>
+			  		<li>Some Link 1</li>
+			  		<li>Some Link 2</li>
+			  		<li>Some Link 3</li>
+			  	</ul>
+			  </div>
+			  <div class="item">&copy; 2026 Robert McCaffery</div>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+	</body>
+</html>
