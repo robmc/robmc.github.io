@@ -38,6 +38,13 @@
     			width: auto;     /* Overrides Bootstrap's width: 100% */
     			margin: 0;		 /* Removes default spacing */
 			}
+
+			.body-wrapper {
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 10px;
+				width: 80%;
+			}
 		</style>
 	</head>
 	<body>
@@ -177,7 +184,34 @@
 				<input type="text" class="form-control" id="shipping-zip" aria-required="true">
 			</fieldset>
 		</div>
+		<div class="body-wrapper">
+			<p>The CSS:</p>
+			<pre class="prettyprint">
+				.wrapper { 					/* Container for the fieldsets */
+					display: flex;				/* Allows them to be flex positioned */
+					flex-direction: row;			/* Positions the fieldsets horizontally */
+					flex-wrap: nowrap;			/* Keeps them on the same row when responsive */
+					justify-content: space-around;  	/* Spacing */
+				}
+
+				fieldset {
+					width: 25%;				/* Keeps them 1/4 the size of the viewport */
+					border: 2px solid #000;			/* Puts a 2px thick black border around the fielset */
+					border-radius: 25px;			/* Rounds the corners */
+					padding: 2em;				/* Adds padding between the border and the form inputs */
+
+				legend {
+					color: #FFF;				/* White text */
+					background-color: #000; 		/* Black background */
+					border-radius: 25px;			/* Rounds the corners */
+					padding: 0.25em 1em;			/* Makes the black shape around the white text larger */
+					float: none;     			/* Overrides Bootstrap's float: left */
+					width: auto;     			/* Overrides Bootstrap's width: 100% */
+					margin: 0;		 		/* Removes default spacing */
+				}
+			</pre>
+		</div>
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
 </html>
-
