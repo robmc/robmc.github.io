@@ -12,6 +12,7 @@
             --day-sky: #87CEEB;
             --night-sky: #1e293b;
             --focus-glow: #2563eb;
+            --link-color: #2563eb;
         }
 
         body {
@@ -28,6 +29,11 @@
         body.dark-mode {
             background-color: var(--bg-dark);
             color: #f1f5f9;
+        }
+
+        /* Adjust link colors for dark mode */
+        body.dark-mode footer a {
+            color: #94a3b8;
         }
 
         .window-container {
@@ -69,17 +75,17 @@
             cursor: pointer;
         }
 
-        /* Window Panes */
+        /* Window Panes - Increased z-index to 20 */
         .panes::before, .panes::after {
             content: "";
             position: absolute;
             background: var(--window-border);
-            z-index: 10;
+            z-index: 20; /* Moved in front of the handle */
         }
         .panes::before { width: 100%; height: 4px; top: 50%; left: 0; transform: translateY(-50%); }
         .panes::after { height: 100%; width: 4px; left: 50%; top: 0; transform: translateX(-50%); }
 
-        /* The Handle (Sun/Moon) */
+        /* The Handle (Sun/Moon) - Decreased z-index to 15 (or lower) */
         .handle {
             position: absolute;
             height: 44px;
@@ -89,7 +95,7 @@
             background-color: #FFD700;
             transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             border-radius: 50%;
-            z-index: 15;
+            z-index: 15; /* Now sits behind the panes */
             box-shadow: 0 0 20px #fff176;
         }
 
@@ -154,6 +160,21 @@
             font-size: 1.1rem;
             font-weight: 600;
         }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--focus-glow);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -176,11 +197,12 @@
         <div class="label-text" aria-live="polite">
             Current Theme: <span id="mode-status">Light Mode</span>
         </div>
+
+        <footer>
+            <a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | 
+            <a href="http://robertjmccaffery.com/">Home</a>
+        </footer>
     </div>
-    <br />
-    <footer>
-        <a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
-    </footer>
 
     <script>
         const toggle = document.getElementById('mode-toggle');
@@ -197,6 +219,4 @@
         });
     </script>
 </body>
-
 </html>
-
