@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Window Mode Toggle</title>
+    <style>
+        :root {
+            --bg-light: #f4f7f6;
+            --bg-dark: #0f172a;
+            --window-border: #5d4037;
+            --day-sky: #87CEEB;
+            --night-sky: #1e293b;
+            --focus-glow: #2563eb;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--bg-light);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: #f1f5f9;
+        }
+
+        .window-container {
+            text-align: center;
+        }
+
+        /* The Main Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 140px;
+            height: 80px;
+        }
+
+        /* Visually hide the checkbox but keep it in the focus order */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        /* Focus State for Keyboard Users */
+        .switch input:focus-visible + .slider {
+            outline: 3px solid var(--focus-glow);
+            outline-offset: 4px;
+        }
+
+        /* The Window Frame & Sky */
+        .slider {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--day-sky);
+            transition: 0.5s;
+            border: 6px solid var(--window-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        /* Window Panes */
+        .panes::before, .panes::after {
+            content: "";
+            position: absolute;
+            background: var(--window-border);
+            z-index: 10;
+        }
+        .panes::before { width: 100%; height: 4px; top: 50%; left: 0; transform: translateY(-50%); }
+        .panes::after { height: 100%; width: 4px; left: 50%; top: 0; transform: translateX(-50%); }
+
+        /* The Handle (Sun/Moon) */
+        .handle {
+            position: absolute;
+            height: 44px;
+            width: 44px;
+            left: 8px;
+            top: 12px;
+            background-color: #FFD700;
+            transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-radius: 50%;
+            z-index: 15;
+            box-shadow: 0 0 20px #fff176;
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.8;
+            transition: 0.5s;
+            z-index: 5;
+        }
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .c1 { width: 40px; height: 15px; top: 15px; left: 10px; animation: float 4s infinite ease-in-out; }
+        .c1::before { width: 20px; height: 20px; top: -10px; left: 5px; }
+        .c1::after { width: 15px; height: 15px; top: -7px; left: 18px; }
+
+        .c2 { width: 30px; height: 10px; top: 45px; left: 70px; animation: float 6s infinite ease-in-out reverse; }
+        .c2::before { width: 15px; height: 15px; top: -8px; left: 4px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        /* Stars */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 100%;
+            left: 0;
+            transition: 0.5s;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, white, transparent),
+                radial-gradient(1px 1px at 50px 10px, white, transparent),
+                radial-gradient(2px 2px at 80px 50px, white, transparent),
+                radial-gradient(1px 1px at 110px 20px, white, transparent);
+            z-index: 4;
+        }
+
+        /* Dark Mode Activations */
+        input:checked + .slider { background-color: var(--night-sky); }
+        
+        input:checked + .slider .handle {
+            transform: translateX(68px);
+            background-color: #e2e8f0;
+            box-shadow: 0 0 15px rgba(255,255,255,0.4);
+        }
+
+        input:checked + .slider .stars { top: 0; }
+        input:checked + .slider .cloud { opacity: 0; transform: translateY(-20px); }
+
+        .label-text {
+            margin-top: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window-container">
+        <label class="switch">
+            <input type="checkbox" 
+                   id="mode-toggle" 
+                   aria-label="Toggle between Light and Dark mode"
+                   role="switch">
+            <span class="slider">
+                <span class="panes" aria-hidden="true"></span>
+                <span class="cloud c1" aria-hidden="true"></span>
+                <span class="cloud c2" aria-hidden="true"></span>
+                <span class="stars" aria-hidden="true"></span>
+                <span class="handle" aria-hidden="true"></span>
+            </span>
+        </label>
+        
+        <div class="label-text" aria-live="polite">
+            Current Theme: <span id="mode-status">Light Mode</span>
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.getElementById('mode-toggle');
+        const body = document.body;
+        const status = document.getElementById('mode-status');
+
+        toggle.addEventListener('change', () => {
+            const isDark = toggle.checked;
+            body.classList.toggle('dark-mode', isDark);
+            status.textContent = isDark ? "Dark Mode" : "Light Mode";
+            
+            // Explicitly updating the aria-checked state for the 'switch' role
+            toggle.setAttribute('aria-checked', isDark);
+        });
+    </script>
+</body>
+</html>
