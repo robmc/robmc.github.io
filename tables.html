@@ -198,6 +198,27 @@
 					</tr>
 				</tbody>
 			</table>
+			<pre class="prettyprint">
+				&lt;table role="presentation" class="noBorder"&gt;
+					&lt;tbody&gt;
+						&lt;tr&gt;
+							&lt;td class="noBorder">This table&lt;/td&gt;
+							&lt;td class="noBorder">is used for layout only&lt;/td&gt;
+							&lt;td class="noBorder">and does not contain tabular information.&lt;/td&gt;
+						&lt;/tr"&gt;
+						&lt;tr style="background: #FFF;""&gt;
+							&lt;td class="noBorder">For these, we don't&lt;/td&gt;
+							&lt;td class="noBorder">want to convey&lt;/td&gt;
+							&lt;td class="noBorder">the table structure to screen readers.&lt;/td&gt;
+						&lt;/tr&gt;
+						&lt;tr&gt;
+							&lt;td class="noBorder">To ensure the table&lt;/td&gt;
+							&lt;td class="noBorder">markup is not conveyed&lt;/td&gt;
+							&lt;td class="noBorder">we use role="presentation".&lt;/td&gt;
+						&lt;/tr&gt;
+					&lt;/tbody&gt;
+				&lt;/table&gt;
+			</pre>
 			<h2>ARIA Table</h2>
 			<p>This table uses &lt;div&gt; elements to create cells and CSS to style the columns and rows. HTML &lt;table&gt; markup was not used. To create the necessary roles, ARIA markup is used. The following roles are used:</p>
 			<ul>
