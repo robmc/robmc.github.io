@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CSS Scrolling Road</title>
+		<style type="text/css">
+			html, body {
+				height: 100%;
+				margin: 0;
+			}
+			.wrapper {
+				width: 100%;
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				position: relative;
+			}
+			.grass {
+				height: 35%;
+				width: 100%;
+				background-color: #004d04;
+				display: flex;
+   				flex-direction: column;
+    			align-items: center;
+    			justify-content: center;
+			}
+			.road {
+			    height: 30%;
+			    width: 100%;
+			    position: relative;
+			    background-image: 
+			        linear-gradient(to right, #FFF 50%, rgba(255,255,255,0) 0%), 
+			        linear-gradient(to right, #303841, #303841); 
+			    background-position: center, center;
+			    background-size: 100px 10px, 100% 100%;
+			    background-repeat: repeat-x, no-repeat;
+			    
+			    /* The Animation */
+			    animation: moveRoad 0.8s linear infinite;
+			}
+			.sand {
+				height: 35%;
+				width: 100%;
+				background-color: #7a6b41;
+			}
+			.car {
+			    font-size: 60px;
+			    position: absolute;
+			    /* Center it vertically, place it slightly left of center horizontally */
+			    top: 65%;
+			    left: 20%; 
+			    transform: translateY(-50%) scaleX(-1);
+			    
+			    /* Add a subtle "driving" bounce */
+			    animation: drive-bounce 0.2s infinite alternate ease-in-out;
+			}
+			@keyframes moveRoad {
+			    from {
+			        /* Start at 0 */
+			        background-position: 0px center, center;
+			    }
+			    to {
+			        /* Move exactly the width of one dash-cycle (100px) */
+			        background-position: -100px center, center;
+			    }
+			}
+			/* This creates a tiny 3px vibration to simulate an engine */
+			@keyframes drive-bounce {
+			    from {
+			        transform: translateY(-50%) scaleX(-1);
+			    }
+			    to {
+			        transform: translateY(-54%) scaleX(-1);
+			    }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="grass">
+				<p style="text-align: center; color: #FFF">Some road trip music:</p>
+				<iframe width="35%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A231155880&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/everythinggorillazp1" title="Everything Gorillaz - P1" target="_blank" style="color: #cccccc; text-decoration: none;">Everything Gorillaz - P1</a> · <a href="https://soundcloud.com/everythinggorillazp1/clinteastwood" title="Clint Eastwood" target="_blank" style="color: #cccccc; text-decoration: none;">Clint Eastwood</a></div>
+			</div>
+			<div class="road">
+				<div class="car">🚗</div>
+			</div>
+			<div class="sand">
+				<footer style="text-align: center; color: #FFF; margin-top: 25px">
+					<a style="color: #FFF;" href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/" style="color: #FFF;">Home</a>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>
