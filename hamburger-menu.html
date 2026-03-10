@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Hamburger Menu</title>
+    <style>
+        :root {
+            --menu-bg: #1a1a1a;
+            --text-color: #ffffff;
+            --overlay-color: rgba(0, 0, 0, 0.7);
+            --bar-width: 30px;
+            --bar-height: 3px;
+            --bar-spacing: 7px;
+        }
+
+        body { font-family: system-ui, sans-serif; margin: 0; padding: 2rem; }
+
+        /* --- UNIFIED BURGER STYLE --- */
+        .burger-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            position: relative;
+            z-index: 2000;
+        }
+
+        /* Fixed position specifically for the main nav trigger */
+        #menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+        }
+
+        .burger-icon span {
+            display: block;
+            position: absolute;
+            width: var(--bar-width);
+            height: var(--bar-height);
+            background-color: #333;
+            border-radius: 3px;
+            transition: transform 0.3s ease, opacity 0.2s ease, background-color 0.3s ease;
+        }
+
+        /* Initial spacing using translateY */
+        .burger-icon span:nth-child(1) { transform: translateY(calc(-1 * (var(--bar-height) + var(--bar-spacing)))); }
+        .burger-icon span:nth-child(2) { transform: translateY(0); }
+        .burger-icon span:nth-child(3) { transform: translateY(calc(var(--bar-height) + var(--bar-spacing))); }
+
+        /* "Open" Transformation logic for both */
+        .burger-icon.open span { background-color: #333; }
+        #menu-btn.open span { background-color: var(--text-color); }
+        .burger-icon.open span:nth-child(1) { transform: translateY(0) rotate(45deg); }
+        .burger-icon.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+        .burger-icon.open span:nth-child(3) { transform: translateY(0) rotate(-45deg); }
+
+        /* --- UI Components --- */
+        .nav-menu {
+            position: fixed;
+            top: 0; left: 0; width: 280px; height: 100%;
+            background: var(--menu-bg); padding: 80px 20px;
+            z-index: 1000; transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            visibility: hidden;
+        }
+        .nav-menu.active { transform: translateX(0); visibility: visible; }
+
+        .overlay {
+            position: fixed; inset: 0; background: var(--overlay-color);
+            z-index: 999; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: auto; }
+
+        #main-content { margin-top: 60px; transition: filter 0.3s ease; }
+        #main-content[inert] { filter: blur(2px); user-select: none; }
+        
+        .nav-menu ul { list-style: none; padding: 0; }
+        .nav-menu a { color: var(--text-color); text-decoration: none; font-size: 1.25rem; }
+    </style>
+</head>
+<body>
+
+    <button class="burger-icon" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+    <nav class="nav-menu" id="main-nav" aria-label="Main Navigation" role="dialog" aria-modal="true">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Account Settings</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <h1>Accessible Hamburger Menu</h1>
+        <p>Adding a link to <a href="https://www.google.com" id="google-link">Google</a> to test keyboard support when the nav is open.</p>
+        <p>The hamburger bars are 3 bars stacked in a vertical column. When the button is activated, the bars transform into the "X". The middle bar disappears and the top and bottom bars transform by rotating 135 degrees in to the y axis creating the X. To achieve this, you only need a container with 3 spans:</p>
+        <pre class="prettyprint lang-html">
+            &lt;button class="menu-btn" id="menu-btn" aria-expanded="false"&gt;
+              &lt;span>&lt;/span&gt;
+              &lt;span>&lt;/span&gt;
+              &lt;span>&lt;/span&gt;
+            &lt;/button&gt;
+        </pre>
+        <p>CSS:</p>
+        <pre class="prettyprint lang-css">
+            .menu-btn {
+              width: 30px;
+              height: 20px;
+              position: relative;
+              cursor: pointer;
+            }
+
+            .menu-btn span {
+              display: block;
+              position: absolute;
+              height: 3px;
+              width: 100%;
+              background: black;
+              border-radius: 9px;
+              transition: .25s ease-in-out;
+            }
+
+            /* Position the bars */
+            .menu-btn span:nth-child(1) { top: 0px; }
+            .menu-btn span:nth-child(2) { top: 8px; }
+            .menu-btn span:nth-child(3) { top: 16px; }
+
+            /* The "Open" State */
+            .menu-btn.open span:nth-child(1) {
+              top: 8px;
+              transform: rotate(135deg);
+            }
+
+            .menu-btn.open span:nth-child(2) {
+              opacity: 0;
+              left: -60px;
+            }
+
+            .menu-btn.open span:nth-child(3) {
+              top: 8px;
+              transform: rotate(-135deg);
+            }
+        </pre>
+        <p>JS:</p>
+        <pre class="prettyprint lang-js">
+            const menuBtn = document.getElementById('menu-btn');
+
+            menuBtn.addEventListener('click', () => {
+              menuBtn.classList.toggle('open');
+            });
+        </pre>
+        <p>Let's add some JS to update the aria-expanded value when activated:</p>
+        <pre class="prettyprint lang-js">
+            const menuBtn = document.getElementById('menu-btn');
+
+            menuBtn.addEventListener('click', () => {
+                const isOpen = menuBtn.classList.toggle('open');
+                menuBtn.setAttribute('aria-expanded', isOpen);
+            });
+        </pre>
+        <p>Demo:</p>
+        <button class="burger-icon" id="hamburger-btn" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <p>The rest is magic...</p>
+        <footer>
+            <a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
+        </footer>
+    </main>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('main-nav');
+        const overlay = document.getElementById('overlay');
+        const mainContent = document.getElementById('main-content');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+
+        function toggle() {
+            const isOpen = btn.classList.toggle('open');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+
+            // Update ARIA states
+            btn.setAttribute('aria-expanded', isOpen);
+            overlay.setAttribute('aria-hidden', !isOpen);
+
+            // KEY: Toggle 'inert' on main content
+            // When menu is open, main content becomes inert (un-tabbable)
+            if (isOpen) {
+                mainContent.setAttribute('inert', '');
+                // Accessibility: focus the first link in the menu automatically
+                setTimeout(() => menu.querySelector('a').focus(), 100);
+            } else {
+                mainContent.removeAttribute('inert');
+                // Accessibility: return focus to the button when closing
+                btn.focus();
+            }
+        }
+
+        btn.addEventListener('click', toggle);
+        overlay.addEventListener('click', toggle);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && btn.classList.contains('open')) toggle();
+        });
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = hamburgerBtn.classList.toggle('open');
+            hamburgerBtn.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
+</body>
+</html>
