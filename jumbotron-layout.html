@@ -8,6 +8,8 @@
 				margin: 0;
 				height: 100%;
 				background-color: #212529 !important;
+				display: flex;
+				flex-direction: column;
 			}
 
 			.wrapper {
@@ -27,19 +29,41 @@
 				justify-content: space-between;
 			}
 
+			#main {
+			    width: 95%;
+			    margin-top: 50px;
+			    margin-left: auto;
+			    margin-right: auto;
+			    
+			    /* This pushes the footer to the bottom without stretching the div background */
+			    margin-bottom: auto; 
+			    
+			    padding: 2rem;
+			    text-align: center;
+			    color: #FFF;
+			    background-color: #2B3035;
+			}
+
 			footer {
-				height: 20%;
-				width: 100%;
-				position: absolute;
-				bottom: 0;
-				background-color: #2B3035;
-				color: #FFF;
-				display: flex;
-				justify-content: space-evenly;
+			    flex-shrink: 0;
+			    /* Use min-height instead of 20% for better stability during resize */
+			    min-height: 150px; 
+			    width: 100%;
+			    background-color: #2B3035;
+			    color: #FFF;
+			    display: flex;
+			    flex-wrap: wrap;
+			    justify-content: space-evenly;
+			    border-top: 1px solid #444;
+			    /* Ensure no stray margins are pushing the footer up */
+			    margin: 0; 
 			}
 			.item {
-			  flex-basis: auto; /* default auto */
-			}
+	            flex: 1;
+	            min-width: 150px;
+	            margin: 10px;
+
+	        }
 			.jumbotron {
 				width: 95%;
 				margin-left: auto;
@@ -64,6 +88,7 @@
 
 			.searchContent {
 				display: flex;
+				align-items: center;
 			}
 
 			.skipLink {
@@ -131,9 +156,3 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 	</body>
 </html>
-
-
-
-
-
-
