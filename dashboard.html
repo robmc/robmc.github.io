@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Dashboard</title>
+    <style>
+        :root {
+            --bg: #0d0d0d;
+            --card: #1a1a1a;
+            --blue: #008cff;
+            --text: #e0e0e0;
+            --danger: #ff4444; /* High contrast red */
+            --warning: #ffbb00;
+            --success: #00c853;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            width: 90%;
+            max-width: 1100px;
+            padding: 2rem;
+        }
+
+        /* Gauge Styling */
+        .gauge-section {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #333;
+        }
+
+        .gauge-svg {
+            width: 300px;
+            height: auto;
+            overflow: visible;
+        }
+
+        .gauge-track {
+            fill: none;
+            stroke: #333;
+            stroke-width: 4;
+        }
+
+        .tick {
+            stroke: #555;
+            stroke-width: 2;
+        }
+
+        .tick-label {
+            fill: #888;
+            font-size: 10px;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+
+        #needle {
+            fill: var(--blue);
+            transition: transform 0.8s cubic-bezier(0.17, 0.67, 0.46, 1.15);
+            transform-origin: 100px 150px;
+        }
+
+        #gauge-center { fill: #444; }
+
+        /* Todo Styling */
+        .todo-section {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 2rem;
+            border-left: 5px solid var(--blue);
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .input-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            background: #252525;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        button#add-btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .task-list { max-height: 400px; overflow-y: auto; }
+
+        .task-row {
+            display: flex;
+            align-items: center;
+            background: #222;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+
+        /* Updated: Only fade the text/bg, keep button bright */
+        .task-row.done { background: #111; border-color: #222; }
+        .task-row.done .task-text { opacity: 0.4; text-decoration: line-through; }
+
+        .task-text { flex: 1; margin: 0 15px; cursor: pointer; }
+
+        /* Fixed: Delete button always has sufficient contrast */
+        .del-btn {
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            cursor: pointer;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .del-btn:hover {
+            background: var(--danger);
+            color: #000;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section class="gauge-section">
+        <h2 style="margin-bottom: 1rem;">Workload</h2>
+        <svg class="gauge-svg" viewBox="0 0 200 160">
+            <path class="gauge-track" d="M 20,150 A 80,80 0 0 1 180,150" />
+            <g id="ticks"></g>
+            <g id="needle" transform="rotate(-90)">
+                <path d="M 95,150 L 100,20 L 105,150 Z" />
+                <circle cx="100" cy="150" r="8" fill="var(--blue)" />
+            </g>
+            <circle id="gauge-center" cx="100" cy="150" r="4" />
+        </svg>
+        <p id="status-desc" style="font-weight: bold; font-size: 1.2rem; margin-top: 10px;"></p>
+    </section>
+
+    <section class="todo-section">
+        <h2 style="color: var(--blue); margin-top: 0;">To-Do</h2>
+        
+        <label for="task-input" class="input-label">Enter New Task</label>
+        <div class="input-box">
+            <input type="text" id="task-input" placeholder="e.g., Update project docs...">
+            <button id="add-btn">Add Task</button>
+        </div>
+
+        <span id="mark-complete-label" class="sr-only">Mark as complete</span>
+        <div id="list-container" class="task-list"></div>
+    </section>
+</div>
+
+<script>
+    const ticksContainer = document.getElementById('ticks');
+    const needle = document.getElementById('needle');
+    const taskInput = document.getElementById('task-input');
+    const addBtn = document.getElementById('add-btn');
+    const listContainer = document.getElementById('list-container');
+    const statusDesc = document.getElementById('status-desc');
+
+    let tasks = [];
+
+    for (let i = 0; i <= 10; i++) {
+        const angle = -180 + (i * 18); 
+        const rad = angle * (Math.PI / 180);
+        const x1 = 100 + Math.cos(rad) * 80;
+        const y1 = 150 + Math.sin(rad) * 80;
+        const x2 = 100 + Math.cos(rad) * 90;
+        const y2 = 150 + Math.sin(rad) * 90;
+        const tx = 100 + Math.cos(rad) * 105;
+        const ty = 150 + Math.sin(rad) * 105;
+
+        ticksContainer.innerHTML += `
+            <line class="tick" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />
+            <text class="tick-label" x="${tx}" y="${ty}">${i}</text>
+        `;
+    }
+
+    function update() {
+        const openTasks = tasks.filter(t => !t.done).length;
+        const rotation = Math.min(openTasks, 10) * 18 - 90;
+        needle.style.transform = `rotate(${rotation}deg)`;
+
+        let color = 'var(--success)';
+        if (openTasks >= 7) color = 'var(--danger)';
+        else if (openTasks >= 4) color = 'var(--warning)';
+
+        needle.style.fill = color;
+        statusDesc.textContent = `${openTasks} Active Tasks`;
+        statusDesc.style.color = color;
+        render();
+    }
+
+    function render() {
+        listContainer.innerHTML = '';
+        tasks.forEach((task, i) => {
+            const div = document.createElement('div');
+            div.className = `task-row ${task.done ? 'done' : ''}`;
+            const checkboxId = `cb-${i}`;
+            const textId = `txt-${i}`;
+
+            div.innerHTML = `
+                <input type="checkbox" id="${checkboxId}" 
+                       aria-labelledby="mark-complete-label ${textId}"
+                       ${task.done ? 'checked' : ''} onchange="toggle(${i})">
+                <span id="${textId}" class="task-text" onclick="toggle(${i})">${task.name}</span>
+                <button class="del-btn" onclick="remove(${i})" aria-label="Delete task: ${task.name}">DELETE</button>
+            `;
+            listContainer.appendChild(div);
+        });
+    }
+
+    function add() {
+        const val = taskInput.value.trim();
+        if (val) {
+            tasks.push({ name: val, done: false });
+            taskInput.value = '';
+            update();
+        }
+    }
+
+    function toggle(i) {
+        tasks[i].done = !tasks[i].done;
+        update();
+    }
+
+    function remove(i) {
+        tasks.splice(i, 1);
+        update();
+    }
+
+    addBtn.addEventListener('click', add);
+    taskInput.addEventListener('keypress', (e) => e.key === 'Enter' && add());
+    update();
+</script>
+</body>
+</html>
