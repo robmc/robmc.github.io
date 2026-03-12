@@ -1,24 +1,140 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Simple Accordion</title>
-		<link rel="stylesheet" type="text/css" href="stylesheet.css">
-		<script src="/javascripts/javascript.js"></script> 
+		<title>Disclosure Widgets</title>
+		<style type="text/css">
+			h1 {
+				text-align: center;
+			}
+			.prettyWrapper {
+				display: flex;
+				align-items: center;
+			}
+			.prettyDetails {
+				position: relative;
+				background: #A4E6EB;
+				border: 1px solid black;
+				width: 200px;
+				border-radius: 5px;
+			}
+
+			.prettySummary {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    height: 100%;
+			    line-height: 25px;
+			    cursor: pointer;
+			}
+
+			.prettyDetails p {
+			    margin: 0;
+			    padding: 10px;
+			    background: white;
+			    border-top: 1px solid black;
+			    border-radius: 0 0 5px 5px;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Simple Accordion Example</h1>
-		<p>The link below toggles the expansion/collapse of additional information. This is an example of how to implement such a control in an accessible manner.</p>
+		<h1>Disclosure Widgets</h1>
+		<h2>The New Way</h2>
+		<p>HTML now offers us a simple way of accomplishing this using the <code>&lt;details&gt;</code> element along with its child <code>&lt;summary&gt;</code> element. Let's take a look.
+ 		<pre class="prettyprint lang-html">
+ 			&lt;details&gt;
+ 				&lt;summary&gt;More Information&lt;/summary&gt;
+ 				This is some text that is toggled.
+ 			&lt;/details&gt;
+ 		</pre>
+ 		<p>Renders this:</p>
+ 		<div class="prettyWrapper">
+			<details class="noStyle">
+	 			<summary class="noStyle">More Information</summary>
+	 			<p class="noStyle">This is some text that is toggled.</p>
+	 		</details>
+ 		</div>
+ 		<p>This provides keyboard support out of the box. Screen readers will also announce the control's expanded/collapsed state without any additional code necessary. The initial design is not the best looking, though. Let's add some styling.</p>
+  		<pre class="prettyprint lang-html">
+			details {
+				position: relative;
+				background: #A4E6EB;
+				border: 1px solid black;
+				width: 200px;
+				border-radius: 5px;
+			}
+
+			summary {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    height: 100%;
+			    line-height: 25px;
+			    cursor: pointer;
+			}
+
+			details p {
+			    margin: 0;
+			    padding: 10px;
+			    background: white;
+			    border-top: 1px solid black;
+			    border-radius: 0 0 5px 5px;
+			}
+ 		</pre>
+ 		<p>Renders this:</p>
+ 		<details class="prettyDetails">
+ 			<summary class="prettySummary">More Information</summary>
+ 			<p>This one should look prettier.</p>
+ 		</details>
+		<h2>The Oldschool Way</h2>
+		<p>The link below toggles the expansion/collapse of additional information. This is an example of how to implement such a control with some simple Javascript.</p>
 		<p><strong>Note:</strong> For satisfying <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html">WCAG Success Criteria 2.4.4 - Link Purpose (In Context)</a> when meeting WCAG A and AA requirements, the "Show" and "Hide" text would need surrounding context to convey the context of the link. Understanding link purpose out of context through the link text alone is required by <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-link.html">Success Criteria 2.4.9 - Link Purpose (Link Only)</a>, which is a WCAG level AAA requirement. Most websites and applications strive for WCAG A and AA compliance so this is generally not a requirement.</p>
 		<p>Concepts included in this example for accessibility:</p>
 		<ul>
 			<li>The <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-expanded">aria-expanded</a> state has been added to the link that is expandable/collapsible to convey its state. The state is updated accordingly when the element's state changes.</li>
 			<li>The <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-controls">aria-controls</a> property has been added to the link that is expandable/collapsible and references the ID of the content toggled by the link.</li>
 			<li>The CSS display property is updated appropriately when toggling the content to ensure it is properly hidden both visually as well as programmatically to ensure it is not exposed to assistive technology when collapsed and visually hidden.</li>
-			<li>The <a href="https://www.w3.org/TR/wai-aria-1.1/#region">region</a> role has been applied to the element containing the additional content. This informs users when they are entering/exiting the region of related information. The aria-expanded state is necessary however a region is not required for this type of widget. This is just a proof of concept.</li>
-			<li>The <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-label">aria-label</a> property has been applied to the region containing the expandable text to name the region. As aforementioned, a region is not necessary for the toggled content. When regions are used, however, they must be labeled to provide accessible names. This facilitates users navigating via regions with a screen reader to identify the regions.</li>
 		</ul>
 		<hr />
 		<a href="#" onclick="togglediv()" aria-expanded="false" aria-controls="#information" id="toggleLink">Show</a>
-		<p id="information" style="display: none;" role="region" aria-label="Example region with more information">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa ante, tincidunt sed eros sit amet, finibus efficitur orci. Etiam a suscipit neque, ac cursus massa. Integer eros orci, porttitor et gravida nec, maximus ut sem. Suspendisse potenti. Nunc metus dui, fermentum ac est sed, ullamcorper pulvinar est. Donec cursus sit amet mauris iaculis aliquet. Vestibulum sit amet mi nec justo malesuada tincidunt. Integer sed bibendum ex, in faucibus ligula. Sed a felis sodales, blandit ante id, iaculis enim. Vestibulum rhoncus dolor arcu, at rutrum libero molestie non. Vivamus scelerisque sapien augue, vitae venenatis enim venenatis ut. Integer in odio eget nisi facilisis consequat. Aliquam bibendum nulla ex, non porttitor neque posuere bibendum. </p>
+		<p id="information" style="display: none;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa ante, tincidunt sed eros sit amet, finibus efficitur orci. Etiam a suscipit neque, ac cursus massa. Integer eros orci, porttitor et gravida nec, maximus ut sem. Suspendisse potenti. Nunc metus dui, fermentum ac est sed, ullamcorper pulvinar est. Donec cursus sit amet mauris iaculis aliquet. Vestibulum sit amet mi nec justo malesuada tincidunt. Integer sed bibendum ex, in faucibus ligula. Sed a felis sodales, blandit ante id, iaculis enim. Vestibulum rhoncus dolor arcu, at rutrum libero molestie non. Vivamus scelerisque sapien augue, vitae venenatis enim venenatis ut. Integer in odio eget nisi facilisis consequat. Aliquam bibendum nulla ex, non porttitor neque posuere bibendum. </p>
+		<p>The HTML:</p>
+		<pre class="prettyprint lang-html">
+ 			&lt;a href="#" onclick="togglediv()" aria-expanded="false" aria-controls="#information" id="toggleLink"&gt;Show&lt;/a&gt;
+			&lt;p id="information" style="display: none;"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa ante, tincidunt sed eros sit amet, finibus efficitur orci. Etiam a suscipit neque, ac cursus massa. Integer eros orci, porttitor et gravida nec, maximus ut sem. Suspendisse potenti. Nunc metus dui, fermentum ac est sed, ullamcorper pulvinar est. Donec cursus sit amet mauris iaculis aliquet. Vestibulum sit amet mi nec justo malesuada tincidunt. Integer sed bibendum ex, in faucibus ligula. Sed a felis sodales, blandit ante id, iaculis enim. Vestibulum rhoncus dolor arcu, at rutrum libero molestie non. Vivamus scelerisque sapien augue, vitae venenatis enim venenatis ut. Integer in odio eget nisi facilisis consequat. Aliquam bibendum nulla ex, non porttitor neque posuere bibendum.&lt;/p&gt;
+ 		</pre>
+ 		<p>The JavaScript</p>
+		<pre class="prettyprint lang-js">
+			function togglediv() {
+			    var div = document.getElementById("information");
+			    var link = document.getElementById("toggleLink");
+			    var value = link.getAttribute("aria-expanded");
+			    div.style.display = div.style.display == "none" ? "block" : "none";
+			    event.preventDefault();
+			    if (value == "false") {
+			    	link.setAttribute("aria-expanded", "true");
+			    	link.innerHTML = "Hide";
+			    } else {
+			    	link.setAttribute("aria-expanded", "false");
+			    	link.innerHTML = "Show";
+			    }
+			}
+ 		</pre>
+		<script type="text/javascript">
+			function togglediv() {
+			    var div = document.getElementById("information");
+			    var link = document.getElementById("toggleLink");
+			    var value = link.getAttribute("aria-expanded");
+			    div.style.display = div.style.display == "none" ? "block" : "none";
+			    event.preventDefault();
+			    if (value == "false") {
+			    	link.setAttribute("aria-expanded", "true");
+			    	link.innerHTML = "Hide";
+			    } else {
+			    	link.setAttribute("aria-expanded", "false");
+			    	link.innerHTML = "Show";
+			    }
+			}
+		</script>
+		<script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
 	</body>
 </html>
