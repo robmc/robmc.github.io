@@ -1,276 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Fucking WCAG</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style type="text/css">
-			body, html {
-				margin: 0;
-			}
+    <head>
+        <title>Fucking WCAG</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style type="text/css">
+            body, html {
+                margin: 0;
+                padding: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                line-height: 1.5;
+                background-color: #222;
+                color: #333;
+            }
 
-			body {
-				background-color: gray;
-			}
+            h1 {
+                text-align: center;
+                margin: 0;
+                padding: 1.5rem 1rem;
+                font-size: 1.5rem;
+            }
 
-			h1 {
-				text-align: center;
-				margin-top: 0;
-			}
+            .wrapper {
+                background-color: #FFF;
+                width: 95%; /* Use most of the screen on mobile */
+                max-width: 800px; /* Cap it on desktop */
+                margin: 1rem auto;
+                border-radius: 8px;
+                overflow: hidden; /* Keeps background inside radius */
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            }
 
-			.wrapper {
-				background-color: #FFF;
-				width: 50%;
-				margin-left: auto;
-				margin-right: auto;
-			}
+            /* List Styling */
+            ul {
+                padding-left: 1.5rem;
+                margin: 1rem 0;
+            }
 
-			ul {
-			    margin-bottom: 0;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="wrapper">
-			<h1>Understanding Fucking WCAG</h1>
-			<ul>
-				<li>1. Perceivable</li>
-				<ul>
-					<li>SC 1.1.1 Non-text Content</li>
-					<ul>
-						<li>Give a fucking textual alternative for your images and other visual shit</li>
-					</ul>
-					<li>SC 1.2.1 Audio-only and video-only (Prerecorded)</li>
-					<ul>
-						<li>Make sure you provide a fucking equivalent alternative</li>
-					</ul>
-					<li>SC 1.2.2 Captions (Prerecorded)</li>
-					<ul>
-						<li>Caption your shit. Everyone benefits.</li>
-					</ul>
-					<li>SC 1.2.3 Audio Description or Media Alternative</li>
-					<ul>
-						<li>Describe shit that's happening visually for those who can't see it</li>
-					</ul>
-					<li>SC 1.2.4 Captions (Live)</li>
-					<ul>
-						<li>Live shit needs captions too</li>
-					</ul>
-					<li>SC 1.2.5 Audio description (Prerecorded)</li>
-					<ul>
-						<li>Provide some fucking dialog explaining shit that's happening</li>
-					</ul>
-					<li>SC 1.3.1 Information and Relationships</li>
-					<ul>
-						<li>Make sure shit that makes sense visually also makes sense structurally. Don't just make text large, use a fucking heading. Don't just add dots, use a fucking list.</li>
-					</ul>
-					<li>SC 1.3.2 Meaningful Sequence</li>
-					<ul>
-						<li>Put shit in order</li>
-					</ul>
-					<li>SC 1.3.3 Sensory Characteristics</li>
-					<ul>
-						<li>Don't ask a blind guy to "hand you that red cup over there", you dummy</li>
-					</ul>
-					<li>SC 1.3.4 Orientation</li>
-					<ul>
-						<li>Gayyyyyy! lol jk this actually means you can turn your mobile shit on its side</li>
-					</ul>
-					<li>SC 1.3.5 Input Purpose</li>
-					<ul>
-						<li>Make sure you identify what shit you're asking for</li>
-					</ul>
-					<li>SC 1.4.1 Use of Color</li>
-					<ul>
-						<li>Don't ever fucking rely on color <strong>alone</strong> to indicate something</li>
-					</ul>
-					<li>SC 1.4.2 Audio Control</li>
-					<ul>
-						<li>Turn down that fucking noise</li>
-					</ul>
-					<li>SC 1.4.3 Contrast (Minimum)</li>
-					<ul>
-						<li>Use good colors so people can read your shit</li>
-					</ul>
-					<li>SC 1.4.4 Resize Text</li>
-					<ul>
-						<li>Make sure your website doesn't shit the bed when it's zoomed to 200%</li>
-					</ul>
-					<li>SC 1.4.5 Images of Text</li>
-					<ul>
-						<li>Just don't. Unless it's a logo.</li>
-					</ul>
-					<li>SC 1.4.10 Reflow</li>
-					<ul>
-						<li>I shouldn't have to fucking scroll to figure out what you're on about</li>
-					</ul>
-					<li>SC 1.4.11 Non-text Contrast</li>
-					<ul>
-						<li>Form shit</li>
-					</ul>
-					<li>SC 1.4.12 Text Spacing</li>
-					<ul>
-						<li>Keming lol</li>
-					</ul>
-				</ul>
-				<li>2. Operable</li>
-				<ul>
-					<li>SC 2.1.1 Keyboard</li>
-					<ul>
-						<li>Can you do all the same shit with a keyboard you can do with a mouse?</li>
-					</ul>
-					<li>SC 2.1.2 No keyboard trap</li>
-					<ul>
-						<li>Do you need this one fucking explained?</li>
-					</ul>
-					<li>SC 2.1.4 Character Key Shortcuts</li>
-					<ul>
-						<li>Press <code>Alt + F4</code> and find out.</li>
-					</ul>
-					<li>SC 2.2.1 Timing Adjustable</li>
-					<ul>
-						<li>Don't fucking hurry me, damn</li>
-					</ul>
-					<li>SC 2.2.2 Pause, Stop, Hide</li>
-					<ul>
-						<li>Make sure when shit flashes and moves you can cut that shit out</li>
-					</ul>
-					<li>SC 2.3.1 Three flashes or Below Threshold</li>
-					<ul>
-						<li>Stop trying to make people wig out DJ Skrillex</li>
-					</ul>
-					<li>SC 2.4.1 Bypass Blocks</li>
-					<ul>
-						<li>Don't make me tab through a bunch of unnecessary shit to get where I want</li>
-					</ul>
-					<li>SC 2.4.2 Page Titled</li>
-					<ul>
-						<li>Like you never walked into a room and forgot where you were...</li>
-					</ul>
-					<li>SC 2.4.3 Focus Order</li>
-					<ul>
-						<li>Again, put shit in order</li>
-					</ul>
-					<li>SC 2.4.4 Link Purpose</li>
-					<ul>
-						<li>"Click here" doesn't tell me shit</li>
-					</ul>
-					<li>SC 2.4.5 Multiple Ways</li>
-					<ul>
-						<li>Let me find where the fuck I wanna go</li>
-					</ul>
-					<li>SC 2.4.6 Headings and Labels</li>
-					<ul>
-						<li>Think newspapers then get your head out of your ass because it's 2026 and nobody reads newspapers any more</li>
-					</ul>
-					<li>SC 2.4.7 Focus Visible</li>
-					<ul>
-						<li>Where the fuck is my keyboard focus?</li>
-					</ul>
-					<li>SC 2.4.11 Focus Not Obscured (Minimum)</li>
-					<ul>
-						<li>Make sure when you toggle shit on the page that it doesn't start covering up other shit</li>
-					</ul>
-					<li>SC 2.5.1 Pointer Gestures</li>
-					<ul>
-						<li>Provide a fucking alternative to gestures</li>
-					</ul>
-					<li>SC 2.5.2 Pointer Cancellation</li>
-					<ul>
-						<li>Make sure people can actually fucking use your shitty gestures</li>
-					</ul>
-					<li>SC 2.5.3 Label in Name</li>
-					<ul>
-						<li>Make sure the accessible name and visible name fucking match. I can't use voice commands to say "click submit" when your dumb ass called it something else in the code.</li>
-					</ul>
-					<li>SC 2.5.4 Motion Actuation</li>
-					<ul>
-						<li>Provide a fucking alternative to motion</li>
-					</ul>
-					<li>SC 2.5.7 Dragging Movements</li>
-					<ul>
-						<li>Provide a fucking fallback for drag and drop</li>
-					</ul>
-					<li>SC 2.5.8 Target Size (Minimum)</li>
-					<ul>
-						<li>What is this? A control for ANTS?</li>
-					</ul>
-				</ul>
-				<li>3. Understandable</li>
-				<ul>
-					<li>SC 3.1.1 Language of Page</li>
-					<ul>
-						<li>English, motherfucker! Do you speak it?</li>
-					</ul>
-					<li>SC 3.1.2 Language of Parts</li>
-					<ul>
-						<li>Hasta la vista, baby!</li>
-					</ul>
-					<li>SC 3.2.1 On Focus</li>
-					<ul>
-						<li>Don't just be doing shit without the user telling you to</li>
-					</ul>
-					<li>SC 3.2.2 On Input</li>
-					<ul>
-						<li>Lemme finish using this dropdown before you make a change, damn</li>
-					</ul>
-					<li>SC 3.2.3 Consistent Navigation</li>
-					<ul>
-						<li>Be consistent with how you poke around</li>
-					</ul>
-					<li>SC 3.2.4 Consistent Identification</li>
-					<ul>
-						<li>Be consistent with the names and roles you use</li>
-					</ul>
-					<li>SC 3.2.6 Consistent Help</li>
-					<ul>
-						<li>Be consistent with your structure</li>
-					</ul>
-					<li>SC 3.3.1 Error Identification</li>
-					<ul>
-						<li>Why didn't the fucking form submit?</li>
-					</ul>
-					<li>SC 3.3.2 Labels or Instructions</li>
-					<ul>
-						<li>What's the point of this fucking form field?</li>
-					</ul>
-					<li>SC 3.3.3 Error Suggestion</li>
-					<ul>
-						<li>Ok it's broke how do I fix it?</li>
-					</ul>
-					<li>SC 3.3.4 Error Prevention (Legal, Financial, Data)</li>
-					<ul>
-						<li>You sure you wanna do that? Let's review and double check.</li>
-					</ul>
-					<li>SC 3.3.7 Redundant Entry</li>
-					<ul>
-						<li>Did I fucking stutter?</li>
-					</ul>
-					<li>SC 3.3.8 Accessible Authenitcation (Minimum)</li>
-					<ul>
-						<li>Are you a fucking robot?</li>
-					</ul>
-				</ul>
-				<li>4. Robust</li>
-				<ul>
-					<li>SC 4.1.1 Parsing</li>
-					<ul>
-						<li>How old are you, bro? This shit's deprecated.</li>
-					</ul>
-					<li>SC 4.1.2 Name, Role, Value</li>
-					<ul>
-						<li>Who is your daddy and what does he do?</li>
-					</ul>
-					<li>SC 4.1.3 Status Messages</li>
-					<ul>
-						<li>Alert users of important shit in a way that everyone's alerted</li>
-					</ul>
-				</ul>
-			</ul>
-			<footer>
-				<a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
-			</footer>
-		</div>
-	</body>
+            li {
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+            }
+
+            /* Sub-list styles */
+            ul ul {
+                padding-left: 1.2rem;
+                margin-top: 0.25rem;
+            }
+
+            ul ul li {
+                font-weight: normal;
+                color: #555;
+                list-style-type: none; /* Cleaner look */
+                border-left: 3px solid #ddd;
+                padding-left: 10px;
+            }
+
+            ul ul ul li {
+                font-style: italic;
+                color: #000;
+                border-left: none;
+                padding-left: 0;
+                font-weight: 500;
+            }   
+
+            /* Desktop Adjustment */
+            @media (min-width: 768px) {
+                .wrapper {
+                    width: 80%;
+                    margin: 2rem auto;
+                }
+                h1 { font-size: 2.5rem; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>Understanding Fucking WCAG</h1>
+            <ul>
+                <li>1. Perceivable</li>
+                <ul>
+                    <li>SC 1.1.1 Non-text Content</li>
+                    <ul>
+                        <li>Give a fucking textual alternative for your images and other visual shit</li>
+                    </ul>
+                    <li>SC 1.2.1 Audio-only and video-only (Prerecorded)</li>
+                    <ul>
+                        <li>Make sure you provide a fucking equivalent alternative</li>
+                    </ul>
+                    <li>SC 1.2.2 Captions (Prerecorded)</li>
+                    <ul>
+                        <li>Caption your shit. Everyone benefits.</li>
+                    </ul>
+                    <li>SC 1.2.3 Audio Description or Media Alternative</li>
+                    <ul>
+                        <li>Describe shit that's happening visually for those who can't see it</li>
+                    </ul>
+                    <li>SC 1.2.4 Captions (Live)</li>
+                    <ul>
+                        <li>Live shit needs captions too</li>
+                    </ul>
+                    <li>SC 1.2.5 Audio description (Prerecorded)</li>
+                    <ul>
+                        <li>Provide some fucking dialog explaining shit that's happening</li>
+                    </ul>
+                    <li>SC 1.3.1 Information and Relationships</li>
+                    <ul>
+                        <li>Make sure shit that makes sense visually also makes sense structurally. Don't just make text large, use a fucking heading. Don't just add dots, use a fucking list.</li>
+                    </ul>
+                    <li>SC 1.3.2 Meaningful Sequence</li>
+                    <ul>
+                        <li>Put shit in order</li>
+                    </ul>
+                    <li>SC 1.3.3 Sensory Characteristics</li>
+                    <ul>
+                        <li>Don't ask a blind guy to "hand you that red cup over there", you dummy</li>
+                    </ul>
+                    <li>SC 1.3.4 Orientation</li>
+                    <ul>
+                        <li>Gayyyyyy! lol jk this actually means you can turn your mobile shit on its side</li>
+                    </ul>
+                    <li>SC 1.3.5 Input Purpose</li>
+                    <ul>
+                        <li>Make sure you identify what shit you're asking for</li>
+                    </ul>
+                    <li>SC 1.4.1 Use of Color</li>
+                    <ul>
+                        <li>Don't ever fucking rely on color <strong>alone</strong> to indicate something</li>
+                    </ul>
+                    <li>SC 1.4.2 Audio Control</li>
+                    <ul>
+                        <li>Turn down that fucking noise</li>
+                    </ul>
+                    <li>SC 1.4.3 Contrast (Minimum)</li>
+                    <ul>
+                        <li>Use good colors so people can read your shit</li>
+                    </ul>
+                    <li>SC 1.4.4 Resize Text</li>
+                    <ul>
+                        <li>Make sure your website doesn't shit the bed when it's zoomed to 200%</li>
+                    </ul>
+                    <li>SC 1.4.5 Images of Text</li>
+                    <ul>
+                        <li>Just don't. Unless it's a logo.</li>
+                    </ul>
+                    <li>SC 1.4.10 Reflow</li>
+                    <ul>
+                        <li>I shouldn't have to fucking scroll to figure out what you're on about</li>
+                    </ul>
+                    <li>SC 1.4.11 Non-text Contrast</li>
+                    <ul>
+                        <li>Form shit</li>
+                    </ul>
+                    <li>SC 1.4.12 Text Spacing</li>
+                    <ul>
+                        <li>Keming lol</li>
+                    </ul>
+                </ul>
+                <li>2. Operable</li>
+                <ul>
+                    <li>SC 2.1.1 Keyboard</li>
+                    <ul>
+                        <li>Can you do all the same shit with a keyboard you can do with a mouse?</li>
+                    </ul>
+                    <li>SC 2.1.2 No keyboard trap</li>
+                    <ul>
+                        <li>Do you need this one fucking explained?</li>
+                    </ul>
+                    <li>SC 2.1.4 Character Key Shortcuts</li>
+                    <ul>
+                        <li>Press <code>Alt + F4</code> and find out.</li>
+                    </ul>
+                    <li>SC 2.2.1 Timing Adjustable</li>
+                    <ul>
+                        <li>Don't fucking hurry me, damn</li>
+                    </ul>
+                    <li>SC 2.2.2 Pause, Stop, Hide</li>
+                    <ul>
+                        <li>Make sure when shit flashes and moves you can cut that shit out</li>
+                    </ul>
+                    <li>SC 2.3.1 Three flashes or Below Threshold</li>
+                    <ul>
+                        <li>Stop trying to make people wig out DJ Skrillex</li>
+                    </ul>
+                    <li>SC 2.4.1 Bypass Blocks</li>
+                    <ul>
+                        <li>Don't make me tab through a bunch of unnecessary shit to get where I want</li>
+                    </ul>
+                    <li>SC 2.4.2 Page Titled</li>
+                    <ul>
+                        <li>Like you never walked into a room and forgot where you were...</li>
+                    </ul>
+                    <li>SC 2.4.3 Focus Order</li>
+                    <ul>
+                        <li>Again, put shit in order</li>
+                    </ul>
+                    <li>SC 2.4.4 Link Purpose</li>
+                    <ul>
+                        <li>"Click here" doesn't tell me shit</li>
+                    </ul>
+                    <li>SC 2.4.5 Multiple Ways</li>
+                    <ul>
+                        <li>Let me find where the fuck I wanna go</li>
+                    </ul>
+                    <li>SC 2.4.6 Headings and Labels</li>
+                    <ul>
+                        <li>Think newspapers then get your head out of your ass because it's 2026 and nobody reads newspapers any more</li>
+                    </ul>
+                    <li>SC 2.4.7 Focus Visible</li>
+                    <ul>
+                        <li>Where the fuck is my keyboard focus?</li>
+                    </ul>
+                    <li>SC 2.4.11 Focus Not Obscured (Minimum)</li>
+                    <ul>
+                        <li>Make sure when you toggle shit on the page that it doesn't start covering up other shit</li>
+                    </ul>
+                    <li>SC 2.5.1 Pointer Gestures</li>
+                    <ul>
+                        <li>Provide a fucking alternative to gestures</li>
+                    </ul>
+                    <li>SC 2.5.2 Pointer Cancellation</li>
+                    <ul>
+                        <li>Make sure people can actually fucking use your shitty gestures</li>
+                    </ul>
+                    <li>SC 2.5.3 Label in Name</li>
+                    <ul>
+                        <li>Make sure the accessible name and visible name fucking match. I can't use voice commands to say "click submit" when your dumb ass called it something else in the code.</li>
+                    </ul>
+                    <li>SC 2.5.4 Motion Actuation</li>
+                    <ul>
+                        <li>Provide a fucking alternative to motion</li>
+                    </ul>
+                    <li>SC 2.5.7 Dragging Movements</li>
+                    <ul>
+                        <li>Provide a fucking fallback for drag and drop</li>
+                    </ul>
+                    <li>SC 2.5.8 Target Size (Minimum)</li>
+                    <ul>
+                        <li>What is this? A control for ANTS?</li>
+                    </ul>
+                </ul>
+                <li>3. Understandable</li>
+                <ul>
+                    <li>SC 3.1.1 Language of Page</li>
+                    <ul>
+                        <li>English, motherfucker! Do you speak it?</li>
+                    </ul>
+                    <li>SC 3.1.2 Language of Parts</li>
+                    <ul>
+                        <li>Hasta la vista, baby!</li>
+                    </ul>
+                    <li>SC 3.2.1 On Focus</li>
+                    <ul>
+                        <li>Don't just be doing shit without the user telling you to</li>
+                    </ul>
+                    <li>SC 3.2.2 On Input</li>
+                    <ul>
+                        <li>Lemme finish using this dropdown before you make a change, damn</li>
+                    </ul>
+                    <li>SC 3.2.3 Consistent Navigation</li>
+                    <ul>
+                        <li>Be consistent with how you poke around</li>
+                    </ul>
+                    <li>SC 3.2.4 Consistent Identification</li>
+                    <ul>
+                        <li>Be consistent with the names and roles you use</li>
+                    </ul>
+                    <li>SC 3.2.6 Consistent Help</li>
+                    <ul>
+                        <li>Be consistent with your structure</li>
+                    </ul>
+                    <li>SC 3.3.1 Error Identification</li>
+                    <ul>
+                        <li>Why didn't the fucking form submit?</li>
+                    </ul>
+                    <li>SC 3.3.2 Labels or Instructions</li>
+                    <ul>
+                        <li>What's the point of this fucking form field?</li>
+                    </ul>
+                    <li>SC 3.3.3 Error Suggestion</li>
+                    <ul>
+                        <li>Ok it's broke how do I fix it?</li>
+                    </ul>
+                    <li>SC 3.3.4 Error Prevention (Legal, Financial, Data)</li>
+                    <ul>
+                        <li>You sure you wanna do that? Let's review and double check.</li>
+                    </ul>
+                    <li>SC 3.3.7 Redundant Entry</li>
+                    <ul>
+                        <li>Did I fucking stutter?</li>
+                    </ul>
+                    <li>SC 3.3.8 Accessible Authenitcation (Minimum)</li>
+                    <ul>
+                        <li>Are you a fucking robot?</li>
+                    </ul>
+                </ul>
+                <li>4. Robust</li>
+                <ul>
+                    <li>SC 4.1.1 Parsing</li>
+                    <ul>
+                        <li>How old are you, bro? This shit's deprecated.</li>
+                    </ul>
+                    <li>SC 4.1.2 Name, Role, Value</li>
+                    <ul>
+                        <li>Who is your daddy and what does he do?</li>
+                    </ul>
+                    <li>SC 4.1.3 Status Messages</li>
+                    <ul>
+                        <li>Alert users of important shit in a way that everyone's alerted</li>
+                    </ul>
+                </ul>
+            </ul>
+            <footer>
+                <a href="http://robertjmccaffery.com/examples.html">Back to Examples</a> | <a href="http://robertjmccaffery.com/">Home</a>
+            </footer>
+        </div>
+    </body>
 </html>
-
-
