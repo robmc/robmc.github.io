@@ -183,8 +183,8 @@
         <label class="switch">
             <input type="checkbox" 
                    id="mode-toggle" 
-                   aria-label="Toggle between Light and Dark mode"
-                   role="switch">
+                   aria-label="Currently Light Mode - Switch to Dark Mode"
+                   role="button">
             <span class="slider">
                 <span class="panes" aria-hidden="true"></span>
                 <span class="cloud c1" aria-hidden="true"></span>
@@ -194,7 +194,7 @@
             </span>
         </label>
         
-        <div class="label-text" aria-live="polite">
+        <div class="label-text">
             Current Theme: <span id="mode-status">Light Mode</span>
         </div>
 
@@ -211,11 +211,17 @@
 
         toggle.addEventListener('change', () => {
             const isDark = toggle.checked;
-            body.classList.toggle('dark-mode', isDark);
-            status.textContent = isDark ? "Dark Mode" : "Light Mode";
             
-            // Explicitly updating the aria-checked state for the 'switch' role
-            toggle.setAttribute('aria-checked', isDark);
+            // Update the visual theme
+            body.classList.toggle('dark-mode', isDark);
+            
+            // Update the label to describe the NEXT action
+            // If it's currently dark, the button should say "Switch to Light Mode"
+            const nextMode = isDark ? "Currently Dark Mode - Switch to Light Mode" : "Currently Light Mode - Switch to Dark Mode";
+            toggle.setAttribute('aria-label', nextMode);
+            
+            // Update the visual status text
+            status.textContent = isDark ? "Dark Mode" : "Light Mode";
         });
     </script>
 </body>
